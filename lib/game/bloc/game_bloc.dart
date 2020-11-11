@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:tic_tac_no/ai/ai.dart';
+import 'package:tic_tac_no/ai/random_ai.dart';
+import 'package:tic_tac_no/ai/stupid_ai.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/judge/judge.dart';
 
@@ -14,7 +17,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   Grid _grid;
 
   Judge _judge;
-  // AI _ai;
+  AI _ai;
 
   GameBloc() : super(Loading()) {
     this._players = this._createPlayers();
@@ -24,6 +27,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       players: this._players,
       grid: this._grid,
     );
+
+    this._ai = StupidAI(this._players[1]);
   }
 
   Grid getGrid() {
@@ -58,18 +63,18 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           currentPlayer: this._judge.getCurrentPlayer(),
           winner: this._judge.getWinner(),
         );
+        yield AIThinking();
+        await Future.delayed(Duration(milliseconds: 400));
+        final Square move = this._ai.makeMove(this._judge.getGrid());
+        yield JudgeThinking();
+        this._judge.updateGame(move);
+
+        yield Ready(
+          grid: this._judge.getGrid(),
+          currentPlayer: this._judge.getCurrentPlayer(),
+          winner: this._judge.getWinner(),
+        );
       }
-      // if (this._judge.getCurrentPlayer().type == Player.AI) {
-      //   yield AIThinking();
-      //   final Square move = this._ai.makeMove(grid);
-      //   yield JudgeThinking();
-      //   this._judge.updateGame(move);
-      // }
-      // yield Ready(
-      //   grid: this._judge.getGrid(),
-      //   currentPlayer: this._judge.getCurrentPlayer(),
-      //   winner: this._judge.getWinner(),
-      // );
     }
   }
 
