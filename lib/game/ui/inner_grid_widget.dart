@@ -44,7 +44,11 @@ class InnerGridWidget extends StatelessWidget {
 
   BorderSide _buildBorderSide() {
     return BorderSide(
-      color: this.innerGrid.isPlayable ? Colors.yellow : Colors.black,
+      color: this.innerGrid.isPlayable
+          ? Colors.yellow
+          : (this.innerGrid.winner != null
+              ? this.innerGrid.winner.color
+              : Colors.black),
       width: 2.0,
     );
   }
