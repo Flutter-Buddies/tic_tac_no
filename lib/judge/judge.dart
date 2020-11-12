@@ -90,12 +90,9 @@ class Judge {
     ///    ___    OR   xxx    OR    ___
     ///    ___         ___          xxx
     for (int i = 0; i < 3; i++) {
-      if (innerGrid.squares[i][0].player != null &&
-          innerGrid.squares[i][1].player != null &&
-          innerGrid.squares[i][2].player != null &&
-          innerGrid.squares[i][0].player.color == this._currentPlayer.color &&
-          innerGrid.squares[i][1].player.color == this._currentPlayer.color &&
-          innerGrid.squares[i][2].player.color == this._currentPlayer.color) {
+      if (innerGrid.squares[i][0].player == this._currentPlayer &&
+          innerGrid.squares[i][1].player == this._currentPlayer &&
+          innerGrid.squares[i][2].player == this._currentPlayer) {
         return true;
       }
     }
@@ -104,12 +101,9 @@ class Judge {
     ///    x__    OR   _x_    OR    __x
     ///    x__         _x_          __x
     for (int i = 0; i < 3; i++) {
-      if (innerGrid.squares[0][i].player != null &&
-          innerGrid.squares[1][i].player != null &&
-          innerGrid.squares[2][i].player != null &&
-          innerGrid.squares[0][i].player.color == this._currentPlayer.color &&
-          innerGrid.squares[1][i].player.color == this._currentPlayer.color &&
-          innerGrid.squares[2][i].player.color == this._currentPlayer.color) {
+      if (innerGrid.squares[0][i].player == this._currentPlayer &&
+          innerGrid.squares[1][i].player == this._currentPlayer &&
+          innerGrid.squares[2][i].player == this._currentPlayer) {
         return true;
       }
     }
@@ -117,24 +111,18 @@ class Judge {
     ///    x__
     ///    _x_
     ///    __x
-    if (innerGrid.squares[0][0].player != null &&
-        innerGrid.squares[1][1].player != null &&
-        innerGrid.squares[2][2].player != null &&
-        innerGrid.squares[0][0].player.color == this._currentPlayer.color &&
-        innerGrid.squares[1][1].player.color == this._currentPlayer.color &&
-        innerGrid.squares[2][2].player.color == this._currentPlayer.color) {
+    if (innerGrid.squares[0][0].player == this._currentPlayer &&
+        innerGrid.squares[1][1].player == this._currentPlayer &&
+        innerGrid.squares[2][2].player == this._currentPlayer) {
       return true;
     }
 
     ///    __x
     ///    _x_
     ///    x__
-    if (innerGrid.squares[0][2].player != null &&
-        innerGrid.squares[1][1].player != null &&
-        innerGrid.squares[2][0].player != null &&
-        innerGrid.squares[0][2].player.color == this._currentPlayer.color &&
-        innerGrid.squares[0][1].player.color == this._currentPlayer.color &&
-        innerGrid.squares[2][0].player.color == this._currentPlayer.color) {
+    if (innerGrid.squares[0][2].player == this._currentPlayer &&
+        innerGrid.squares[1][1].player == this._currentPlayer &&
+        innerGrid.squares[2][0].player == this._currentPlayer) {
       return true;
     }
 
@@ -146,15 +134,9 @@ class Judge {
     ///    ___    OR   xxx    OR    ___
     ///    ___         ___          xxx
     for (int i = 0; i < 3; i++) {
-      if (this._grid.innerGrids[i][0].winner != null &&
-          this._grid.innerGrids[i][1].winner != null &&
-          this._grid.innerGrids[i][2].winner != null &&
-          this._grid.innerGrids[i][0].winner.color ==
-              this._currentPlayer.color &&
-          this._grid.innerGrids[i][1].winner.color ==
-              this._currentPlayer.color &&
-          this._grid.innerGrids[i][2].winner.color ==
-              this._currentPlayer.color) {
+      if (this._grid.innerGrids[i][0].winner == this._currentPlayer &&
+          this._grid.innerGrids[i][1].winner == this._currentPlayer &&
+          this._grid.innerGrids[i][2].winner == this._currentPlayer) {
         return true;
       }
     }
@@ -163,15 +145,9 @@ class Judge {
     ///    x__    OR   _x_    OR    __x
     ///    x__         _x_          __x
     for (int i = 0; i < 3; i++) {
-      if (this._grid.innerGrids[0][i].winner != null &&
-          this._grid.innerGrids[1][i].winner != null &&
-          this._grid.innerGrids[2][i].winner != null &&
-          this._grid.innerGrids[0][i].winner.color ==
-              this._currentPlayer.color &&
-          this._grid.innerGrids[1][i].winner.color ==
-              this._currentPlayer.color &&
-          this._grid.innerGrids[2][i].winner.color ==
-              this._currentPlayer.color) {
+      if (this._grid.innerGrids[0][i].winner == this._currentPlayer &&
+          this._grid.innerGrids[1][i].winner == this._currentPlayer &&
+          this._grid.innerGrids[2][i].winner == this._currentPlayer) {
         return true;
       }
     }
@@ -179,24 +155,18 @@ class Judge {
     ///    x__
     ///    _x_
     ///    __x
-    if (this._grid.innerGrids[0][0].winner != null &&
-        this._grid.innerGrids[1][1].winner != null &&
-        this._grid.innerGrids[2][2].winner != null &&
-        this._grid.innerGrids[0][0].winner.color == this._currentPlayer.color &&
-        this._grid.innerGrids[1][1].winner.color == this._currentPlayer.color &&
-        this._grid.innerGrids[2][2].winner.color == this._currentPlayer.color) {
+    if (this._grid.innerGrids[0][0].winner == this._currentPlayer &&
+        this._grid.innerGrids[1][1].winner == this._currentPlayer &&
+        this._grid.innerGrids[2][2].winner == this._currentPlayer) {
       return true;
     }
 
     ///    __x
     ///    _x_
     ///    x__
-    if (this._grid.innerGrids[0][2].winner != null &&
-        this._grid.innerGrids[1][1].winner != null &&
-        this._grid.innerGrids[2][0].winner != null &&
-        this._grid.innerGrids[0][2].winner.color == this._currentPlayer.color &&
-        this._grid.innerGrids[1][1].winner.color == this._currentPlayer.color &&
-        this._grid.innerGrids[2][0].winner.color == this._currentPlayer.color) {
+    if (this._grid.innerGrids[0][2].winner == this._currentPlayer &&
+        this._grid.innerGrids[1][1].winner == this._currentPlayer &&
+        this._grid.innerGrids[2][0].winner == this._currentPlayer) {
       return true;
     }
 

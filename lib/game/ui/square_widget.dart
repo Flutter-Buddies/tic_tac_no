@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
 
+// TODO override operator==
 class SquareWidget extends StatelessWidget {
   final Square square;
 
@@ -11,8 +12,12 @@ class SquareWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => BlocProvider.of<GameBloc>(context)
-          .add(SquareTapped(square: this.square)),
+      onTap: () {
+        BlocProvider.of<GameBloc>(context)
+            .add(SquareTapped(square: this.square));
+        print(
+            'tapped ${square.parentInnerGrid.position.x},${square.parentInnerGrid.position.y},${square.position.x},${square.position.y}');
+      },
       child: Container(
         width: 40,
         height: 40,
