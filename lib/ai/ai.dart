@@ -45,6 +45,10 @@ abstract class AI {
     List<Square> playableSquares,
     Player player,
   ) {
+    if (playableInnerGrid.winner != null) {
+      return null;
+    }
+
     ///    xxx         x__          x__
     ///    ___    OR   x__    OR    _x_
     ///    ___         x__          __x
@@ -91,12 +95,12 @@ abstract class AI {
           playableInnerGrid.squares[0][0].player == player) {
         return playableInnerGrid.squares[0][2];
       }
-      if (playableInnerGrid.squares[1][0].player == player &&
-          playableInnerGrid.squares[2][0].player == player) {
+      if (playableInnerGrid.squares[1][2].player == player &&
+          playableInnerGrid.squares[2][2].player == player) {
         return playableInnerGrid.squares[0][2];
       }
       if (playableInnerGrid.squares[1][1].player == player &&
-          playableInnerGrid.squares[2][2].player == player) {
+          playableInnerGrid.squares[2][0].player == player) {
         return playableInnerGrid.squares[0][2];
       }
     }
@@ -159,8 +163,8 @@ abstract class AI {
           playableInnerGrid.squares[2][2].player == player) {
         return playableInnerGrid.squares[2][0];
       }
-      if (playableInnerGrid.squares[1][0].player == player &&
-          playableInnerGrid.squares[0][0].player == player) {
+      if (playableInnerGrid.squares[0][0].player == player &&
+          playableInnerGrid.squares[1][0].player == player) {
         return playableInnerGrid.squares[2][0];
       }
       if (playableInnerGrid.squares[1][1].player == player &&
