@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:tic_tac_no/ai/ai.dart';
+import 'package:tic_tac_no/ai/human_ai.dart';
 import 'package:tic_tac_no/ai/random_ai.dart';
 import 'package:tic_tac_no/ai/winner_ai.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
@@ -28,7 +29,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       grid: this._grid,
     );
 
-    this._ai = WinnerAI(this._players[1]);
+    this._ai = HumanAI(this._players[1], this._players[0]);
   }
 
   Grid getGrid() {
