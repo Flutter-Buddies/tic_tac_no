@@ -17,14 +17,30 @@ class SquareWidget extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: _getColor(),
           border: Border.all(
             color: Colors.black,
             width: 1.0,
           ),
         ),
+        child: Center(
+          child: Text(
+            _getSymbol(),
+            style: TextStyle(
+              color: _getColor(),
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
     );
+  }
+
+  String _getSymbol() {
+    if (this.square.player == null) {
+      return '';
+    }
+    return this.square.player.symbol;
   }
 
   Color _getColor() {

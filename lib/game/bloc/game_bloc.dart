@@ -80,8 +80,16 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
   List<Player> _createPlayers() {
     return [
-      Player(name: 'Player 1', color: Colors.red),
-      Player(name: 'Player 2', color: Colors.blue),
+      Player(
+        name: 'Player 1',
+        color: Colors.red,
+        symbol: 'X',
+      ),
+      Player(
+        name: 'Player 2',
+        color: Colors.blue,
+        symbol: 'O',
+      ),
     ];
   }
 }
