@@ -38,7 +38,8 @@ class HumanAI extends AI {
     // first check if opponent can be sent to the already won inner grid
     List<Square> alreadyWonSquares = [];
     playableSquares.forEach((square) {
-      if (square.parentInnerGrid.winner != null) {
+      if (grid.innerGrids[square.position.x][square.position.y].winner !=
+          null) {
         alreadyWonSquares.add(square);
       }
     });

@@ -204,5 +204,7 @@ abstract class AI {
         return playableInnerGrid.squares[2][2];
       }
     }
+
+    return null;
   }
 }
