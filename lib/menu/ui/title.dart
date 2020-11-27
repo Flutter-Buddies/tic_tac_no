@@ -9,15 +9,18 @@ class TitleWidget extends StatelessWidget {
       children: [
         Text(
           'TIC',
-          style: GoogleFonts.firaCode(textStyle: Theme.of(context).textTheme.headline1),
+          style: GoogleFonts.firaCode(
+              textStyle: Theme.of(context).textTheme.headline1),
         ),
         Text(
           'TAC',
-          style: GoogleFonts.firaCode(textStyle: Theme.of(context).textTheme.headline1),
+          style: GoogleFonts.firaCode(
+              textStyle: Theme.of(context).textTheme.headline1),
         ),
         Text(
           'NO',
-          style: GoogleFonts.firaCode(textStyle: Theme.of(context).textTheme.headline1),
+          style: GoogleFonts.firaCode(
+              textStyle: Theme.of(context).textTheme.headline1),
         ),
       ],
     );

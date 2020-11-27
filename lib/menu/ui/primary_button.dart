@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
-  PrimaryButton({this.buttonIcon, this.buttonText, this.buttonPress, this.buttonGradient});
+  PrimaryButton(
+      {this.buttonIcon,
+      this.buttonText,
+      this.buttonPress,
+      this.buttonGradient});
 
   final String buttonText;
   final IconData buttonIcon;
@@ -40,7 +44,10 @@ class PrimaryButton extends StatelessWidget {
                   Text(
                     buttonText,
                     style: GoogleFonts.asap(
-                      textStyle: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+                      textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
