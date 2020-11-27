@@ -154,6 +154,7 @@ class _GameStartModalState extends State<GameStartModal> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
                   children: [
                     Column(
                       children: [
