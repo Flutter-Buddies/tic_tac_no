@@ -21,15 +21,10 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   AI _ai;
 
   GameBloc() : super(Loading()) {
-    this._players = this._createPlayers();
     this._grid = Grid();
-
     this._judge = Judge(
-      players: this._players,
       grid: this._grid,
     );
-
-    this._ai = HumanAI(this._players[1], this._players[0]);
   }
 
   Grid getGrid() {
@@ -44,6 +39,17 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   Stream<GameState> mapEventToState(
     GameEvent event,
   ) async* {
+    if (event is SetPlayers) {
+      yield Loading();
+      _players = [event.player1, event.player2];
+      _updateAI(event.player2);
+      _judge.updatePlayers(_players);
+      yield Ready(
+        grid: this._judge.getGrid(),
+        currentPlayer: this._judge.getCurrentPlayer(),
+        winner: this._judge.getWinner(),
+      );
+    }
     if (event is LoadGame) {
       yield Ready(
         grid: this._judge.getGrid(),
@@ -52,6 +58,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       );
     }
     if (event is SquareTapped) {
+      if (this.state is! Ready) {
+        return;
+      }
       yield JudgeThinking();
       this._judge.updateGame(event.square);
       if (this._judge.getIsGameOver()) {
@@ -59,16 +68,18 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           winner: this._judge.getWinner(),
         );
       } else {
-        yield Ready(
-          grid: this._judge.getGrid(),
-          currentPlayer: this._judge.getCurrentPlayer(),
-          winner: this._judge.getWinner(),
-        );
-        yield AIThinking();
-        await Future.delayed(Duration(milliseconds: 400));
-        final Square move = this._ai.makeMove(this._judge.getGrid());
-        yield JudgeThinking();
-        this._judge.updateGame(move);
+        if (this._ai != null) {
+          yield Ready(
+            grid: this._judge.getGrid(),
+            currentPlayer: this._judge.getCurrentPlayer(),
+            winner: this._judge.getWinner(),
+          );
+          yield AIThinking();
+          await Future.delayed(Duration(milliseconds: 400));
+          final Square move = this._ai.makeMove(this._judge.getGrid());
+          yield JudgeThinking();
+          this._judge.updateGame(move);
+        }
 
         yield Ready(
           grid: this._judge.getGrid(),
@@ -79,18 +90,24 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     }
   }
 
-  List<Player> _createPlayers() {
-    return [
-      Player(
-        name: 'Player 1',
-        color: Colors.red,
-        symbol: 'X',
-      ),
-      Player(
-        name: 'Player 2',
-        color: Colors.blue,
-        symbol: 'O',
-      ),
-    ];
+  void _updateAI(Player player) {
+    if (player.type != PlayerType.ai) {
+      _ai = null;
+      return;
+    }
+    switch (player.aiStrength) {
+      case 0:
+        _ai = RandomAI();
+        break;
+      case 1:
+        _ai = WinnerAI(player);
+        break;
+      case 2:
+        _ai = HumanAI(player, _players[0]);
+        break;
+      default:
+        _ai = RandomAI();
+        break;
+    }
   }
 }

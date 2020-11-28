@@ -6,17 +6,17 @@ import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
 
 class Judge {
-  final List<Player> players;
+  List<Player> players;
   Grid _grid;
   Player _currentPlayer;
   Player _winner;
   bool _isGameOver = false;
 
   Judge({
-    @required this.players,
+    this.players,
     @required grid,
   }) {
-    this._currentPlayer = this.players[0];
+    this._currentPlayer = this.players != null ? this.players[0] : null;
     this._grid = grid;
   }
 
@@ -24,6 +24,35 @@ class Judge {
   Player getCurrentPlayer() => this._currentPlayer;
   Player getWinner() => this._winner;
   bool getIsGameOver() => this._isGameOver;
+
+  void updatePlayers(List<Player> players) {
+    this.players = players;
+    this._currentPlayer = this.players != null ? this.players[0] : null;
+    _updateGrid();
+  }
+
+  void _updateGrid() {
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        if (this._grid.innerGrids[i][j].winner != null) {
+          final Player winner = this._grid.innerGrids[i][j].winner;
+          this._grid.innerGrids[i][j].winner =
+              this.players.firstWhere((player) => player.id == winner.id);
+        }
+        for (int k = 0; k < 3; k++) {
+          for (int l = 0; l < 3; l++) {
+            if (this._grid.innerGrids[i][j].squares[k][l].player != null) {
+              final Player oldPlayer =
+                  this._grid.innerGrids[i][j].squares[k][l].player;
+              this._grid.innerGrids[i][j].squares[k][l].player = this
+                  .players
+                  .firstWhere((player) => player.id == oldPlayer.id);
+            }
+          }
+        }
+      }
+    }
+  }
 
   void updateGame(Square tappedSquare) {
     // check if move can be made at this square
@@ -82,7 +111,7 @@ class Judge {
     // change current player
     this._currentPlayer = this
         .players
-        .firstWhere((player) => player.name != this._currentPlayer.name);
+        .firstWhere((player) => player.id != this._currentPlayer.id);
   }
 
   bool _didWin(InnerGrid innerGrid) {
