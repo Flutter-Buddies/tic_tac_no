@@ -4,9 +4,9 @@ This document will briefly describe basic guidelines for contributors. All proje
 
 The upcoming titles sort of describe the order of things you want to explore before contributing.
 
-## Join a Team
+## Discord
 
-If you like, ask the creator fo this project (slovnicki / sly) to add you to the project's team so you can directly contribute to the repository. If you don't want to be in a project's team, don't worry - you can still contribute.
+If you'd like to talk about the project in general, please do at project's Discord [channel](https://discord.com/channels/768528774991446088/774393854317035580). We can go on from there.
 
 ## Issues
 
@@ -45,26 +45,35 @@ Many feature branches
 
 - `settings` branch was created from `develop` to specifically work on `settings/` part of the app
 
-- `menu` branch was created from `develop` to specifically work on `menu/` part of the app
+- `ai/*` branches were created from `develop` to specifically work on AI part of the app
 
 - `game` branch was created from `develop` to specifically work on `game/` part of the app
+
+- ...
 
 After there are some useful changes done at some feature branch, Pull Request shall be created to merge it into `develop`. Then we will review changes, maybe have a discussion at pull request's comments section and finally merge it. Of course, in practice there will be little discussion to be made if everything works as expected.
 
 Then, other feature branches can (but don't have to) pull these changes from `develop` to have the latest development state.
 
-### Tips
-
-When you clone the project, you will be at `master` branch by default. To switch branches, use `git checkout <branch-name>`.
-
-If you are contributing at some branch for a while, `git pull origin <branch_name>` to have the latest changes if someone else pushed something in the meantime.
-
-Contributors that are added to the team (contact slovnicki / sly) can `git push origin <branch-name>` directly to this repository.
-
 ## Pull Requests
 
-If you wish to contribute code without being a part of the team, you can send a [Pull Request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) with your changes. Please, after you fork a repository, switch to the `develop` branch and branch your `super-cool-feature` branch from it.
+To contribute, you will eventually be doing a Pull Request for your fork. First, you need to fork the repository and set the upstream via `git remote add upstream https://github.com/Flutter-Buddies/tic_tac_no.git`.
 
-## Code
+When you fork the project, you will be at `master` branch by default. To switch branches, use `git checkout <branch-name>`. It will be clearly discussed on which branch should each issue be worked on.
+
+If you are contributing at some branch for a while, to have the latest changes if something has been pushed in the meantime, do `git fetch upstream`. This will create branches `upstream/<branch-name>` that you then need to merge into your branch you're working on. To do that, `git checkout <branch-name>` (if you're not already on it) and `git merge upstream/<branch-name>`.
+
+### Useful links
+
+- [Git Handbook](https://guides.github.com/introduction/git-handbook)
+- [GitHub Hello World](https://guides.github.com/activities/hello-world/)
+- [git branches - official GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-branches)
+- [Fork - official GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo)
+- [Syncing a fork - official GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork)
+- [Syncing a fork - StackOverflow](https://stackoverflow.com/questions/7244321/how-do-i-update-a-github-forked-repository)
+- [Creating a pull request from a fork - official GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork)
+
+
+## Code Style
 
 It is sufficient that you format your code. See [here](https://flutter.dev/docs/development/tools/formatting) how this can be accomplished and automated.
