@@ -9,7 +9,7 @@ class CrossPainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 14;
+      ..strokeWidth = 0.14 * size.width;
 
     // path is the drawing
     var path = Path()
@@ -26,6 +26,9 @@ class CrossPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
+
+  @override
+  String toString() => 'cross';
 }
 
 class TrianglePainter extends CustomPainter {
@@ -37,7 +40,7 @@ class TrianglePainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 14;
+      ..strokeWidth = 0.14 * size.width;
 
     var path = Path()
       ..moveTo(size.width / 2, 0)
@@ -52,6 +55,9 @@ class TrianglePainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
+
+  @override
+  String toString() => 'triangle';
 }
 
 class CirclePainter extends CustomPainter {
@@ -62,11 +68,12 @@ class CirclePainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 14;
+      ..strokeWidth = 0.14 * size.width;
 
     var path1 = Path()
       ..addOval(Rect.fromCircle(
-          center: Offset(size.width / 2, size.height / 2), radius: 50));
+          center: Offset(size.width / 2, size.height / 2),
+          radius: 0.5 * size.width));
 
     canvas.drawPath(path1, paint);
   }
@@ -75,6 +82,9 @@ class CirclePainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
+
+  @override
+  String toString() => 'circle';
 }
 
 class SquirclePainter extends CustomPainter {
@@ -85,7 +95,7 @@ class SquirclePainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 14;
+      ..strokeWidth = 0.14 * size.width;
 
     var path1 = Path()
       ..addRRect(
@@ -94,7 +104,7 @@ class SquirclePainter extends CustomPainter {
           0,
           size.width,
           size.height,
-          Radius.circular(35),
+          Radius.circular(0.35 * size.width),
         ),
       );
     canvas.drawPath(path1, paint);
@@ -104,4 +114,7 @@ class SquirclePainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
+
+  @override
+  String toString() => 'squircle';
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/game/bloc/game_bloc.dart';
+import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/menu/ui/primary_button.dart';
 import 'package:tic_tac_no/menu/ui/colour_circle.dart';
 import 'package:tic_tac_no/menu/ui/piece_shapes.dart';
@@ -28,12 +31,11 @@ class _GameStartModalState extends State<GameStartModal> {
     Colors.yellowAccent
   ];
 
-  List<String> listOfAI = ['EASY', 'MEDIUM', 'HARD', 'INSANE'];
+  List<String> listOfAI = ['EASY', 'MEDIUM', 'HARD'];
 
   // Variable to hold the index of the colour
   int _p1Value = 0;
   int _p2Value = 0;
-
   int _aiValue = 0;
 
   @override
@@ -270,7 +272,28 @@ class _GameStartModalState extends State<GameStartModal> {
                 ),
                 PrimaryButton(
                   buttonText: 'START GAME',
-                  buttonPress: () => Navigator.of(context).pushNamed('/game'),
+                  buttonPress: () {
+                    BlocProvider.of<GameBloc>(context).add(
+                      SetPlayers(
+                        player1: Player(
+                          id: 1,
+                          name: 'Player 1',
+                          color: p1ColourList[_p1Value],
+                          symbol: p1SelectedPiece,
+                          type: PlayerType.me,
+                        ),
+                        player2: Player(
+                          id: 2,
+                          name: 'Player 2',
+                          color: p2ColourList[_p2Value],
+                          symbol: p2SelectedPiece,
+                          type: _decidePlayerType(),
+                          aiStrength: _aiValue,
+                        ),
+                      ),
+                    );
+                    Navigator.of(context).pushNamed('/game');
+                  },
                   buttonGradient: LinearGradient(
                       colors: [Color(0xffFF5F6D), Color(0xffFFC371)]),
                 )
@@ -279,6 +302,17 @@ class _GameStartModalState extends State<GameStartModal> {
           )
         ],
       );
+    }
+  }
+
+  PlayerType _decidePlayerType() {
+    switch (widget.gameType) {
+      case GameType.SinglePlayer:
+        return PlayerType.ai;
+      case GameType.LocalMultiplayer:
+        return PlayerType.friend;
+      default:
+        return PlayerType.ai;
     }
   }
 }

@@ -8,7 +8,7 @@ import 'package:tic_tac_no/app.dart';
 void main() {
   Bloc.observer = SimpleBlocObserver();
   runApp(BlocProvider(
-    create: (context) => GameBloc()..add(LoadGame()),
+    create: (context) => GameBloc(),
     child: App(),
   ));
 }

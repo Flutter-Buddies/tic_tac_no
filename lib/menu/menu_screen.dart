@@ -60,7 +60,6 @@ class MenuScreen extends StatelessWidget {
                         buttonIcon: Icons.person,
                         buttonPress: () =>
                             primaryButtonPress(GameType.SinglePlayer),
-                        //Navigator.of(context).pushNamed('/game'),
                         buttonGradient: LinearGradient(
                             colors: [Color(0xffFF5F6D), Color(0xffFFC371)]),
                       ),

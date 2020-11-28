@@ -11,6 +11,7 @@ class SquareWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //print(square.player);
     return GestureDetector(
       onTap: () {
         BlocProvider.of<GameBloc>(context)
@@ -28,30 +29,17 @@ class SquareWidget extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            _getSymbol(),
-            style: TextStyle(
-              color: _getColor(),
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: this.square.player != null
+              ? Container(
+                  width: 26,
+                  height: 26,
+                  child: CustomPaint(
+                    painter: this.square.player.symbol,
+                  ),
+                )
+              : SizedBox.shrink(),
         ),
       ),
     );
-  }
-
-  String _getSymbol() {
-    if (this.square.player == null) {
-      return '';
-    }
-    return this.square.player.symbol;
-  }
-
-  Color _getColor() {
-    if (this.square.player == null) {
-      return Colors.transparent;
-    }
-    return this.square.player.color;
   }
 }
