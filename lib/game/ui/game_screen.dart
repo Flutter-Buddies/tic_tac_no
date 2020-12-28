@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/ui/grid_widget.dart';
+import 'package:tic_tac_no/game/ui/player_column.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -40,61 +41,47 @@ class GameScreenState extends State<GameScreen> {
             colors: [Color(0xff1E3C72), Color(0xff2A5298)],
           )),
           child: Center(
-            child: Stack(
-              alignment: Alignment.center,
+            child: Column(
               children: [
-                Positioned(
-                  top: 0,
-                  child: BlocBuilder<GameBloc, GameState>(
-                      builder: (context, state) {
-                    if (state is GameOver) {
-                      if (state.winner == null) {
-                        return Text('TIE!');
-                      } else {
-                        return Text('Winner is ${state.winner.name}!');
-                      }
-                    }
-                    return SizedBox.shrink();
-                  }),
+                SizedBox(
+                  height: 80,
                 ),
-                Positioned(
-                  top: 0,
-                  child: BlocBuilder<GameBloc, GameState>(
-                      builder: (context, state) {
-                    if (state is AIThinking) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('AI is thinking...'),
-                          SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(),
-                          ),
-                        ],
-                      );
-                    }
-                    return SizedBox.shrink();
-                  }),
-                ),
-                Positioned(
-                  top: 32,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('TURN: ${this._currentPlayer.name}'),
-                      Container(
-                        width: 20,
-                        height: 20,
-                        color: this._currentPlayer.color,
-                      )
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    PlayerColumn(
+                      // Todo: Add actual player
+                      player: _currentPlayer,
+                      isPlayerTurn: true,
+                    ),
+                    // Todo: Use a getter to get current score of player
+                    Text(
+                      '1 : 0',
+                      style:
+                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+                    PlayerColumn(
+                      player: _currentPlayer,
+                      isPlayerTurn: false,
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 64.0),
                   child: GridWidget(
                     grid: this._grid,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      size: 40,
+                    ),
                   ),
                 )
               ],
