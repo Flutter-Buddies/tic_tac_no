@@ -9,7 +9,7 @@ class CrossPainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 0.14 * size.width;
+      ..strokeWidth = 0.25 * size.width;
 
     // path is the drawing
     var path = Path()
@@ -40,7 +40,7 @@ class TrianglePainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 0.14 * size.width;
+      ..strokeWidth = 0.25 * size.width;
 
     var path = Path()
       ..moveTo(size.width / 2, 0)
@@ -68,7 +68,7 @@ class CirclePainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 0.14 * size.width;
+      ..strokeWidth = 0.25 * size.width;
 
     var path1 = Path()
       ..addOval(Rect.fromCircle(
@@ -95,7 +95,7 @@ class SquirclePainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 0.14 * size.width;
+      ..strokeWidth = 0.25 * size.width;
 
     var path1 = Path()
       ..addRRect(

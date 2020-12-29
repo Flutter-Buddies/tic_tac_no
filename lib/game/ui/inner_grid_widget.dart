@@ -35,17 +35,18 @@ class InnerGridWidget extends StatelessWidget {
     );
   }
 
+  // Todo: Have the background colour pulse when there is a winning line
   Color _decideBackgroundColor() {
     if (this.innerGrid.winner == null) {
-      return Colors.transparent;
+      return Colors.white.withOpacity(0.1);
     }
-    return this.innerGrid.winner.color.withOpacity(0.4);
+    return this.innerGrid.winner.color.withOpacity(0.5);
   }
 
   BorderSide _buildBorderSide() {
     return BorderSide(
-      color: this.innerGrid.isPlayable ? Colors.yellow : Colors.black,
-      width: 2.0,
+      color: this.innerGrid.isPlayable ? Color(0xff63F4F0) : Colors.white,
+      width: this.innerGrid.isPlayable ? 3.0 : 1.0,
     );
   }
 

@@ -20,19 +20,19 @@ class SquareWidget extends StatelessWidget {
             'tapped ${square.parentInnerGrid.position.x},${square.parentInnerGrid.position.y},${square.position.x},${square.position.y}');
       },
       child: Container(
-        width: 40,
-        height: 40,
+        width: 50,
+        height: 50,
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.black,
-            width: 1.0,
+            color: Color(0xff7A9AD1),
+            width: 1,
           ),
         ),
         child: Center(
           child: this.square.player != null
               ? Container(
-                  width: 26,
-                  height: 26,
+                  width: 30,
+                  height: 30,
                   child: CustomPaint(
                     painter: this.square.player.symbol,
                   ),
