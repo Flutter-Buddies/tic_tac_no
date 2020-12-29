@@ -35,6 +35,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     return this._judge.getCurrentPlayer();
   }
 
+  List<Player> get players => _players;
+
   @override
   Stream<GameState> mapEventToState(
     GameEvent event,
@@ -46,6 +48,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _judge.updatePlayers(_players);
       yield Ready(
         grid: this._judge.getGrid(),
+        players: this._players,
         currentPlayer: this._judge.getCurrentPlayer(),
         winner: this._judge.getWinner(),
       );
@@ -53,6 +56,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     if (event is LoadGame) {
       yield Ready(
         grid: this._judge.getGrid(),
+        players: this._players,
         currentPlayer: this._judge.getCurrentPlayer(),
         winner: this._judge.getWinner(),
       );
@@ -71,6 +75,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         if (this._ai != null) {
           yield Ready(
             grid: this._judge.getGrid(),
+            players: this._players,
             currentPlayer: this._judge.getCurrentPlayer(),
             winner: this._judge.getWinner(),
           );
@@ -83,6 +88,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
         yield Ready(
           grid: this._judge.getGrid(),
+          players: this._players,
           currentPlayer: this._judge.getCurrentPlayer(),
           winner: this._judge.getWinner(),
         );

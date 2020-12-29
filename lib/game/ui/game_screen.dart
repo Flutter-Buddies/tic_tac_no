@@ -12,11 +12,13 @@ class GameScreen extends StatefulWidget {
 
 class GameScreenState extends State<GameScreen> {
   Grid _grid;
+  List<Player> _players;
   Player _currentPlayer;
 
   @override
   void initState() {
     this._grid = BlocProvider.of<GameBloc>(context).getGrid();
+    this._players = BlocProvider.of<GameBloc>(context).players;
     this._currentPlayer = BlocProvider.of<GameBloc>(context).getCurrentPlayer();
     super.initState();
   }
@@ -28,6 +30,7 @@ class GameScreenState extends State<GameScreen> {
         if (state is Ready) {
           setState(() {
             this._grid = state.grid;
+            this._players = state.players;
             this._currentPlayer = state.currentPlayer;
           });
         }

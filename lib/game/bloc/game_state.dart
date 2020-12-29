@@ -11,11 +11,13 @@ class JudgeThinking extends GameState {}
 
 class Ready extends GameState {
   final Grid grid;
+  final List<Player> players;
   final Player currentPlayer;
   final Player winner;
 
   Ready({
     @required this.grid,
+    @required this.players,
     @required this.currentPlayer,
     @required this.winner,
   });
