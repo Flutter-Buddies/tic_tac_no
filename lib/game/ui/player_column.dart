@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
 
 class PlayerColumn extends StatelessWidget {
@@ -28,14 +30,32 @@ class PlayerColumn extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 16,
+              height: 8,
             ),
             Opacity(
               opacity: isPlayerTurn ? 1.0 : 0.0,
-              child: Container(
-                height: 8,
-                width: 100,
-                color: player.color,
+              child: BlocBuilder<GameBloc, GameState>(
+                builder: (context, state) {
+                  if (state is AIThinking) {
+                    return Container(
+                      height: 20,
+                      width: 100,
+                      child: Text(
+                        'Thinking...',
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  } else {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(vertical: 6.0),
+                      child: Container(
+                        height: 8,
+                        width: 100,
+                        color: player.color,
+                      ),
+                    );
+                  }
+                },
               ),
             ),
           ],

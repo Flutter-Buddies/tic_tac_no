@@ -47,43 +47,66 @@ class GameScreenState extends State<GameScreen> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 80,
+                  height: 45,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    PlayerColumn(
-                      // Todo: Add actual player
-                      player: _currentPlayer,
-                      isPlayerTurn: true,
-                    ),
-                    // Todo: Use a getter to get current score of player
-                    Text(
-                      '1 : 0',
-                      style:
-                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                    ),
-                    PlayerColumn(
-                      player: _currentPlayer,
-                      isPlayerTurn: false,
-                    ),
-                  ],
+                BlocBuilder<GameBloc, GameState>(
+                  builder: (context, state) {
+                    if (state is GameOver) {
+                      return Container(
+                        height: 170,
+                        child: Center(
+                          child: Text(
+                            //? does this null aware opertor work here?
+                            '${state.winner.name ?? 'Nobody'}'.toUpperCase() +
+                                ' wins!'.toUpperCase(),
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Container(
+                        height: 170,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            PlayerColumn(
+                              player: _players[0],
+                              isPlayerTurn: _players[0] == _currentPlayer,
+                            ),
+                            //? Do we want this here. If so, we'll need to add a score parameter to the game
+                            Text(
+                              '1 : 0',
+                              style: TextStyle(
+                                  fontSize: 40, fontWeight: FontWeight.bold),
+                            ),
+                            PlayerColumn(
+                              player: _players[1],
+                              isPlayerTurn: _players[1] == _currentPlayer,
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  },
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 64.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: GridWidget(
                     grid: this._grid,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      size: 40,
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        size: 40,
+                      ),
                     ),
                   ),
                 )
