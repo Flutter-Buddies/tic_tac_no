@@ -76,21 +76,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           winner: this._judge.getWinner(),
         );
       } else {
-        if (this._ai != null) {
-          yield Ready(
-            grid: this._judge.getGrid(),
-            players: this._players,
-            currentPlayer: this._judge.getCurrentPlayer(),
-            score: _judge.score,
-            winner: this._judge.getWinner(),
-          );
-          yield AIThinking();
-          await Future.delayed(Duration(milliseconds: 400));
-          final Square move = this._ai.makeMove(this._judge.getGrid());
-          yield JudgeThinking();
-          this._judge.updateGame(move);
-        }
-
         yield Ready(
           grid: this._judge.getGrid(),
           players: this._players,
@@ -98,6 +83,19 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           score: _judge.score,
           winner: this._judge.getWinner(),
         );
+        if (this._judge.getCurrentPlayer().type == PlayerType.ai) {
+          yield AIThinking();
+          await Future.delayed(Duration(milliseconds: 400));
+          final Square move = this._ai.makeMove(this._judge.getGrid());
+          yield Ready(
+            grid: this._judge.getGrid(),
+            players: this._players,
+            currentPlayer: this._judge.getCurrentPlayer(),
+            score: _judge.score,
+            winner: this._judge.getWinner(),
+          );
+          this.add(SquareTapped(square: move));
+        }
       }
     }
   }
