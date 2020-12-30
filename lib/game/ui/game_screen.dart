@@ -14,12 +14,14 @@ class GameScreenState extends State<GameScreen> {
   Grid _grid;
   List<Player> _players;
   Player _currentPlayer;
+  Map<int, int> _score;
 
   @override
   void initState() {
     this._grid = BlocProvider.of<GameBloc>(context).getGrid();
     this._players = BlocProvider.of<GameBloc>(context).players;
     this._currentPlayer = BlocProvider.of<GameBloc>(context).getCurrentPlayer();
+    this._score = BlocProvider.of<GameBloc>(context).score;
     super.initState();
   }
 
@@ -32,6 +34,7 @@ class GameScreenState extends State<GameScreen> {
             this._grid = state.grid;
             this._players = state.players;
             this._currentPlayer = state.currentPlayer;
+            this._score = state.score;
           });
         }
       },
@@ -74,9 +77,8 @@ class GameScreenState extends State<GameScreen> {
                               player: _players[0],
                               isPlayerTurn: _players[0] == _currentPlayer,
                             ),
-                            //? Do we want this here. If so, we'll need to add a score parameter to the game
                             Text(
-                              '1 : 0',
+                              '${_score[_players[0].id]} : ${_score[_players[1].id]}',
                               style: TextStyle(
                                   fontSize: 40, fontWeight: FontWeight.bold),
                             ),

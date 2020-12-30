@@ -37,6 +37,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
   List<Player> get players => _players;
 
+  Map<int, int> get score => _judge.score;
+
   @override
   Stream<GameState> mapEventToState(
     GameEvent event,
@@ -50,6 +52,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         grid: this._judge.getGrid(),
         players: this._players,
         currentPlayer: this._judge.getCurrentPlayer(),
+        score: _judge.score,
         winner: this._judge.getWinner(),
       );
     }
@@ -58,6 +61,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         grid: this._judge.getGrid(),
         players: this._players,
         currentPlayer: this._judge.getCurrentPlayer(),
+        score: _judge.score,
         winner: this._judge.getWinner(),
       );
     }
@@ -77,6 +81,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
             grid: this._judge.getGrid(),
             players: this._players,
             currentPlayer: this._judge.getCurrentPlayer(),
+            score: _judge.score,
             winner: this._judge.getWinner(),
           );
           yield AIThinking();
@@ -90,6 +95,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           grid: this._judge.getGrid(),
           players: this._players,
           currentPlayer: this._judge.getCurrentPlayer(),
+          score: _judge.score,
           winner: this._judge.getWinner(),
         );
       }

@@ -9,6 +9,7 @@ class Judge {
   List<Player> players;
   Grid _grid;
   Player _currentPlayer;
+  Map<int, int> _score;
   Player _winner;
   bool _isGameOver = false;
 
@@ -18,16 +19,29 @@ class Judge {
   }) {
     this._currentPlayer = this.players != null ? this.players[0] : null;
     this._grid = grid;
+    if (this.players != null) {
+      _score = {
+        players[0].id: 0,
+        players[1].id: 0,
+      };
+    }
   }
 
   Grid getGrid() => this._grid;
   Player getCurrentPlayer() => this._currentPlayer;
+  Map<int, int> get score => _score;
   Player getWinner() => this._winner;
   bool getIsGameOver() => this._isGameOver;
 
   void updatePlayers(List<Player> players) {
     this.players = players;
     this._currentPlayer = this.players != null ? this.players[0] : null;
+    if (_score == null) {
+      _score = {
+        players[0].id: 0,
+        players[1].id: 0,
+      };
+    }
     _updateGrid();
   }
 
@@ -82,6 +96,7 @@ class Judge {
       if (this._didWin(tappedSquare.parentInnerGrid)) {
         _grid.innerGrids[innerGridPosition.x][innerGridPosition.y].winner =
             this._currentPlayer;
+        _score[_currentPlayer.id]++;
         // chick did current player win entire game
         if (this._didWinGame()) {
           this._isGameOver = true;
@@ -104,7 +119,13 @@ class Judge {
       } else {
         // end game as a tie
         this._isGameOver = true;
-        this._winner = null;
+        if (_score[players[0].id] > _score[players[1].id]) {
+          this._winner = players[0];
+        } else if (_score[players[0].id] < _score[players[1].id]) {
+          this._winner = players[1];
+        } else {
+          this._winner = null;
+        }
       }
     }
 
