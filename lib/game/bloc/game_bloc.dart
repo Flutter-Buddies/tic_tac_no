@@ -84,6 +84,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           winner: this._judge.getWinner(),
         );
         if (this._judge.getCurrentPlayer().type == PlayerType.ai) {
+          _updateAI(_judge.getCurrentPlayer());
           yield AIThinking();
           await Future.delayed(Duration(milliseconds: 400));
           final Square move = this._ai.makeMove(this._judge.getGrid());
