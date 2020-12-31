@@ -40,6 +40,7 @@ class GameScreenState extends State<GameScreen> {
       },
       child: Scaffold(
         body: Container(
+          padding: EdgeInsets.only(top: 48, bottom: 16),
           decoration: BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -49,42 +50,53 @@ class GameScreenState extends State<GameScreen> {
           child: Center(
             child: Column(
               children: [
-                SizedBox(
-                  height: 45,
-                ),
                 BlocBuilder<GameBloc, GameState>(
                   builder: (context, state) {
                     if (state is GameOver) {
                       return Container(
-                        height: 170,
                         child: Center(
-                          child: Text(
-                            //? does this null aware opertor work here?
-                            '${state.winner.name ?? 'Nobody'}'.toUpperCase() +
-                                ' wins!'.toUpperCase(),
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
+                          child: Column(
+                            children: [
+                              Text(
+                                //? does this null aware opertor work here?
+                                '${state.winner.name ?? 'Nobody'}'
+                                        .toUpperCase() +
+                                    ' wins!'.toUpperCase(),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              Container(
+                                height: 110,
+                                width: 110,
+                                padding: EdgeInsets.all(16),
+                                child: CustomPaint(
+                                  painter: state.winner.symbol ?? Container(),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       );
                     } else {
                       return Container(
-                        height: 170,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            PlayerColumn(
-                              player: _players[0],
-                              isPlayerTurn: _players[0] == _currentPlayer,
+                            Expanded(
+                              child: PlayerColumn(
+                                player: _players[0],
+                                isPlayerTurn: _players[0] == _currentPlayer,
+                              ),
                             ),
                             Text(
                               '${_score[_players[0].id]} : ${_score[_players[1].id]}',
                               style: TextStyle(
                                   fontSize: 40, fontWeight: FontWeight.bold),
                             ),
-                            PlayerColumn(
-                              player: _players[1],
-                              isPlayerTurn: _players[1] == _currentPlayer,
+                            Expanded(
+                              child: PlayerColumn(
+                                player: _players[1],
+                                isPlayerTurn: _players[1] == _currentPlayer,
+                              ),
                             ),
                           ],
                         ),
@@ -102,16 +114,17 @@ class GameScreenState extends State<GameScreen> {
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child: IconButton(
+                      padding: EdgeInsets.all(0),
                       onPressed: () {
                         Navigator.pop(context);
                       },
                       icon: Icon(
                         Icons.arrow_back,
-                        size: 40,
+                        size: 30,
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

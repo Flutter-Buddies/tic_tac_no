@@ -12,51 +12,53 @@ class PlayerColumn extends StatelessWidget {
     return Opacity(
       opacity: isPlayerTurn ? 1.0 : 0.5,
       child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 38),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               player.name.toUpperCase(),
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 16,
-            ),
-            Container(
-              margin: EdgeInsets.all(8),
-              height: 80,
-              width: 80,
-              child: CustomPaint(
-                painter: player.symbol,
-              ),
-            ),
-            SizedBox(
               height: 8,
             ),
-            Opacity(
-              opacity: isPlayerTurn ? 1.0 : 0.0,
-              child: BlocBuilder<GameBloc, GameState>(
-                builder: (context, state) {
-                  if (state is AIThinking) {
-                    return Container(
-                      height: 20,
-                      width: 100,
-                      child: Text(
-                        'Thinking...',
-                        textAlign: TextAlign.center,
-                      ),
-                    );
-                  } else {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(vertical: 6.0),
-                      child: Container(
-                        height: 8,
-                        width: 100,
-                        color: player.color,
-                      ),
-                    );
-                  }
-                },
-              ),
+            Column(
+              children: [
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    child: CustomPaint(
+                      painter: player.symbol,
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: isPlayerTurn ? 1.0 : 0.0,
+                  child: BlocBuilder<GameBloc, GameState>(
+                    builder: (context, state) {
+                      if (state is AIThinking) {
+                        return Container(
+                          height: 20,
+                          child: Text(
+                            'Thinking...',
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                      } else {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(vertical: 6.0),
+                          child: Container(
+                            height: 8,
+                            color: player.color,
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),
