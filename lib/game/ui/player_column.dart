@@ -18,19 +18,19 @@ class PlayerColumn extends StatelessWidget {
               player.name.toUpperCase(),
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(
-              height: 16,
-            ),
-            Container(
-              margin: EdgeInsets.all(8),
-              height: 80,
-              width: 80,
-              child: CustomPaint(
-                painter: player.symbol,
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Container(
+                    margin: EdgeInsets.all(16),
+                    child: CustomPaint(
+                      painter: player.symbol,
+                    ),
+                  ),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 8,
             ),
             Opacity(
               opacity: isPlayerTurn ? 1.0 : 0.0,
@@ -39,7 +39,6 @@ class PlayerColumn extends StatelessWidget {
                   if (state is AIThinking) {
                     return Container(
                       height: 20,
-                      width: 100,
                       child: Text(
                         'Thinking...',
                         textAlign: TextAlign.center,
@@ -47,10 +46,10 @@ class PlayerColumn extends StatelessWidget {
                     );
                   } else {
                     return Padding(
-                      padding: EdgeInsets.symmetric(vertical: 6.0),
+                      padding: EdgeInsets.only(bottom: 6.0),
                       child: Container(
+                        width: 70,
                         height: 8,
-                        width: 100,
                         color: player.color,
                       ),
                     );
