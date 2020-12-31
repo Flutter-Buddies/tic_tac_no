@@ -50,11 +50,12 @@ class GameScreenState extends State<GameScreen> {
           child: Center(
             child: Column(
               children: [
-                BlocBuilder<GameBloc, GameState>(
-                  builder: (context, state) {
-                    if (state is GameOver) {
-                      return Container(
-                        child: Center(
+                Container(
+                  height: 120,
+                  child: BlocBuilder<GameBloc, GameState>(
+                    builder: (context, state) {
+                      if (state is GameOver) {
+                        return Center(
                           child: Column(
                             children: [
                               Text(
@@ -65,21 +66,24 @@ class GameScreenState extends State<GameScreen> {
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
-                              Container(
-                                height: 110,
-                                width: 110,
-                                padding: EdgeInsets.all(16),
-                                child: CustomPaint(
-                                  painter: state.winner.symbol ?? Container(),
+                              Expanded(
+                                child: AspectRatio(
+                                  aspectRatio: 1,
+                                  child: Container(
+                                    padding: EdgeInsets.all(16),
+                                    child: state.winner.name == null
+                                        ? Container()
+                                        : CustomPaint(
+                                            painter: state.winner.symbol,
+                                          ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                      );
-                    } else {
-                      return Container(
-                        child: Row(
+                        );
+                      } else {
+                        return Row(
                           children: [
                             Expanded(
                               child: PlayerColumn(
@@ -99,10 +103,10 @@ class GameScreenState extends State<GameScreen> {
                               ),
                             ),
                           ],
-                        ),
-                      );
-                    }
-                  },
+                        );
+                      }
+                    },
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
