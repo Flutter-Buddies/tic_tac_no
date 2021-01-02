@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         if (this._judge.getCurrentPlayer().type == PlayerType.ai) {
           _updateAI(_judge.getCurrentPlayer());
           yield AIThinking();
-          await Future.delayed(Duration(milliseconds: 400));
+          await Future.delayed(
+              Duration(milliseconds: 200 + Random().nextInt(1000)));
           final Square move = this._ai.makeMove(this._judge.getGrid());
           yield Ready(
             grid: this._judge.getGrid(),
