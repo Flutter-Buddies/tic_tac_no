@@ -1,6 +1,7 @@
 # Tic-Tac-No
 
 ![test](https://github.com/Flutter-Buddies/tic_tac_no/workflows/test/badge.svg)
+![build](https://github.com/Flutter-Buddies/tic_tac_no/workflows/build/badge.svg)
 
 Complex variants of tic-tac-toe game.
 
