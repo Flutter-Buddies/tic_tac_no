@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0-nullsafety.3"
+  confetti:
+    dependency: "direct main"
+    description:
+      name: confetti
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.4+1"
   convert:
     dependency: transitive
     description:
@@ -242,6 +249,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.2+2"
+  random_color:
+    dependency: transitive
+    description:
+      name: random_color
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.5"
   sky_engine:
     dependency: transitive
     description: flutter
