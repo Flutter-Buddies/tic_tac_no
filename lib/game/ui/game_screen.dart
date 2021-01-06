@@ -91,10 +91,47 @@ class GameScreenState extends State<GameScreen> {
                               isPlayerTurn: _players[0] == _currentPlayer,
                             ),
                           ),
-                          Text(
-                            '${_score[_players[0].id]} : ${_score[_players[1].id]}',
-                            style: TextStyle(
-                                fontSize: 40, fontWeight: FontWeight.bold),
+                          Row(
+                            children: [
+                              // Taken directly from: https://api.flutter.dev/flutter/widgets/AnimatedSwitcher-class.html
+                              AnimatedSwitcher(
+                                duration: Duration(milliseconds: 500),
+                                transitionBuilder: (child, animation) {
+                                  return ScaleTransition(
+                                    child: child,
+                                    scale: animation,
+                                  );
+                                },
+                                child: Text(
+                                  '${_score[_players[0].id]}',
+                                  key: ValueKey<int>(_score[_players[0].id]),
+                                  style: TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Text(
+                                ' : ',
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold),
+                              ),
+                              AnimatedSwitcher(
+                                duration: Duration(milliseconds: 500),
+                                transitionBuilder: (child, animation) {
+                                  return ScaleTransition(
+                                    child: child,
+                                    scale: animation,
+                                  );
+                                },
+                                child: Text(
+                                  '${_score[_players[1].id]}',
+                                  key: ValueKey<int>(_score[_players[1].id]),
+                                  style: TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
                           ),
                           Expanded(
                             child: PlayerColumn(
