@@ -4,10 +4,8 @@ on:
   # Triggers the workflow on push events but only for the release branch
   push:
     branches: [release]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -26,3 +24,9 @@ jobs:
       - run: flutter pub get
       - run: flutter build apk
       - run: flutter build ios --release --no-codesign
+      # upload builds to artifact
+      # TODO ios ipa later
+      - uses: actions/upload-artifact@v2
+        with:
+          name: builds
+          path: build/app/outputs/apk/release/app-release.apk
