@@ -19,6 +19,8 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
   AnimationController _animationControllerPadding;
   Animation _animationOpacity;
   AnimationController _animationControllerOpacity;
+  bool _didAnimateWinner = false;
+
   @override
   void initState() {
     super.initState();
@@ -54,9 +56,10 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
   @override
   Widget build(BuildContext context) {
     //! Animation runs every time the build method is called (which is a lot). How to fix?
-    if (widget.innerGrid.winner != null) {
+    if (widget.innerGrid.winner != null && !_didAnimateWinner) {
       _animationControllerPadding.forward();
       _animationControllerOpacity.forward();
+      _didAnimateWinner = true;
     }
     return Stack(
       children: [
