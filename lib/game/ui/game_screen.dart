@@ -71,15 +71,13 @@ class GameScreenState extends State<GameScreen> {
                     height: 120,
                     child: BlocBuilder<GameBloc, GameState>(
                       builder: (context, state) {
-                        if (state is GameOver) {
+                        if (state is GameOver && state.winner != null) {
                           _confettiController.play();
                           return Center(
                             child: Column(
                               children: [
                                 Text(
-                                  //? does this null aware opertor work here?
-                                  '${state.winner.name ?? 'Nobody'}'
-                                          .toUpperCase() +
+                                  '${state.winner.name}'.toUpperCase() +
                                       ' wins!'.toUpperCase(),
                                   style: TextStyle(
                                       fontSize: 20,
@@ -90,15 +88,21 @@ class GameScreenState extends State<GameScreen> {
                                     aspectRatio: 1,
                                     child: Container(
                                       padding: EdgeInsets.all(16),
-                                      child: state.winner.name == null
-                                          ? Container()
-                                          : CustomPaint(
-                                              painter: state.winner.symbol,
-                                            ),
+                                      child: CustomPaint(
+                                        painter: state.winner.symbol,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ],
+                            ),
+                          );
+                        } else if (state is GameOver && state.winner == null) {
+                          return Center(
+                            child: Text(
+                              'Nobody wins 😲'.toUpperCase(),
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           );
                         } else {
