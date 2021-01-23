@@ -22,3 +22,5 @@ class SquareTapped extends GameEvent {
 }
 
 class AIMove extends GameEvent {}
+
+class Reset extends GameEvent {}

@@ -101,6 +101,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         }
       }
     }
+    if (event is Reset) {
+      this._grid = Grid();
+      this._judge = Judge(
+        grid: this._grid,
+      );
+    }
   }
 
   void _updateAI(Player player) {

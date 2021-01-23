@@ -7,6 +7,7 @@ import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/ui/grid_widget.dart';
 import 'package:tic_tac_no/game/ui/player_column.dart';
 import 'package:confetti/confetti.dart';
+import 'package:tic_tac_no/menu/ui/primary_button.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -180,9 +181,64 @@ class GameScreenState extends State<GameScreen> {
                   SizedBox(
                     height: 30,
                     child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                      onPressed: () => showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 24, horizontal: 24),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color(0xff012E44),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text('Are you sure?'),
+                              SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).popUntil((route) =>
+                                          route.settings.name == '/');
+                                      context.read<GameBloc>().add(Reset());
+                                    },
+                                    child: Container(
+                                      height: 48,
+                                      width: 96,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                        color: Color(0xffFF5F6D),
+                                      ),
+                                      child: Center(
+                                        child: Text('QUIT'),
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () => Navigator.of(context).pop(),
+                                    child: Container(
+                                      height: 48,
+                                      width: 96,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                        color: Color(0xffFF5F6D),
+                                      ),
+                                      child: Center(
+                                        child: Text('CANCEL'),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       icon: Icon(
                         Icons.arrow_back,
                         size: 30,
