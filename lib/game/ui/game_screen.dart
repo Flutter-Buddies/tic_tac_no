@@ -39,6 +39,76 @@ class GameScreenState extends State<GameScreen> {
     super.dispose();
   }
 
+  Future<bool> backFunction() async {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => Container(
+        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Color(0xff012E44),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Are you sure you\'d like to quit?',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 4,
+            ),
+            Text('All progress will be lost'),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                        .popUntil((route) => route.settings.name == '/');
+                    context.read<GameBloc>().add(Reset());
+                  },
+                  child: Container(
+                    height: 48,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0),
+                      color: Color(0xffFF5F6D),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'QUIT GAME',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: Container(
+                    height: 48,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color(0xff2A5298),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'RETURN TO GAME',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<GameBloc, GameState>(
@@ -52,256 +122,188 @@ class GameScreenState extends State<GameScreen> {
           });
         }
       },
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.only(top: 48, bottom: 16),
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xff1E3C72), Color(0xff2A5298)],
-              )),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 120,
-                    child: BlocBuilder<GameBloc, GameState>(
-                      builder: (context, state) {
-                        if (state is GameOver && state.winner != null) {
-                          _confettiController.play();
-                          return Center(
-                            child: Column(
-                              children: [
-                                Text(
-                                  '${state.winner.name}'.toUpperCase() +
-                                      ' wins!'.toUpperCase(),
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Expanded(
-                                  child: AspectRatio(
-                                    aspectRatio: 1,
-                                    child: Container(
-                                      padding: EdgeInsets.all(16),
-                                      child: CustomPaint(
-                                        painter: state.winner.symbol,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        } else if (state is GameOver && state.winner == null) {
-                          return Center(
-                            child: Text(
-                              'Nobody wins 😲'.toUpperCase(),
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          );
-                        } else {
-                          return Row(
-                            children: [
-                              Expanded(
-                                child: PlayerColumn(
-                                  player: _players[0],
-                                  isPlayerTurn: _players[0] == _currentPlayer,
-                                ),
-                              ),
-                              Row(
+      child: WillPopScope(
+        onWillPop: () => backFunction(),
+        child: Scaffold(
+          body: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.only(top: 48, bottom: 16),
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xff1E3C72), Color(0xff2A5298)],
+                )),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 120,
+                      child: BlocBuilder<GameBloc, GameState>(
+                        builder: (context, state) {
+                          if (state is GameOver && state.winner != null) {
+                            _confettiController.play();
+                            return Center(
+                              child: Column(
                                 children: [
-                                  // Taken directly from: https://api.flutter.dev/flutter/widgets/AnimatedSwitcher-class.html
-                                  AnimatedSwitcher(
-                                    duration: Duration(milliseconds: 500),
-                                    transitionBuilder: (child, animation) {
-                                      return ScaleTransition(
-                                        child: child,
-                                        scale: animation,
-                                      );
-                                    },
-                                    child: Text(
-                                      '${_score[_players[0].id]}',
-                                      key:
-                                          ValueKey<int>(_score[_players[0].id]),
-                                      style: TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
                                   Text(
-                                    ' : ',
+                                    '${state.winner.name}'.toUpperCase() +
+                                        ' wins!'.toUpperCase(),
                                     style: TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  AnimatedSwitcher(
-                                    duration: Duration(milliseconds: 500),
-                                    transitionBuilder: (child, animation) {
-                                      return ScaleTransition(
-                                        child: child,
-                                        scale: animation,
-                                      );
-                                    },
-                                    child: Text(
-                                      '${_score[_players[1].id]}',
-                                      key:
-                                          ValueKey<int>(_score[_players[1].id]),
-                                      style: TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.bold),
+                                  Expanded(
+                                    child: AspectRatio(
+                                      aspectRatio: 1,
+                                      child: Container(
+                                        padding: EdgeInsets.all(16),
+                                        child: CustomPaint(
+                                          painter: state.winner.symbol,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
-                              Expanded(
-                                child: PlayerColumn(
-                                  player: _players[1],
-                                  isPlayerTurn: _players[1] == _currentPlayer,
-                                ),
-                              ),
-                            ],
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: GridWidget(
-                      grid: this._grid,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                    child: IconButton(
-                      onPressed: () => showModalBottomSheet(
-                        context: context,
-                        builder: (context) => Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 24, horizontal: 24),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0xff012E44),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'Are you sure you\'d like to quit?',
+                            );
+                          } else if (state is GameOver &&
+                              state.winner == null) {
+                            return Center(
+                              child: Text(
+                                'Nobody wins 😲'.toUpperCase(),
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(
-                                height: 4,
-                              ),
-                              Text('All progress will be lost'),
-                              SizedBox(height: 16),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).popUntil((route) =>
-                                          route.settings.name == '/');
-                                      context.read<GameBloc>().add(Reset());
-                                    },
-                                    child: Container(
-                                      height: 48,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                        color: Color(0xffFF5F6D),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'QUIT GAME',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                            );
+                          } else {
+                            return Row(
+                              children: [
+                                Expanded(
+                                  child: PlayerColumn(
+                                    player: _players[0],
+                                    isPlayerTurn: _players[0] == _currentPlayer,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    // Taken directly from: https://api.flutter.dev/flutter/widgets/AnimatedSwitcher-class.html
+                                    AnimatedSwitcher(
+                                      duration: Duration(milliseconds: 500),
+                                      transitionBuilder: (child, animation) {
+                                        return ScaleTransition(
+                                          child: child,
+                                          scale: animation,
+                                        );
+                                      },
+                                      child: Text(
+                                        '${_score[_players[0].id]}',
+                                        key: ValueKey<int>(
+                                            _score[_players[0].id]),
+                                        style: TextStyle(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () => Navigator.of(context).pop(),
-                                    child: Container(
-                                      height: 48,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xff2A5298),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'RETURN TO GAME',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                    Text(
+                                      ' : ',
+                                      style: TextStyle(
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    AnimatedSwitcher(
+                                      duration: Duration(milliseconds: 500),
+                                      transitionBuilder: (child, animation) {
+                                        return ScaleTransition(
+                                          child: child,
+                                          scale: animation,
+                                        );
+                                      },
+                                      child: Text(
+                                        '${_score[_players[1].id]}',
+                                        key: ValueKey<int>(
+                                            _score[_players[1].id]),
+                                        style: TextStyle(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
+                                  ],
+                                ),
+                                Expanded(
+                                  child: PlayerColumn(
+                                    player: _players[1],
+                                    isPlayerTurn: _players[1] == _currentPlayer,
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        size: 30,
+                                ),
+                              ],
+                            );
+                          }
+                        },
                       ),
                     ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    // child: IconButton(
-                    //   iconSize: 20,
-                    //   icon: Icon(Icons.party_mode),
-                    //   onPressed: () {
-                    //     _confettiController.play();
-                    //   },
-                    // ),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                child: ConfettiWidget(
-                  confettiController: _confettiController,
-                  blastDirection: pi,
-                  maxBlastForce: 7,
-                  minBlastForce: 2,
-                  emissionFrequency: 0.2,
-                  numberOfParticles: 3,
-                  gravity: 0.3,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: GridWidget(
+                        grid: this._grid,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                      child: IconButton(
+                        onPressed: () => backFunction(),
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      // child: IconButton(
+                      //   iconSize: 20,
+                      //   icon: Icon(Icons.party_mode),
+                      //   onPressed: () {
+                      //     _confettiController.play();
+                      //   },
+                      // ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                child: ConfettiWidget(
-                  confettiController: _confettiController,
-                  blastDirection: 0,
-                  maxBlastForce: 7,
-                  minBlastForce: 2,
-                  emissionFrequency: 0.2,
-                  numberOfParticles: 3,
-                  gravity: 0.3,
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  child: ConfettiWidget(
+                    confettiController: _confettiController,
+                    blastDirection: pi,
+                    maxBlastForce: 7,
+                    minBlastForce: 2,
+                    emissionFrequency: 0.2,
+                    numberOfParticles: 3,
+                    gravity: 0.3,
+                  ),
                 ),
               ),
-            ),
-          ],
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  child: ConfettiWidget(
+                    confettiController: _confettiController,
+                    blastDirection: 0,
+                    maxBlastForce: 7,
+                    minBlastForce: 2,
+                    emissionFrequency: 0.2,
+                    numberOfParticles: 3,
+                    gravity: 0.3,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
