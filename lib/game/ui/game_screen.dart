@@ -193,7 +193,15 @@ class GameScreenState extends State<GameScreen> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text('Are you sure?'),
+                              Text(
+                                'Are you sure you\'d like to quit?',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Text('All progress will be lost'),
                               SizedBox(height: 16),
                               Row(
                                 mainAxisAlignment:
@@ -207,14 +215,18 @@ class GameScreenState extends State<GameScreen> {
                                     },
                                     child: Container(
                                       height: 48,
-                                      width: 96,
+                                      width: 150,
                                       decoration: BoxDecoration(
                                         borderRadius:
-                                            BorderRadius.circular(16.0),
+                                            BorderRadius.circular(30.0),
                                         color: Color(0xffFF5F6D),
                                       ),
                                       child: Center(
-                                        child: Text('QUIT'),
+                                        child: Text(
+                                          'QUIT GAME',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -222,14 +234,17 @@ class GameScreenState extends State<GameScreen> {
                                     onTap: () => Navigator.of(context).pop(),
                                     child: Container(
                                       height: 48,
-                                      width: 96,
+                                      width: 150,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                        color: Color(0xffFF5F6D),
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Color(0xff2A5298),
                                       ),
                                       child: Center(
-                                        child: Text('CANCEL'),
+                                        child: Text(
+                                          'RETURN TO GAME',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                     ),
                                   ),
