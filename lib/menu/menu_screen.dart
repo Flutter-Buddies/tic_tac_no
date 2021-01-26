@@ -55,29 +55,70 @@ class MenuScreen extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      PrimaryButton(
-                        buttonText: 'SINGLE PLAYER',
-                        buttonIcon: Icons.person,
-                        buttonPress: () =>
-                            primaryButtonPress(GameType.SinglePlayer),
-                        buttonGradient: LinearGradient(
-                            colors: [Color(0xffFF5F6D), Color(0xffFFC371)]),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: PrimaryButton(
+                          buttonText: 'SINGLE PLAYER',
+                          buttonIcon: Icons.person,
+                          buttonPress: () =>
+                              primaryButtonPress(GameType.SinglePlayer),
+                          buttonGradient: LinearGradient(
+                              colors: [Color(0xffFF5F6D), Color(0xffFFC371)]),
+                        ),
                       ),
-                      PrimaryButton(
-                        buttonText: 'LOCAL MULTIPLAYER',
-                        buttonIcon: Icons.phone_android_outlined,
-                        buttonPress: () =>
-                            primaryButtonPress(GameType.LocalMultiplayer),
-                        buttonGradient: LinearGradient(
-                            colors: [Color(0xffE33E49), Color(0xff9B00B5)]),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: PrimaryButton(
+                          buttonText: 'LOCAL MULTIPLAYER',
+                          buttonIcon: Icons.phone_android_outlined,
+                          buttonPress: () =>
+                              primaryButtonPress(GameType.LocalMultiplayer),
+                          buttonGradient: LinearGradient(
+                              colors: [Color(0xffE33E49), Color(0xff9B00B5)]),
+                        ),
                       ),
-                      PrimaryButton(
-                        buttonText: 'ONLINE MULTIPLAYER',
-                        buttonIcon: Icons.people,
-                        buttonPress: () =>
-                            primaryButtonPress(GameType.OnlineMultiplayer),
-                        buttonGradient: LinearGradient(
-                            colors: [Color(0xff9534E1), Color(0xff009E95)]),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            PrimaryButton(
+                              buttonText: 'ONLINE MULTIPLAYER',
+                              buttonIcon: Icons.people,
+                              buttonPress: () {
+                                // Do nothing
+                              },
+                              buttonGradient: LinearGradient(colors: [
+                                Color(0xff9534E1),
+                                Color(0xff009E95)
+                              ]),
+                            ),
+                            Positioned(
+                              top: -7,
+                              left: -2,
+                              child: Transform.rotate(
+                                angle: -0.2,
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey,
+                                          blurRadius: 3.0,
+                                          spreadRadius: 2.0,
+                                        ),
+                                      ],
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12.0, vertical: 4.0),
+                                      child: Text('Coming Soon!'),
+                                    )),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
