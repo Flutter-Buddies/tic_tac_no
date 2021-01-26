@@ -232,25 +232,50 @@ class _GameStartModalState extends State<GameStartModal> {
                           ),
                         ),
                         widget.gameType == GameType.SinglePlayer
-                            ? GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    if (_aiValue == listOfAI.length - 1) {
-                                      _aiValue = 0;
-                                    } else {
-                                      _aiValue++;
-                                    }
-                                  });
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 7),
-                                  child: Text(
-                                    listOfAI[_aiValue],
-                                    style: GoogleFonts.asap(
-                                      textStyle: TextStyle(
-                                          color: Colors.white, fontSize: 24),
+                            ? Padding(
+                                padding: EdgeInsets.only(top: 7),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            if (_aiValue == 0) {
+                                              _aiValue = listOfAI.length - 1;
+                                            } else {
+                                              _aiValue--;
+                                            }
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.arrow_left,
+                                          size: 32,
+                                        )),
+                                    Text(
+                                      listOfAI[_aiValue],
+                                      style: GoogleFonts.asap(
+                                        textStyle: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
                                     ),
-                                  ),
+                                    GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            if (_aiValue ==
+                                                listOfAI.length - 1) {
+                                              _aiValue = 0;
+                                            } else {
+                                              _aiValue++;
+                                            }
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.arrow_right,
+                                          size: 32,
+                                        )),
+                                  ],
                                 ),
                               )
                             : Row(
@@ -316,5 +341,18 @@ class _GameStartModalState extends State<GameStartModal> {
       default:
         return PlayerType.ai;
     }
+  }
+}
+
+class AiSelector extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(Icons.arrow_left),
+        Text(''),
+        Icon(Icons.arrow_right),
+      ],
+    );
   }
 }
