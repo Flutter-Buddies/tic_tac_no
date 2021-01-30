@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tic_tac_no/menu/menu_enums.dart';
 import 'package:tic_tac_no/menu/ui/primary_button.dart';
 import 'package:tic_tac_no/menu/ui/title.dart';
@@ -30,10 +31,10 @@ class MenuScreen extends StatelessWidget {
           ),
         ),
       ),
-      child: Stack(
-        children: [
-          Scaffold(
-            body: Container(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Container(
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -135,16 +136,37 @@ class MenuScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          Positioned(
-            top: 32,
-            right: 16,
-            child: GestureDetector(
-              onTap: () => Navigator.of(context).pushNamed('/rules'),
-              child: Icon(Icons.info_outline),
+            Positioned(
+              top: 55,
+              right: 32,
+              child: GestureDetector(
+                onTap: () => Navigator.of(context).pushNamed('/rules'),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.info_outline,
+                      color: Colors.white,
+                      size: 14,
+                    ),
+                    SizedBox(
+                      width: 2,
+                    ),
+                    Text(
+                      'How to play',
+                      style: GoogleFonts.asap(
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                          // decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
