@@ -302,7 +302,9 @@ class _GameStartModalState extends State<GameStartModal> {
                       SetPlayers(
                         player1: Player(
                           id: 1,
-                          name: 'Player 1',
+                          name: widget.gameType == GameType.SinglePlayer
+                              ? 'YOU'
+                              : 'PLAYER 1',
                           color: p1ColourList[_p1Value],
                           symbol: p1SelectedPiece,
                           type: PlayerType.me, // PlayerType.ai,
@@ -311,7 +313,9 @@ class _GameStartModalState extends State<GameStartModal> {
                         ),
                         player2: Player(
                           id: 2,
-                          name: 'Player 2',
+                          name: widget.gameType == GameType.SinglePlayer
+                              ? 'AI'
+                              : 'PLAYER 2',
                           color: p2ColourList[_p2Value],
                           symbol: p2SelectedPiece,
                           type: _decidePlayerType(),
