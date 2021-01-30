@@ -8,9 +8,16 @@ class RulesScreen extends StatefulWidget {
 class _RulesScreenState extends State<RulesScreen> {
   int _step = 1;
 
+  final List<AssetImage> images = <AssetImage>[
+    AssetImage('assets/images/Step-1.png'),
+    AssetImage('assets/images/Step-2.png'),
+    AssetImage('assets/images/Step-3.png'),
+    AssetImage('assets/images/Step-4.png'),
+    AssetImage('assets/images/Step-4.png'),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Rules'),
@@ -31,13 +38,19 @@ class _RulesScreenState extends State<RulesScreen> {
               Text(
                   "Easy? There’s one more thing; your move within InnerGird determines in which InnerGrid can your opponent play"),
             if (_step == 5) Text("good luck"),
-            Spacer(),
-            Container(
-              width: size.width / 2,
-              height: size.height / 2,
-              color: Colors.white,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: images[_step - 1],
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
             ),
-            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
