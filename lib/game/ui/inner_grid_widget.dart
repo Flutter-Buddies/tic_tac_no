@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/inner_grid.dart';
 import 'package:tic_tac_no/game/ui/square_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InnerGridWidget extends StatefulWidget {
   final InnerGrid innerGrid;
@@ -55,7 +57,6 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
 
   @override
   Widget build(BuildContext context) {
-    //! Animation runs every time the build method is called (which is a lot). How to fix?
     if (widget.innerGrid.winner != null && !_didAnimateWinner) {
       _animationControllerPadding.forward();
       _animationControllerOpacity.forward();
@@ -71,10 +72,10 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
           curve: Curves.easeIn,
           child: Table(
             border: TableBorder(
-              top: _buildBorderSide(),
-              bottom: _buildBorderSide(),
-              left: _buildBorderSide(),
-              right: _buildBorderSide(),
+              top: _buildBorderSide(context),
+              bottom: _buildBorderSide(context),
+              left: _buildBorderSide(context),
+              right: _buildBorderSide(context),
             ),
             children: [
               TableRow(
@@ -131,10 +132,10 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
   final Color _isPlayableColor = Color(0xff63F4F0);
   final Color _isNotPlayableColor = Colors.white;
 
-  BorderSide _buildBorderSide() {
+  BorderSide _buildBorderSide(BuildContext context) {
     return BorderSide(
       color: this.widget.innerGrid.isPlayable
-          ? _isPlayableColor
+          ? context.watch<GameBloc>().getCurrentPlayer().color
           : _isNotPlayableColor,
       width: this.widget.innerGrid.isPlayable ? 3.0 : 1.0,
     );
