@@ -123,196 +123,214 @@ class GameScreenState extends State<GameScreen> {
       },
       child: WillPopScope(
         onWillPop: () => backFunction(),
-        child: Scaffold(
-          body: Stack(
-            children: [
-              // Background
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(top: 48, bottom: 16),
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xff1E3C72), Color(0xff2A5298)],
-                )),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    //* Player info section
-                    Container(
-                      height: 120,
-                      child: BlocBuilder<GameBloc, GameState>(
-                        builder: (context, state) {
-                          //* Game end state
-                          if (state is GameOver && state.winner != null) {
-                            _confettiController.play();
-                            return Center(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    '${state.winner.name}'.toUpperCase() +
-                                        ' wins!'.toUpperCase(),
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Expanded(
-                                    child: AspectRatio(
-                                      aspectRatio: 1,
-                                      child: Container(
-                                        padding: EdgeInsets.all(16),
-                                        child: CustomPaint(
-                                          painter: state.winner.symbol,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                            //* Game draw state
-                          } else if (state is GameOver &&
-                              state.winner == null) {
-                            return Center(
-                              child: Text(
-                                'Nobody wins 😲'.toUpperCase(),
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            );
-                            //* Game is active state
-                          } else {
-                            return Row(
-                              children: [
-                                Expanded(
-                                  child: PlayerColumn(
-                                    player: _players[0],
-                                    isPlayerTurn: _players[0] == _currentPlayer,
-                                  ),
-                                ),
-                                Row(
+        child: SafeArea(
+          child: Scaffold(
+            body: Stack(
+              children: [
+                //* Background
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.only(top: 12, bottom: 16),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xff1E3C72), Color(0xff2A5298)],
+                  )),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //* Player info section
+                      // Wrapping with expanded because this is the section that will resize based on screen size
+                      // and we want to to scale vertically
+                      Expanded(
+                        child: BlocBuilder<GameBloc, GameState>(
+                          builder: (context, state) {
+                            //* Game end state
+                            if (state is GameOver && state.winner != null) {
+                              _confettiController.play();
+                              return Center(
+                                child: Column(
                                   children: [
-                                    // Taken directly from: https://api.flutter.dev/flutter/widgets/AnimatedSwitcher-class.html
-                                    AnimatedSwitcher(
-                                      duration: Duration(milliseconds: 500),
-                                      transitionBuilder: (child, animation) {
-                                        return ScaleTransition(
-                                          child: child,
-                                          scale: animation,
-                                        );
-                                      },
-                                      child: Text(
-                                        '${_score[_players[0].id]}',
-                                        key: ValueKey<int>(
-                                            _score[_players[0].id]),
-                                        style: TextStyle(
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
                                     Text(
-                                      ' : ',
+                                      '${state.winner.name}'.toUpperCase() +
+                                          (state.winner.type == PlayerType.me
+                                              ? ' win!'.toUpperCase()
+                                              : ' wins!'.toUpperCase()),
                                       style: TextStyle(
-                                          fontSize: 40,
+                                          fontSize: 20,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    AnimatedSwitcher(
-                                      duration: Duration(milliseconds: 500),
-                                      transitionBuilder: (child, animation) {
-                                        return ScaleTransition(
-                                          child: child,
-                                          scale: animation,
-                                        );
-                                      },
-                                      child: Text(
-                                        '${_score[_players[1].id]}',
-                                        key: ValueKey<int>(
-                                            _score[_players[1].id]),
-                                        style: TextStyle(
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.bold),
+                                    Expanded(
+                                      child: AspectRatio(
+                                        aspectRatio: 1,
+                                        child: LayoutBuilder(
+                                          builder: (context, constraints) {
+                                            return Container(
+                                              padding: EdgeInsets.all(
+                                                  constraints.maxHeight > 160
+                                                      ? 48
+                                                      : 12),
+                                              child: CustomPaint(
+                                                painter: state.winner.symbol,
+                                              ),
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                Expanded(
-                                  child: PlayerColumn(
-                                    player: _players[1],
-                                    isPlayerTurn: _players[1] == _currentPlayer,
-                                  ),
+                              );
+                              //* Game draw state
+                            } else if (state is GameOver &&
+                                state.winner == null) {
+                              return Center(
+                                child: Text(
+                                  'Nobody wins 😲'.toUpperCase(),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ],
-                            );
-                          }
-                        },
-                      ),
-                    ),
-                    //* Grid
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: GridWidget(
-                        grid: this._grid,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                      child: IconButton(
-                        onPressed: () => backFunction(),
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 30,
+                              );
+                              //* Game is active state
+                            } else {
+                              return Row(
+                                // We want the content to be aligned in the center vertically
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // The score text will remain a constant size so will not be wrapped in Expanded
+                                // The player name, piece and turn info will be the thing that scales
+                                children: [
+                                  // Wrapped in expanded to scale
+                                  // Currently taking the max width it can
+                                  Expanded(
+                                    child: PlayerColumn(
+                                      player: _players[0],
+                                      isPlayerTurn:
+                                          _players[0] == _currentPlayer,
+                                    ),
+                                  ),
+                                  // Score info remains constant size
+                                  AnimatedSwitcher(
+                                    duration: Duration(milliseconds: 500),
+                                    transitionBuilder: (child, animation) {
+                                      return ScaleTransition(
+                                        child: child,
+                                        scale: animation,
+                                      );
+                                    },
+                                    child: Text(
+                                      '${_score[_players[0].id]}',
+                                      key:
+                                          ValueKey<int>(_score[_players[0].id]),
+                                      style: TextStyle(
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Text(
+                                    ' : ',
+                                    style: TextStyle(
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  AnimatedSwitcher(
+                                    duration: Duration(milliseconds: 500),
+                                    transitionBuilder: (child, animation) {
+                                      return ScaleTransition(
+                                        child: child,
+                                        scale: animation,
+                                      );
+                                    },
+                                    child: Text(
+                                      '${_score[_players[1].id]}',
+                                      key:
+                                          ValueKey<int>(_score[_players[1].id]),
+                                      style: TextStyle(
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  // Wrapped in expanded to scale
+                                  Expanded(
+                                    child: PlayerColumn(
+                                      player: _players[1],
+                                      isPlayerTurn:
+                                          _players[1] == _currentPlayer,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }
+                          },
                         ),
                       ),
-                    ),
-                    //? For some reason this has to be here to have the confetti work
-                    Container(
-                      width: double.infinity,
+                      //* Grid
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: GridWidget(
+                          grid: this._grid,
+                        ),
+                      ),
+                      //* Button to go back
+                      SizedBox(
+                        height: 30,
+                        child: IconButton(
+                          onPressed: () => backFunction(),
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                      //? For some reason this has to be here to have the confetti work
+                      Container(
+                        width: double.infinity,
 
-                      // child: IconButton(
-                      //   iconSize: 20,
-                      //   icon: Icon(Icons.party_mode),
-                      //   onPressed: () {
-                      //     _confettiController.play();
-                      //   },
-                      // ),
+                        // child: IconButton(
+                        //   iconSize: 20,
+                        //   icon: Icon(Icons.party_mode),
+                        //   onPressed: () {
+                        //     _confettiController.play();
+                        //   },
+                        // ),
+                      ),
+                    ],
+                  ),
+                ),
+                //* Confetti right
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    child: ConfettiWidget(
+                      confettiController: _confettiController,
+                      blastDirection: pi,
+                      maxBlastForce: 7,
+                      minBlastForce: 2,
+                      emissionFrequency: 0.2,
+                      numberOfParticles: 3,
+                      gravity: 0.3,
                     ),
-                  ],
-                ),
-              ),
-              //* Confetti right
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  child: ConfettiWidget(
-                    confettiController: _confettiController,
-                    blastDirection: pi,
-                    maxBlastForce: 7,
-                    minBlastForce: 2,
-                    emissionFrequency: 0.2,
-                    numberOfParticles: 3,
-                    gravity: 0.3,
                   ),
                 ),
-              ),
-              //* Confetti left
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  child: ConfettiWidget(
-                    confettiController: _confettiController,
-                    blastDirection: 0,
-                    maxBlastForce: 7,
-                    minBlastForce: 2,
-                    emissionFrequency: 0.2,
-                    numberOfParticles: 3,
-                    gravity: 0.3,
+                //* Confetti left
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    child: ConfettiWidget(
+                      confettiController: _confettiController,
+                      blastDirection: 0,
+                      maxBlastForce: 7,
+                      minBlastForce: 2,
+                      emissionFrequency: 0.2,
+                      numberOfParticles: 3,
+                      gravity: 0.3,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

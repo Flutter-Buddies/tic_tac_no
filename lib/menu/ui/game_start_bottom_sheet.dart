@@ -308,7 +308,7 @@ class _GameStartModalState extends State<GameStartModal> {
                           color: p1ColourList[_p1Value],
                           symbol: p1SelectedPiece,
                           type: PlayerType.me, // PlayerType.ai,
-                          // type: PlayerType.me
+                          // type: PlayerType.ai,
                           // aiStrength: 2,
                         ),
                         player2: Player(
