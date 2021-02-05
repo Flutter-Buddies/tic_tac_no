@@ -155,6 +155,7 @@ class GameScreenState extends State<GameScreen> {
                                   children: [
                                     Text(
                                       '${state.winner.name}'.toUpperCase() +
+                                          // Use correct grammar if the player name = "You"
                                           (state.winner.type == PlayerType.me
                                               ? ' win!'.toUpperCase()
                                               : ' wins!'.toUpperCase()),
