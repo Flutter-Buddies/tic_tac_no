@@ -7,7 +7,6 @@ import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/ui/grid_widget.dart';
 import 'package:tic_tac_no/game/ui/player_column.dart';
 import 'package:confetti/confetti.dart';
-import 'package:tic_tac_no/menu/ui/primary_button.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -127,6 +126,7 @@ class GameScreenState extends State<GameScreen> {
         child: Scaffold(
           body: Stack(
             children: [
+              // Background
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.only(top: 48, bottom: 16),
@@ -139,11 +139,14 @@ class GameScreenState extends State<GameScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
+                    //* Player info section
                     Container(
                       height: 120,
                       child: BlocBuilder<GameBloc, GameState>(
                         builder: (context, state) {
+                          //* Game end state
                           if (state is GameOver && state.winner != null) {
                             _confettiController.play();
                             return Center(
@@ -170,6 +173,7 @@ class GameScreenState extends State<GameScreen> {
                                 ],
                               ),
                             );
+                            //* Game draw state
                           } else if (state is GameOver &&
                               state.winner == null) {
                             return Center(
@@ -179,6 +183,7 @@ class GameScreenState extends State<GameScreen> {
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             );
+                            //* Game is active state
                           } else {
                             return Row(
                               children: [
@@ -245,6 +250,7 @@ class GameScreenState extends State<GameScreen> {
                         },
                       ),
                     ),
+                    //* Grid
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: GridWidget(
@@ -261,8 +267,10 @@ class GameScreenState extends State<GameScreen> {
                         ),
                       ),
                     ),
+                    //? For some reason this has to be here to have the confetti work
                     Container(
                       width: double.infinity,
+
                       // child: IconButton(
                       //   iconSize: 20,
                       //   icon: Icon(Icons.party_mode),
@@ -274,6 +282,7 @@ class GameScreenState extends State<GameScreen> {
                   ],
                 ),
               ),
+              //* Confetti right
               Align(
                 alignment: Alignment.topRight,
                 child: Container(
@@ -288,6 +297,7 @@ class GameScreenState extends State<GameScreen> {
                   ),
                 ),
               ),
+              //* Confetti left
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
