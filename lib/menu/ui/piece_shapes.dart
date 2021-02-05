@@ -40,7 +40,8 @@ class TrianglePainter extends CustomPainter {
     var paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 0.25 * size.width;
+      ..strokeWidth = 0.25 * size.width
+      ..strokeJoin = StrokeJoin.round;
 
     var path = Path()
       ..moveTo(size.width / 2, 0)

@@ -129,7 +129,6 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
   }
 
   // Borderside details
-  final Color _isPlayableColor = Color(0xff63F4F0);
   final Color _isNotPlayableColor = Colors.white;
 
   BorderSide _buildBorderSide(BuildContext context) {
