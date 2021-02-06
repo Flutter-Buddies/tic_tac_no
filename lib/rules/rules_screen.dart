@@ -24,7 +24,7 @@ class _RulesScreenState extends State<RulesScreen> {
         "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
         style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
     Text(
-        "You must win the inner-grid to claim the position on main-grid. Once you claim it, no one can claim it again.",
+        "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
         style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
     Text(
         "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent can play.",
