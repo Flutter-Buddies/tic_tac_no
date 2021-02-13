@@ -8,6 +8,11 @@ import 'package:tic_tac_no/rules/rules_screen.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// restrict app to only portrait mode
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
