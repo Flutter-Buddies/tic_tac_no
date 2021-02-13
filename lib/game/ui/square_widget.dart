@@ -19,25 +19,28 @@ class SquareWidget extends StatelessWidget {
         print(
             'tapped ${square.parentInnerGrid.position.x},${square.parentInnerGrid.position.y},${square.position.x},${square.position.y}');
       },
-      child: Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Color(0xff7A9AD1),
-            width: 1,
+      child: AspectRatio(
+        aspectRatio: 1.0,
+        child: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Color(0xff7A9AD1),
+              width: 1,
+            ),
           ),
-        ),
-        child: Center(
-          child: this.square.player != null
-              ? Container(
-                  width: 30,
-                  height: 30,
-                  child: CustomPaint(
-                    painter: this.square.player.symbol,
-                  ),
-                )
-              : SizedBox.shrink(),
+          child: Center(
+            child: this.square.player != null
+                ? Container(
+                    width: 30,
+                    height: 30,
+                    child: CustomPaint(
+                      painter: this.square.player.symbol,
+                    ),
+                  )
+                : SizedBox.shrink(),
+          ),
         ),
       ),
     );
