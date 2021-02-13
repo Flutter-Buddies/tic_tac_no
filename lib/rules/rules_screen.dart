@@ -48,9 +48,9 @@ class _RulesScreenState extends State<RulesScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 80,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Center(
                   child: rules[_step - 1],
                 ),
