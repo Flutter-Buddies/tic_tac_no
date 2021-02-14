@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tic_tac_no/menu/menu_enums.dart';
+import 'package:tic_tac_no/menu/ui/language_bottom_sheet.dart';
 import 'package:tic_tac_no/menu/ui/primary_button.dart';
 import 'package:tic_tac_no/menu/ui/title.dart';
 import 'package:tic_tac_no/menu/ui/game_start_bottom_sheet.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/utils.dart';
 
 class MenuScreen extends StatelessWidget {
   @override
@@ -16,6 +20,16 @@ class MenuScreen extends StatelessWidget {
           return GameStartModal(
             gameType: gameType,
           );
+        },
+      );
+    }
+
+    void languageButtonPress(BuildContext context) {
+      showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return LanguageBottomSheet();
         },
       );
     }
@@ -64,7 +78,7 @@ class MenuScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(vertical: 16.0),
                               child: PrimaryButton(
-                                buttonText: 'SINGLE PLAYER',
+                                buttonText: LocaleKeys.menu_single_player.tr(),
                                 buttonIcon: Icons.person,
                                 buttonPress: () =>
                                     primaryButtonPress(GameType.SinglePlayer),
@@ -77,7 +91,8 @@ class MenuScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               child: PrimaryButton(
-                                buttonText: 'LOCAL MULTIPLAYER',
+                                buttonText:
+                                    LocaleKeys.menu_local_multiplayer.tr(),
                                 buttonIcon: Icons.phone_android_outlined,
                                 buttonPress: () => primaryButtonPress(
                                     GameType.LocalMultiplayer),
@@ -93,7 +108,8 @@ class MenuScreen extends StatelessWidget {
                                 clipBehavior: Clip.none,
                                 children: [
                                   PrimaryButton(
-                                    buttonText: 'ONLINE MULTIPLAYER',
+                                    buttonText:
+                                        LocaleKeys.menu_online_multiplayer.tr(),
                                     buttonIcon: Icons.people,
                                     buttonPress: () {
                                       // Do nothing
@@ -125,7 +141,9 @@ class MenuScreen extends StatelessWidget {
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 12.0,
                                                 vertical: 4.0),
-                                            child: Text('Coming Soon!'),
+                                            child: Text(
+                                              LocaleKeys.menu_coming_soon.tr(),
+                                            ),
                                           )),
                                     ),
                                   )
@@ -141,31 +159,63 @@ class MenuScreen extends StatelessWidget {
               ),
               Positioned(
                 top: 55,
-                right: 32,
-                child: GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed('/rules'),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.info_outline,
-                        color: Colors.white,
-                        size: 14,
-                      ),
-                      SizedBox(
-                        width: 2,
-                      ),
-                      Text(
-                        'How to play',
-                        style: GoogleFonts.asap(
-                          textStyle: TextStyle(
-                            fontSize: 14,
+                right: Utils.isCurrentLocaleRTL(context) ? null : 32,
+                left: Utils.isCurrentLocaleRTL(context) ? 32 : null,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).pushNamed('/rules'),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.info_outline,
                             color: Colors.white,
-                            // decoration: TextDecoration.underline,
+                            size: 14,
                           ),
-                        ),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            LocaleKeys.menu_how_to_play.tr(),
+                            style: GoogleFonts.asap(
+                              textStyle: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 15),
+                    GestureDetector(
+                      onTap: () => languageButtonPress(context),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.language,
+                            color: Colors.white,
+                            size: 14,
+                          ),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            LocaleKeys.menu_change_language.tr(),
+                            style: GoogleFonts.asap(
+                              textStyle: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                                // decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

@@ -7,6 +7,8 @@ import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/ui/grid_widget.dart';
 import 'package:tic_tac_no/game/ui/player_column.dart';
 import 'package:confetti/confetti.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -51,13 +53,13 @@ class GameScreenState extends State<GameScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Are you sure you\'d like to quit?',
+              LocaleKeys.game_are_you_sure_quit.tr(),
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 4,
             ),
-            Text('All progress will be lost'),
+            Text(LocaleKeys.game_all_progress_lost.tr()),
             SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -77,7 +79,7 @@ class GameScreenState extends State<GameScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'QUIT GAME',
+                        LocaleKeys.game_quit_game.tr(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -94,7 +96,7 @@ class GameScreenState extends State<GameScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'RETURN TO GAME',
+                        LocaleKeys.game_return_to_game.tr(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -157,8 +159,10 @@ class GameScreenState extends State<GameScreen> {
                                       '${state.winner.name}'.toUpperCase() +
                                           // Use correct grammar if the player name = "You"
                                           (state.winner.type == PlayerType.me
-                                              ? ' win!'.toUpperCase()
-                                              : ' wins!'.toUpperCase()),
+                                              ? ' ${LocaleKeys.game_win.tr()}'
+                                                  .toUpperCase()
+                                              : ' ${LocaleKeys.game_wins.tr()}'
+                                                  .toUpperCase()),
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -189,7 +193,8 @@ class GameScreenState extends State<GameScreen> {
                                 state.winner == null) {
                               return Center(
                                 child: Text(
-                                  'Nobody wins 😲'.toUpperCase(),
+                                  '${LocaleKeys.game_nobody_wins.tr()}'
+                                      .toUpperCase(),
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),

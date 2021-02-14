@@ -2,9 +2,6 @@
   "global": {
     "app_name": "Tic-Tac-No"
   },
-  "player": {
-    "name_no_name": "No name"
-  },
   "game": {
     "are_you_sure_quit": "Are you sure you'd like to quit?",
     "all_progress_lost": "All progress will be lost",
@@ -17,7 +14,6 @@
     "player_no_name": "No name"
   },
   "menu": {
-    "single_multiplayer": "SINGLE PLAYER",
     "online_multiplayer": "ONLINE MULTIPLAYER",
     "coming_soon": "Coming Soon!",
     "how_to_play": "How to play",
@@ -36,7 +32,9 @@
     "tic": "TIC",
     "tac": "TAC",
     "no": "NO",
-    "local_multiplayer": "LOCAL MULTIPLAYER"
+    "local_multiplayer": "LOCAL MULTIPLAYER",
+    "single_player": "SINGLE PLAYER",
+    "change_language": "Language"
   },
   "rules": {
     "rules": "Rules",
@@ -46,6 +44,7 @@
     "good_luck": "Good luck!",
     "tic_must_win": "You’re faced with a tic-tac-toe board you must win.",
     "there_is_catch": "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
-    "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again."
+    "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
+    "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent can play."
   }
 }

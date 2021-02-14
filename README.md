@@ -76,4 +76,155 @@ $ flutter pub run easy_localization:generate -S "assets/translations" -O "lib/tr
 $ flutter pub run easy_localization:generate -S "assets/translations" -O "lib/translations" -o "locale_keys.g.dart" -f keys
 ```
 
+- If the new language is a `RTL` language add it to the switch statement as a case returning true like this:
+
+Before:
+```dart
+bool isCurrentLocaleRTL(BuildContext context) {
+    switch (context.locale.languageCode) {
+      case 'ar':
+        return true;
+        break;
+      default:
+        return false;
+    }
+}
+```
+After:
+```dart
+bool isCurrentLocaleRTL(BuildContext context) {
+    switch (context.locale.languageCode) {
+      case 'ar':
+      case '{YOUR_LANGUAGE_CODE}': // only if rtl, else it will be false
+        return true;
+        break;
+      default:
+        return false;
+    }
+}
+```
+
+- Add a new value to the `SupportedLocale` enum located at `lib/utils/utils.dart` with the language code you are adding like this:
+
+Before:
+```dart
+enum SupportedLocale {
+  en,
+  ar,
+}
+```
+After:
+```dart
+enum SupportedLocale {
+  en,
+  ar,
+  {YOUR_LANGUAGE_CODE}, // here
+}
+```
+
+- Add a new case to the switch statement located at `lib/utils/utils.dart`:
+
+Before:
+```dart
+static void changeLocale(
+    BuildContext context,
+    SupportedLocale supportedLocale,
+) {
+    Locale locale;
+
+    switch (supportedLocale) {
+      case SupportedLocale.en:
+        locale = Locale('en');
+        break;
+      case SupportedLocale.ar:
+        locale = Locale('ar');
+        break;
+      default:
+        locale = Locale('en');
+        break;
+    }
+
+    EasyLocalization.of(context).locale = locale;
+}
+```
+After:
+```dart
+static void changeLocale(
+    BuildContext context,
+    SupportedLocale supportedLocale,
+) {
+    Locale locale;
+
+    switch (supportedLocale) {
+      case SupportedLocale.en:
+        locale = Locale('en');
+        break;
+      case SupportedLocale.ar:
+        locale = Locale('ar');
+        break;
+      case SupportedLocale.YOUR_LANGUAGE_CODE: // here
+        locale = Locale('{YOUR_LANGUAGE_CODE}'); // here
+        break; // here
+      default:
+        locale = Locale('en');
+        break;
+    }
+
+    EasyLocalization.of(context).locale = locale;
+}
+```
+
+- Add a new `LanguageListTile` at `lib/menu/ui/language_bottom_sheet.dart`
+
+Before:
+```dart
+Expanded(
+  child: ListView(
+    children: [
+      /// emojis from: https://emojipedia.org/flags/
+      LanguageListTile(
+        languageEmoji: '🇬🇧',
+        languageName: 'English',
+        showCheck: Utils.currentLocale(context) == Locale('en'),
+        locale: SupportedLocale.en,
+      ),
+      LanguageListTile(
+        languageEmoji: '🇸🇦',
+        languageName: 'العربية',
+        showCheck: Utils.currentLocale(context) == Locale('ar'),
+        locale: SupportedLocale.ar,
+      ),
+    ],
+  ),
+),
+```
+After:
+```dart
+Expanded(
+  child: ListView(
+    children: [
+      /// emojis from: https://emojipedia.org/flags/
+      LanguageListTile(
+        languageEmoji: '🇬🇧',
+        languageName: 'English',
+        showCheck: Utils.currentLocale(context) == Locale('en'),
+        locale: SupportedLocale.en,
+      ),
+      LanguageListTile(
+        languageEmoji: '🇸🇦',
+        languageName: 'العربية',
+        showCheck: Utils.currentLocale(context) == Locale('ar'),
+        locale: SupportedLocale.ar,
+      ),
+      LanguageListTile(
+        languageEmoji: '{EMOJI_FOR_LANGUAGE}', //get emoji from https://emojipedia.org/flags/
+        languageName: '{YOUR_LANGUAGE_NAME_IN_NATIVE_WAY_NOT_IN_ENGLISH}', // change this
+        showCheck: Utils.currentLocale(context) == Locale('{YOUR_LANGUAGE_CODE}'), // change this
+        locale: SupportedLocale.YOUR_LANGUAGE_CODE, // change this
+      ),
+    ],
+  ),
+),
+```
+
 - Create a Pull Request 🚀

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class PlayerColumn extends StatelessWidget {
   final Player player;
@@ -60,7 +62,7 @@ class PlayerColumn extends StatelessWidget {
                       return Container(
                         height: 20,
                         child: Text(
-                          'Thinking...',
+                          LocaleKeys.game_thinking.tr(),
                           textAlign: TextAlign.center,
                         ),
                       );

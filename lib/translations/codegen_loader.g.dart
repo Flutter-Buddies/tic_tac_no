@@ -18,14 +18,11 @@ class CodegenLoader extends AssetLoader{
   "global": {
     "app_name": "تيك تاك نو"
   },
-  "player": {
-    "name_no_name": "بدون اسم"
-  },
   "game": {
     "are_you_sure_quit": "هل أنت متأكد أنك تريد إنهاء اللعبة؟",
     "all_progress_lost": "سيضيع كل التقدم",
     "quit_game": "إنهاء اللعبة",
-    "return_to_game": "يعود الى اللعبة",
+    "return_to_game": "العودة إلى اللعبة",
     "win": "فاز!",
     "wins": "يفوز!",
     "nobody_wins": "لم يفز أحد 😲",
@@ -33,7 +30,6 @@ class CodegenLoader extends AssetLoader{
     "player_no_name": "بدون اسم"
   },
   "menu": {
-    "single_multiplayer": "لاعب واحد",
     "online_multiplayer": "العب اونلاين",
     "coming_soon": "قريبا!",
     "how_to_play": "كيف ألعب",
@@ -52,7 +48,9 @@ class CodegenLoader extends AssetLoader{
     "tic": "تيك",
     "tac": "تاك",
     "no": "نو",
-    "local_multiplayer": "العب مع صديقك"
+    "local_multiplayer": "العب مع صديقك",
+    "single_player": "لاعب واحد",
+    "change_language": "تغيير اللغة"
   },
   "rules": {
     "rules": "القواعد",
@@ -62,15 +60,13 @@ class CodegenLoader extends AssetLoader{
     "good_luck": "حظا طيبا وفقك الله!",
     "tic_must_win": "يجب أن تفوز بلوحة الـtic-tac-toe.",
     "there_is_catch": "ولكن هناك مشكلة ... كل لوح هو جزء من لوحة الـtic-tac-toe أكبر!",
-    "win_inner_grid": "يجب أن تفوز في لوحة الـtic-tac-toe صغيرة لتحصل على لمكان في اللوحة الكبيرة. بمجرد حصولك عليها لا يمكن أن يأخخذها أحد منك."
+    "win_inner_grid": "يجب أن تفوز في لوحة الـtic-tac-toe صغيرة لتحصل على لمكان في اللوحة الكبيرة. بمجرد حصولك عليها لا يمكن أن يأخخذها أحد منك.",
+    "one_more_thing": "سهلة؟ باقي شيء واحد... حركتك في لوح داخلي تحدد وين خصمك يلعب."
   }
 };
 static const Map<String,dynamic> en = {
   "global": {
     "app_name": "Tic-Tac-No"
-  },
-  "player": {
-    "name_no_name": "No name"
   },
   "game": {
     "are_you_sure_quit": "Are you sure you'd like to quit?",
@@ -84,7 +80,6 @@ static const Map<String,dynamic> en = {
     "player_no_name": "No name"
   },
   "menu": {
-    "single_multiplayer": "SINGLE PLAYER",
     "online_multiplayer": "ONLINE MULTIPLAYER",
     "coming_soon": "Coming Soon!",
     "how_to_play": "How to play",
@@ -103,7 +98,9 @@ static const Map<String,dynamic> en = {
     "tic": "TIC",
     "tac": "TAC",
     "no": "NO",
-    "local_multiplayer": "LOCAL MULTIPLAYER"
+    "local_multiplayer": "LOCAL MULTIPLAYER",
+    "single_player": "SINGLE PLAYER",
+    "change_language": "Language"
   },
   "rules": {
     "rules": "Rules",
@@ -113,7 +110,8 @@ static const Map<String,dynamic> en = {
     "good_luck": "Good luck!",
     "tic_must_win": "You’re faced with a tic-tac-toe board you must win.",
     "there_is_catch": "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
-    "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again."
+    "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
+    "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent can play."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};

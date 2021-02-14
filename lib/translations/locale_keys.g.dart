@@ -3,8 +3,6 @@
 abstract class  LocaleKeys {
   static const global_app_name = 'global.app_name';
   static const global = 'global';
-  static const player_name_no_name = 'player.name_no_name';
-  static const player = 'player';
   static const game_are_you_sure_quit = 'game.are_you_sure_quit';
   static const game_all_progress_lost = 'game.all_progress_lost';
   static const game_quit_game = 'game.quit_game';
@@ -15,7 +13,6 @@ abstract class  LocaleKeys {
   static const game_thinking = 'game.thinking';
   static const game_player_no_name = 'game.player_no_name';
   static const game = 'game';
-  static const menu_single_multiplayer = 'menu.single_multiplayer';
   static const menu_online_multiplayer = 'menu.online_multiplayer';
   static const menu_coming_soon = 'menu.coming_soon';
   static const menu_how_to_play = 'menu.how_to_play';
@@ -35,6 +32,8 @@ abstract class  LocaleKeys {
   static const menu_tac = 'menu.tac';
   static const menu_no = 'menu.no';
   static const menu_local_multiplayer = 'menu.local_multiplayer';
+  static const menu_single_player = 'menu.single_player';
+  static const menu_change_language = 'menu.change_language';
   static const menu = 'menu';
   static const rules_rules = 'rules.rules';
   static const rules_previous = 'rules.previous';
@@ -44,6 +43,7 @@ abstract class  LocaleKeys {
   static const rules_tic_must_win = 'rules.tic_must_win';
   static const rules_there_is_catch = 'rules.there_is_catch';
   static const rules_win_inner_grid = 'rules.win_inner_grid';
+  static const rules_one_more_thing = 'rules.one_more_thing';
   static const rules = 'rules';
 
 }
