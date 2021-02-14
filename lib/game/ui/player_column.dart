@@ -30,20 +30,18 @@ class PlayerColumn extends StatelessWidget {
               ),
               // Expanded so the shape is the thing that scales in size
               Flexible(
-                flex: constraints.maxHeight > 160 ? 2 : 3,
+                flex: 3,
+                // flex: constraints.maxHeight > 160 ? 2 : 3,
                 child: Align(
                   alignment: Alignment.center,
                   // Aspect ratio of 1 because the shape has to be on a square canvas
                   child: AspectRatio(
                     aspectRatio: 1,
-                    child: Container(
-                      margin:
-                          EdgeInsets.all(constraints.maxHeight > 160 ? 24 : 12),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: 10),
-                        child: CustomPaint(
-                          painter: player.symbol,
-                        ),
+                    child: FractionallySizedBox(
+                      widthFactor: 0.65,
+                      heightFactor: 0.65,
+                      child: CustomPaint(
+                        painter: player.symbol,
                       ),
                     ),
                   ),
@@ -67,10 +65,13 @@ class PlayerColumn extends StatelessWidget {
                     } else {
                       return Padding(
                         padding: EdgeInsets.only(bottom: 6.0),
-                        child: Container(
-                          width: 70,
-                          height: 8,
-                          color: player.color,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.65,
+                          child: Container(
+                            width: constraints.maxWidth,
+                            height: 8,
+                            color: player.color,
+                          ),
                         ),
                       );
                     }

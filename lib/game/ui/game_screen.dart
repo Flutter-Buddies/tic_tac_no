@@ -144,6 +144,9 @@ class GameScreenState extends State<GameScreen> {
                       //* Player info section
                       // Wrapping with expanded because this is the section that will resize based on screen size
                       // and we want to to scale vertically
+                      SizedBox(
+                        height: 8.0,
+                      ),
                       Expanded(
                         child: BlocBuilder<GameBloc, GameState>(
                           builder: (context, state) {
@@ -166,19 +169,26 @@ class GameScreenState extends State<GameScreen> {
                                     Expanded(
                                       child: AspectRatio(
                                         aspectRatio: 1,
-                                        child: LayoutBuilder(
-                                          builder: (context, constraints) {
-                                            return Container(
-                                              padding: EdgeInsets.all(
-                                                  constraints.maxHeight > 160
-                                                      ? 48
-                                                      : 12),
-                                              child: CustomPaint(
-                                                painter: state.winner.symbol,
-                                              ),
-                                            );
-                                          },
+                                        child: FractionallySizedBox(
+                                          widthFactor: 0.55,
+                                          heightFactor: 0.55,
+                                          child: CustomPaint(
+                                            painter: state.winner.symbol,
+                                          ),
                                         ),
+                                        // child: LayoutBuilder(
+                                        //   builder: (context, constraints) {
+                                        //     return Container(
+                                        //       padding: EdgeInsets.all(
+                                        //           constraints.maxHeight > 160
+                                        //               ? 48
+                                        //               : 12),
+                                        //       child: CustomPaint(
+                                        //         painter: state.winner.symbol,
+                                        //       ),
+                                        //     );
+                                        //   },
+                                        // ),
                                       ),
                                     ),
                                   ],
@@ -205,13 +215,16 @@ class GameScreenState extends State<GameScreen> {
                                 children: [
                                   // Wrapped in expanded to scale
                                   // Currently taking the max width it can
+                                  Spacer(),
                                   Expanded(
+                                    flex: 6,
                                     child: PlayerColumn(
                                       player: _players[0],
                                       isPlayerTurn:
                                           _players[0] == _currentPlayer,
                                     ),
                                   ),
+                                  Spacer(),
                                   // Score info remains constant size
                                   AnimatedSwitcher(
                                     duration: Duration(milliseconds: 500),
@@ -254,13 +267,16 @@ class GameScreenState extends State<GameScreen> {
                                     ),
                                   ),
                                   // Wrapped in expanded to scale
+                                  Spacer(),
                                   Expanded(
+                                    flex: 6,
                                     child: PlayerColumn(
                                       player: _players[1],
                                       isPlayerTurn:
                                           _players[1] == _currentPlayer,
                                     ),
                                   ),
+                                  Spacer(),
                                 ],
                               );
                             }
