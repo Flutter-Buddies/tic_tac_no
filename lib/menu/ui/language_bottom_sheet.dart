@@ -108,6 +108,7 @@ class LanguageListTile extends StatelessWidget {
           : null,
       onTap: () {
         Utils.changeLocale(context, locale);
+        Navigator.pop(context);
       },
     );
   }
