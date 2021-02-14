@@ -41,7 +41,7 @@ class PrimaryButton extends StatelessWidget {
                 ),
                 Text(
                   buttonText,
-                  style: GoogleFonts.asap(
+                  style: GoogleFonts.cairo(
                     textStyle: TextStyle(
                         color: Colors.white,
                         fontSize: 24,

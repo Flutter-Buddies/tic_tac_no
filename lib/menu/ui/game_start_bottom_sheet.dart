@@ -149,7 +149,7 @@ class _GameStartModalState extends State<GameStartModal> {
               children: [
                 Text(
                   getModalTitle(),
-                  style: GoogleFonts.asap(
+                  style: GoogleFonts.cairo(
                     textStyle: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -170,7 +170,7 @@ class _GameStartModalState extends State<GameStartModal> {
                           widget.gameType == GameType.SinglePlayer
                               ? LocaleKeys.menu_you.tr()
                               : LocaleKeys.menu_player_1.tr(),
-                          style: GoogleFonts.asap(
+                          style: GoogleFonts.cairo(
                             textStyle:
                                 TextStyle(color: Colors.white, fontSize: 18),
                           ),
@@ -215,7 +215,7 @@ class _GameStartModalState extends State<GameStartModal> {
                           widget.gameType == GameType.SinglePlayer
                               ? LocaleKeys.menu_ai.tr()
                               : LocaleKeys.menu_player_2.tr(),
-                          style: GoogleFonts.asap(
+                          style: GoogleFonts.cairo(
                             textStyle:
                                 TextStyle(color: Colors.white, fontSize: 18),
                           ),
@@ -261,7 +261,7 @@ class _GameStartModalState extends State<GameStartModal> {
                                         )),
                                     Text(
                                       listOfAI[_aiValue],
-                                      style: GoogleFonts.asap(
+                                      style: GoogleFonts.cairo(
                                         textStyle: TextStyle(
                                             color: Colors.white, fontSize: 20),
                                       ),

@@ -21,15 +21,15 @@ class _RulesScreenState extends State<RulesScreen> {
 
   final List<Text> rules = <Text>[
     Text(LocaleKeys.rules_tic_must_win.tr(),
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_there_is_catch.tr(),
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_win_inner_grid.tr(),
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_one_more_thing.tr(),
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_good_luck.tr(),
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 35))),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 35))),
   ];
 
   @override
@@ -38,7 +38,7 @@ class _RulesScreenState extends State<RulesScreen> {
       backgroundColor: Color(0xff2A5298),
       appBar: AppBar(
         title: Text(LocaleKeys.rules_rules.tr(),
-            style: GoogleFonts.asap(
+            style: GoogleFonts.cairo(
                 textStyle: TextStyle(fontWeight: FontWeight.bold))),
         backgroundColor: Color(0xff1E3C72),
       ),

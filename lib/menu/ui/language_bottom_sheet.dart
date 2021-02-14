@@ -29,7 +29,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                 children: [
                   Text(
                     LocaleKeys.menu_change_language.tr(),
-                    style: GoogleFonts.asap(
+                    style: GoogleFonts.cairo(
                       textStyle: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -93,7 +93,7 @@ class LanguageListTile extends StatelessWidget {
       ),
       title: Text(
         languageName,
-        style: GoogleFonts.asap(
+        style: GoogleFonts.cairo(
           textStyle: TextStyle(
             color: Colors.white,
             fontSize: 24,

@@ -143,6 +143,7 @@ class MenuScreen extends StatelessWidget {
                                                 vertical: 4.0),
                                             child: Text(
                                               LocaleKeys.menu_coming_soon.tr(),
+                                              style: GoogleFonts.cairo(),
                                             ),
                                           )),
                                     ),
@@ -178,7 +179,7 @@ class MenuScreen extends StatelessWidget {
                           ),
                           Text(
                             LocaleKeys.menu_how_to_play.tr(),
-                            style: GoogleFonts.asap(
+                            style: GoogleFonts.cairo(
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 color: Colors.white,
@@ -204,7 +205,7 @@ class MenuScreen extends StatelessWidget {
                           ),
                           Text(
                             LocaleKeys.menu_change_language.tr(),
-                            style: GoogleFonts.asap(
+                            style: GoogleFonts.cairo(
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 color: Colors.white,

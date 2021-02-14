@@ -32,7 +32,7 @@ class CodegenLoader extends AssetLoader{
   "menu": {
     "online_multiplayer": "العب اونلاين",
     "coming_soon": "قريبا!",
-    "how_to_play": "كيف ألعب",
+    "how_to_play": "كيف العب",
     "easy": "سهل",
     "medium": "متوسط",
     "hard": "صعب",
