@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
+import 'package:tic_tac_no/game/ui/game_over_dialog.dart';
 import 'package:tic_tac_no/game/ui/grid_widget.dart';
 import 'package:tic_tac_no/game/ui/player_column.dart';
 import 'package:confetti/confetti.dart';
@@ -108,6 +109,19 @@ class GameScreenState extends State<GameScreen> {
     );
   }
 
+  Future<void> _showGameOver(Player winner) async {
+    // Delay used to give the user a little time to process they won and
+    // to give time for animation of line going through 3 winning squares (todo: create this animation 😅)
+    await Future.delayed(Duration(seconds: 2));
+    await showDialog(
+      context: context,
+      barrierColor: Colors.black26,
+      builder: (context) {
+        return GameOverDialog(winner: winner);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<GameBloc, GameState>(
@@ -119,6 +133,15 @@ class GameScreenState extends State<GameScreen> {
             this._currentPlayer = state.currentPlayer;
             this._score = state.score;
           });
+          // This is just if the game was reset and the confetti was still going
+          _confettiController.stop();
+        }
+
+        if (state is GameOver) {
+          if (state.winner != null) {
+            _confettiController.play();
+          }
+          _showGameOver(state.winner);
         }
       },
       child: WillPopScope(
@@ -148,139 +171,70 @@ class GameScreenState extends State<GameScreen> {
                         height: 8.0,
                       ),
                       Expanded(
-                        child: BlocBuilder<GameBloc, GameState>(
-                          builder: (context, state) {
-                            //* Game end state
-                            if (state is GameOver && state.winner != null) {
-                              _confettiController.play();
-                              return Center(
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      '${state.winner.name}'.toUpperCase() +
-                                          // Use correct grammar if the player name = "You"
-                                          (state.winner.type == PlayerType.me
-                                              ? ' win!'.toUpperCase()
-                                              : ' wins!'.toUpperCase()),
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Expanded(
-                                      child: AspectRatio(
-                                        aspectRatio: 1,
-                                        child: FractionallySizedBox(
-                                          widthFactor: 0.55,
-                                          heightFactor: 0.55,
-                                          child: CustomPaint(
-                                            painter: state.winner.symbol,
-                                          ),
-                                        ),
-                                        // child: LayoutBuilder(
-                                        //   builder: (context, constraints) {
-                                        //     return Container(
-                                        //       padding: EdgeInsets.all(
-                                        //           constraints.maxHeight > 160
-                                        //               ? 48
-                                        //               : 12),
-                                        //       child: CustomPaint(
-                                        //         painter: state.winner.symbol,
-                                        //       ),
-                                        //     );
-                                        //   },
-                                        // ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                              //* Game draw state
-                            } else if (state is GameOver &&
-                                state.winner == null) {
-                              return Center(
-                                child: Text(
-                                  'Nobody wins 😲'.toUpperCase(),
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              );
-                              //* Game is active state
-                            } else {
-                              return Row(
-                                // We want the content to be aligned in the center vertically
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                // The score text will remain a constant size so will not be wrapped in Expanded
-                                // The player name, piece and turn info will be the thing that scales
-                                children: [
-                                  // Wrapped in expanded to scale
-                                  // Currently taking the max width it can
-                                  Spacer(),
-                                  Expanded(
-                                    flex: 6,
-                                    child: PlayerColumn(
-                                      player: _players[0],
-                                      isPlayerTurn:
-                                          _players[0] == _currentPlayer,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  // Score info remains constant size
-                                  AnimatedSwitcher(
-                                    duration: Duration(milliseconds: 500),
-                                    transitionBuilder: (child, animation) {
-                                      return ScaleTransition(
-                                        child: child,
-                                        scale: animation,
-                                      );
-                                    },
-                                    child: Text(
-                                      '${_score[_players[0].id]}',
-                                      key:
-                                          ValueKey<int>(_score[_players[0].id]),
-                                      style: TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  Text(
-                                    ' : ',
-                                    style: TextStyle(
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  AnimatedSwitcher(
-                                    duration: Duration(milliseconds: 500),
-                                    transitionBuilder: (child, animation) {
-                                      return ScaleTransition(
-                                        child: child,
-                                        scale: animation,
-                                      );
-                                    },
-                                    child: Text(
-                                      '${_score[_players[1].id]}',
-                                      key:
-                                          ValueKey<int>(_score[_players[1].id]),
-                                      style: TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  // Wrapped in expanded to scale
-                                  Spacer(),
-                                  Expanded(
-                                    flex: 6,
-                                    child: PlayerColumn(
-                                      player: _players[1],
-                                      isPlayerTurn:
-                                          _players[1] == _currentPlayer,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                ],
-                              );
-                            }
-                          },
+                        child: Row(
+                          // We want the content to be aligned in the center vertically
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          // The score text will remain a constant size so will not be wrapped in Expanded
+                          // The player name, piece and turn info will be the thing that scales
+                          children: [
+                            // Wrapped in expanded to scale
+                            // Currently taking the max width it can
+                            Spacer(),
+                            Expanded(
+                              flex: 6,
+                              child: PlayerColumn(
+                                player: _players[0],
+                                isPlayerTurn: _players[0] == _currentPlayer,
+                              ),
+                            ),
+                            Spacer(),
+                            // Score info remains constant size
+                            AnimatedSwitcher(
+                              duration: Duration(milliseconds: 500),
+                              transitionBuilder: (child, animation) {
+                                return ScaleTransition(
+                                  child: child,
+                                  scale: animation,
+                                );
+                              },
+                              child: Text(
+                                '${_score[_players[0].id]}',
+                                key: ValueKey<int>(_score[_players[0].id]),
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Text(
+                              ' : ',
+                              style: TextStyle(
+                                  fontSize: 40, fontWeight: FontWeight.bold),
+                            ),
+                            AnimatedSwitcher(
+                              duration: Duration(milliseconds: 500),
+                              transitionBuilder: (child, animation) {
+                                return ScaleTransition(
+                                  child: child,
+                                  scale: animation,
+                                );
+                              },
+                              child: Text(
+                                '${_score[_players[1].id]}',
+                                key: ValueKey<int>(_score[_players[1].id]),
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            // Wrapped in expanded to scale
+                            Spacer(),
+                            Expanded(
+                              flex: 6,
+                              child: PlayerColumn(
+                                player: _players[1],
+                                isPlayerTurn: _players[1] == _currentPlayer,
+                              ),
+                            ),
+                            Spacer(),
+                          ],
                         ),
                       ),
                       //* Grid

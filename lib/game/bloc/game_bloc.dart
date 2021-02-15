@@ -105,6 +105,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       this._grid = Grid();
       this._judge = Judge(
         grid: this._grid,
+        players: this._players,
+      );
+      yield Ready(
+        grid: this._judge.getGrid(),
+        players: this._players,
+        currentPlayer: this._judge.getCurrentPlayer(),
+        score: _judge.score,
+        winner: this._judge.getWinner(),
       );
     }
   }
