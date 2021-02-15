@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 enum SupportedLocale {
   en,
   ar,
+  hr,
 }
 
 class Utils {
@@ -31,6 +32,9 @@ class Utils {
         break;
       case SupportedLocale.ar:
         locale = Locale('ar');
+        break;
+      case SupportedLocale.hr:
+        locale = Locale('hr');
         break;
       default:
         locale = Locale('en');

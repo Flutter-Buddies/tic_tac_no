@@ -20,6 +20,7 @@ void main() {
       supportedLocales: [
         Locale('en'),
         Locale('ar'),
+        Locale('hr'),
       ],
       fallbackLocale: Locale('en'),
       child: App(),

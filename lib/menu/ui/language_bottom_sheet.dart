@@ -55,6 +55,12 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                       showCheck: Utils.currentLocale(context) == Locale('ar'),
                       locale: SupportedLocale.ar,
                     ),
+                    LanguageListTile(
+                      languageEmoji: '🇭🇷',
+                      languageName: 'Hrvatski',
+                      showCheck: Utils.currentLocale(context) == Locale('hr'),
+                      locale: SupportedLocale.hr,
+                    ),
                   ],
                 ),
               ),
