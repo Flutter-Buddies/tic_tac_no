@@ -4,6 +4,14 @@ This document will briefly describe basic guidelines for contributors. All proje
 
 The upcoming titles sort of describe the order of things you want to explore before contributing.
 
+- [Discord](#discord)
+- [Issues](#issues)
+- [Branches](#branches)
+- [Pull Requests](#pull-requests)
+- [Useful Links](#useful-links)
+- [Code Style](#code-style)
+- [Adding Support for a New Language](#ddding-support-for-a-new-language)
+
 ## Discord
 
 If you'd like to talk about the project in general, please do at project's Discord [channel](https://discord.com/channels/768528774991446088/774393854317035580). We can go on from there.
@@ -63,7 +71,7 @@ When you fork the project, you will be at `master` branch by default. To switch 
 
 If you are contributing at some branch for a while, to have the latest changes if something has been pushed in the meantime, do `git fetch upstream`. This will create branches `upstream/<branch-name>` that you then need to merge into your branch you're working on. To do that, `git checkout <branch-name>` (if you're not already on it) and `git merge upstream/<branch-name>`.
 
-### Useful links
+### Useful Links
 
 - [Git Handbook](https://guides.github.com/introduction/git-handbook)
 - [GitHub Hello World](https://guides.github.com/activities/hello-world/)
