@@ -7,6 +7,8 @@ import 'package:tic_tac_no/menu/ui/primary_button.dart';
 import 'package:tic_tac_no/menu/ui/colour_circle.dart';
 import 'package:tic_tac_no/menu/ui/piece_shapes.dart';
 import 'package:tic_tac_no/menu/menu_enums.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class GameStartModal extends StatefulWidget {
   GameStartModal({this.gameType});
@@ -31,7 +33,11 @@ class _GameStartModalState extends State<GameStartModal> {
     Colors.yellowAccent
   ];
 
-  List<String> listOfAI = ['EASY', 'MEDIUM', 'HARD'];
+  List<String> listOfAI = [
+    LocaleKeys.menu_easy.tr(),
+    LocaleKeys.menu_medium.tr(),
+    LocaleKeys.menu_hard.tr(),
+  ];
 
   // Variable to hold the index of the colour
   int _p1Value = 0;
@@ -94,11 +100,11 @@ class _GameStartModalState extends State<GameStartModal> {
 
   String getModalTitle() {
     if (widget.gameType == GameType.SinglePlayer) {
-      return 'SINGLE PLAYER SETUP';
+      return LocaleKeys.menu_single_player_setup.tr();
     } else if (widget.gameType == GameType.LocalMultiplayer) {
-      return 'LOCAL MULTIPLER SETUP';
+      return LocaleKeys.menu_local_multiplayer_setup.tr();
     } else {
-      return 'ONLINE MULTIPAYER SETUP';
+      return LocaleKeys.menu_online_multiplayer_setup.tr();
     }
   }
 
@@ -124,7 +130,7 @@ class _GameStartModalState extends State<GameStartModal> {
                     height: 70,
                   ),
                 ),
-                Text('Searching for game...'),
+                Text(LocaleKeys.menu_searching_for_game.tr()),
               ],
             ),
           )
@@ -143,7 +149,7 @@ class _GameStartModalState extends State<GameStartModal> {
               children: [
                 Text(
                   getModalTitle(),
-                  style: GoogleFonts.asap(
+                  style: GoogleFonts.cairo(
                     textStyle: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -162,9 +168,9 @@ class _GameStartModalState extends State<GameStartModal> {
                       children: [
                         Text(
                           widget.gameType == GameType.SinglePlayer
-                              ? 'YOU'
-                              : 'PLAYER 1',
-                          style: GoogleFonts.asap(
+                              ? LocaleKeys.menu_you.tr()
+                              : LocaleKeys.menu_player_1.tr(),
+                          style: GoogleFonts.cairo(
                             textStyle:
                                 TextStyle(color: Colors.white, fontSize: 18),
                           ),
@@ -207,9 +213,9 @@ class _GameStartModalState extends State<GameStartModal> {
                       children: [
                         Text(
                           widget.gameType == GameType.SinglePlayer
-                              ? 'AI'
-                              : 'PLAYER 2',
-                          style: GoogleFonts.asap(
+                              ? LocaleKeys.menu_ai.tr()
+                              : LocaleKeys.menu_player_2.tr(),
+                          style: GoogleFonts.cairo(
                             textStyle:
                                 TextStyle(color: Colors.white, fontSize: 18),
                           ),
@@ -255,7 +261,7 @@ class _GameStartModalState extends State<GameStartModal> {
                                         )),
                                     Text(
                                       listOfAI[_aiValue],
-                                      style: GoogleFonts.asap(
+                                      style: GoogleFonts.cairo(
                                         textStyle: TextStyle(
                                             color: Colors.white, fontSize: 20),
                                       ),
@@ -296,15 +302,15 @@ class _GameStartModalState extends State<GameStartModal> {
                   ],
                 ),
                 PrimaryButton(
-                  buttonText: 'START GAME',
+                  buttonText: LocaleKeys.menu_start_game.tr(),
                   buttonPress: () {
                     BlocProvider.of<GameBloc>(context).add(
                       SetPlayers(
                         player1: Player(
                           id: 1,
                           name: widget.gameType == GameType.SinglePlayer
-                              ? 'YOU'
-                              : 'PLAYER 1',
+                              ? LocaleKeys.menu_you.tr()
+                              : LocaleKeys.menu_player_1.tr(),
                           color: p1ColourList[_p1Value],
                           symbol: p1SelectedPiece,
                           type: PlayerType.me, // PlayerType.ai,
@@ -314,8 +320,8 @@ class _GameStartModalState extends State<GameStartModal> {
                         player2: Player(
                           id: 2,
                           name: widget.gameType == GameType.SinglePlayer
-                              ? 'AI'
-                              : 'PLAYER 2',
+                              ? LocaleKeys.menu_ai.tr()
+                              : LocaleKeys.menu_player_2.tr(),
                           color: p2ColourList[_p2Value],
                           symbol: p2SelectedPiece,
                           type: _decidePlayerType(),
