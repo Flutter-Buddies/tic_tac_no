@@ -64,7 +64,7 @@ class CodegenLoader extends AssetLoader{
     "tic_must_win": "You’re faced with a tic-tac-toe board you must win.",
     "there_is_catch": "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
     "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
-    "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent can play."
+    "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent must play."
   }
 };
 static const Map<String,dynamic> ar = {
@@ -117,5 +117,58 @@ static const Map<String,dynamic> ar = {
     "one_more_thing": "سهلة؟ باقي شيء واحد... حركتك في لوح داخلي تحدد وين خصمك يلعب."
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ar": ar};
+static const Map<String,dynamic> hr = {
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "Jesi li siguran da želiš završiti?",
+    "all_progress_lost": "Sav progres bit će izgubljen",
+    "quit_game": "ZAVRŠI IGRU",
+    "return_to_game": "VRATI SE U IGRU",
+    "quit_to_menu": "IZAĐI U MENI",
+    "play_again": "IGRAJ PONOVO",
+    "win": "pobjeđuješ!",
+    "wins": "pobjeđuje!",
+    "won": "je pobijedio!",
+    "nobody_wins": "Nerješeno 😲",
+    "thinking": "Razmišlja...",
+    "player_no_name": "Bez imena"
+  },
+  "menu": {
+    "online_multiplayer": "ONLINE MULTIPLAYER",
+    "coming_soon": "Uskoro!",
+    "how_to_play": "Kako igrati",
+    "easy": "LAGANO",
+    "medium": "SREDNJE",
+    "hard": "TEŠKO",
+    "single_player_setup": "SINGLE PLAYER SETUP",
+    "local_multiplayer_setup": "LOCAL MULTIPLAYER SETUP",
+    "online_multiplayer_setup": "ONLINE MULTIPLAYER SETUP",
+    "searching_for_game": "Tražim igru...",
+    "you": "TI",
+    "player_1": "IGRAČ 1",
+    "player_2": "IGRAČ 2",
+    "ai": "UI",
+    "start_game": "POČNI IGRU",
+    "tic": "TIC",
+    "tac": "TAC",
+    "no": "NO",
+    "local_multiplayer": "LOCAL MULTIPLAYER",
+    "single_player": "SINGLE PLAYER",
+    "change_language": "Jezik"
+  },
+  "rules": {
+    "rules": "Pravila",
+    "previous": "Prethodno",
+    "next": "Sljedeće",
+    "start": "Kreni",
+    "good_luck": "Sretno!",
+    "tic_must_win": "Suočen si s križić-kružić pločom koju moraš pobijediti.",
+    "there_is_catch": "Ali postoji kvaka... svaka ploča je dio velike križić-kružić ploče!",
+    "win_inner_grid": "Moraš pobijediti unutarnje ploče da bi osvojio poziciju na glavnoj ploči. Jednom kad ju osvojiš, nitko ti ju ne može oduzeti.",
+    "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
+  }
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ar": ar, "hr": hr};
 }
