@@ -7,8 +7,11 @@
     "all_progress_lost": "All progress will be lost",
     "quit_game": "QUIT GAME",
     "return_to_game": "RETURN TO GAME",
+    "quit_to_menu": "QUIT TO MENU",
+    "play_again": "PLAY AGAIN",
     "win": "win!",
     "wins": "wins!",
+    "won": "won!",
     "nobody_wins": "Nobody wins 😲",
     "thinking": "Thinking...",
     "player_no_name": "No name"

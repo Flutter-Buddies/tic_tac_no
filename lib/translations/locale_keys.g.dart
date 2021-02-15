@@ -7,8 +7,11 @@ abstract class  LocaleKeys {
   static const game_all_progress_lost = 'game.all_progress_lost';
   static const game_quit_game = 'game.quit_game';
   static const game_return_to_game = 'game.return_to_game';
+  static const game_quit_to_menu = 'game.quit_to_menu';
+  static const game_play_again = 'game.play_again';
   static const game_win = 'game.win';
   static const game_wins = 'game.wins';
+  static const game_won = 'game.won';
   static const game_nobody_wins = 'game.nobody_wins';
   static const game_thinking = 'game.thinking';
   static const game_player_no_name = 'game.player_no_name';

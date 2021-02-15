@@ -16,7 +16,7 @@ class GameOverDialog extends StatelessWidget {
       backgroundColor: Color(0xff012E44),
       title: Center(
         child: winner != null
-            ? Text('${winner.name} ${LocaleKeys.game_wins.tr()}!'.toUpperCase())
+            ? Text('${winner.name} ${LocaleKeys.game_won.tr()}'.toUpperCase())
             : Text('${LocaleKeys.game_nobody_wins.tr()}'.toUpperCase()),
       ),
       children: [
@@ -53,7 +53,7 @@ class GameOverDialog extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'QUIT TO MENU',
+                      '${LocaleKeys.game_quit_to_menu.tr()}',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -79,7 +79,7 @@ class GameOverDialog extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'PLAY AGAIN',
+                      '${LocaleKeys.game_play_again.tr()}',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
