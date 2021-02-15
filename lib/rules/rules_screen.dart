@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RulesScreen extends StatefulWidget {
   @override
@@ -18,19 +20,16 @@ class _RulesScreenState extends State<RulesScreen> {
   ];
 
   final List<Text> rules = <Text>[
-    Text("You’re faced with a tic-tac-toe board you must win.",
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
-    Text(
-        "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
-    Text(
-        "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
-    Text(
-        "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent can play.",
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 20))),
-    Text("Good luck!",
-        style: GoogleFonts.asap(textStyle: TextStyle(fontSize: 35))),
+    Text(LocaleKeys.rules_tic_must_win.tr(),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+    Text(LocaleKeys.rules_there_is_catch.tr(),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+    Text(LocaleKeys.rules_win_inner_grid.tr(),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+    Text(LocaleKeys.rules_one_more_thing.tr(),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+    Text(LocaleKeys.rules_good_luck.tr(),
+        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 35))),
   ];
 
   @override
@@ -38,8 +37,8 @@ class _RulesScreenState extends State<RulesScreen> {
     return Scaffold(
       backgroundColor: Color(0xff2A5298),
       appBar: AppBar(
-        title: Text('Rules',
-            style: GoogleFonts.asap(
+        title: Text(LocaleKeys.rules_rules.tr(),
+            style: GoogleFonts.cairo(
                 textStyle: TextStyle(fontWeight: FontWeight.bold))),
         backgroundColor: Color(0xff1E3C72),
       ),
@@ -75,17 +74,17 @@ class _RulesScreenState extends State<RulesScreen> {
                 if (_step > 1)
                   ElevatedButton(
                     onPressed: () => setState(() => _step--),
-                    child: Text('Previous'),
+                    child: Text(LocaleKeys.rules_previous.tr()),
                   ),
                 if (_step < 5)
                   ElevatedButton(
                     onPressed: () => setState(() => _step++),
-                    child: Text('Next'),
+                    child: Text(LocaleKeys.rules_next.tr()),
                   ),
                 if (_step == 5)
                   ElevatedButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    child: Text('Start'),
+                    child: Text(LocaleKeys.rules_start.tr()),
                   ),
               ],
             ),

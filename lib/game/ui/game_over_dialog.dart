@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class GameOverDialog extends StatelessWidget {
   final Player winner;
@@ -14,8 +16,8 @@ class GameOverDialog extends StatelessWidget {
       backgroundColor: Color(0xff012E44),
       title: Center(
         child: winner != null
-            ? Text('${winner.name} won!'.toUpperCase())
-            : Text('Draw'.toUpperCase()),
+            ? Text('${winner.name} ${LocaleKeys.game_wins.tr()}!'.toUpperCase())
+            : Text('${LocaleKeys.game_nobody_wins.tr()}'.toUpperCase()),
       ),
       children: [
         FractionallySizedBox(

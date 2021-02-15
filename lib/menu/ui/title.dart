@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/utils.dart';
 
 class TitleWidget extends StatelessWidget {
   @override
@@ -8,19 +11,34 @@ class TitleWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'TIC',
-          style: GoogleFonts.firaCode(
-              textStyle: Theme.of(context).textTheme.headline1),
+          LocaleKeys.menu_tic.tr(),
+          style: Utils.currentLocale(context) == Locale('ar')
+              ? GoogleFonts.cairo(
+                  textStyle: Theme.of(context).textTheme.headline1,
+                )
+              : GoogleFonts.firaCode(
+                  textStyle: Theme.of(context).textTheme.headline1,
+                ),
         ),
         Text(
-          'TAC',
-          style: GoogleFonts.firaCode(
-              textStyle: Theme.of(context).textTheme.headline1),
+          LocaleKeys.menu_tac.tr(),
+          style: Utils.currentLocale(context) == Locale('ar')
+              ? GoogleFonts.cairo(
+                  textStyle: Theme.of(context).textTheme.headline1,
+                )
+              : GoogleFonts.firaCode(
+                  textStyle: Theme.of(context).textTheme.headline1,
+                ),
         ),
         Text(
-          'NO',
-          style: GoogleFonts.firaCode(
-              textStyle: Theme.of(context).textTheme.headline1),
+          LocaleKeys.menu_no.tr(),
+          style: Utils.currentLocale(context) == Locale('ar')
+              ? GoogleFonts.cairo(
+                  textStyle: Theme.of(context).textTheme.headline1,
+                )
+              : GoogleFonts.firaCode(
+                  textStyle: Theme.of(context).textTheme.headline1,
+                ),
         ),
       ],
     );
