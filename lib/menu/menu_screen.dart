@@ -46,6 +46,7 @@ class MenuScreen extends StatelessWidget {
         ),
       ),
       child: SafeArea(
+        top: false,
         child: Scaffold(
           body: Stack(
             children: [
