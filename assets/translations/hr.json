@@ -1,53 +1,53 @@
 {
-    "global": {
-        "app_name": "Tic-Tac-No"
-    },
-    "game": {
-        "are_you_sure_quit": "Jesi li siguran da želiš završiti?",
-        "all_progress_lost": "Sav progres bit će izgubljen",
-        "quit_game": "ZAVRŠI IGRU",
-        "return_to_game": "VRATI SE U IGRU",
-        "quit_to_menu": "IZAĐI U MENI",
-        "play_again": "IGRAJ PONOVO",
-        "win": "pobjeđuješ!",
-        "wins": "pobjeđuje!",
-        "won": "je pobijedio!",
-        "nobody_wins": "Nerješeno 😲",
-        "thinking": "Razmišlja...",
-        "player_no_name": "Bez imena"
-    },
-    "menu": {
-        "online_multiplayer": "ONLINE MULTIPLAYER",
-        "coming_soon": "Uskoro!",
-        "how_to_play": "Kako igrati",
-        "easy": "LAGANO",
-        "medium": "SREDNJE",
-        "hard": "TEŠKO",
-        "single_player_setup": "SINGLE PLAYER SETUP",
-        "local_multiplayer_setup": "LOCAL MULTIPLAYER SETUP",
-        "online_multiplayer_setup": "ONLINE MULTIPLAYER SETUP",
-        "searching_for_game": "Tražim igru...",
-        "you": "TI",
-        "player_1": "IGRAČ 1",
-        "player_2": "IGRAČ 2",
-        "ai": "UI",
-        "start_game": "POČNI IGRU",
-        "tic": "TIC",
-        "tac": "TAC",
-        "no": "NO",
-        "local_multiplayer": "LOCAL MULTIPLAYER",
-        "single_player": "SINGLE PLAYER",
-        "change_language": "Jezik"
-    },
-    "rules": {
-        "rules": "Pravila",
-        "previous": "Prethodno",
-        "next": "Sljedeće",
-        "start": "Kreni",
-        "good_luck": "Sretno!",
-        "tic_must_win": "Suočen si s križić-kružić pločom koju moraš pobijediti.",
-        "there_is_catch": "Ali postoji kvaka... svaka ploča je dio velike križić-kružić ploče!",
-        "win_inner_grid": "Moraš pobijediti unutarnje ploče da bi osvojio poziciju na glavnoj ploči. Jednom kad ju osvojiš, nitko ti ju ne može oduzeti.",
-        "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
-    }
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "Jesi li siguran da želiš završiti?",
+    "all_progress_lost": "Sav progres bit će izgubljen",
+    "quit_game": "ZAVRŠI IGRU",
+    "return_to_game": "VRATI SE U IGRU",
+    "quit_to_menu": "IZAĐI U MENI",
+    "play_again": "IGRAJ PONOVO",
+    "win": "pobjeđuješ!",
+    "wins": "pobjeđuje!",
+    "won": "je pobijedio!",
+    "nobody_wins": "Nerješeno 😲",
+    "thinking": "Razmišlja...",
+    "player_no_name": "Bez imena"
+  },
+  "menu": {
+    "online_multiplayer": "ONLINE MULTIPLAYER",
+    "coming_soon": "Uskoro!",
+    "how_to_play": "Kako igrati",
+    "easy": "LAGANO",
+    "medium": "SREDNJE",
+    "hard": "TEŠKO",
+    "single_player_setup": "SINGLE PLAYER SETUP",
+    "local_multiplayer_setup": "LOCAL MULTIPLAYER SETUP",
+    "online_multiplayer_setup": "ONLINE MULTIPLAYER SETUP",
+    "searching_for_game": "Tražim igru...",
+    "you": "TI",
+    "player_1": "IGRAČ 1",
+    "player_2": "IGRAČ 2",
+    "ai": "UI",
+    "start_game": "POČNI IGRU",
+    "tic": "TIC",
+    "tac": "TAC",
+    "no": "NO",
+    "local_multiplayer": "LOCAL MULTIPLAYER",
+    "single_player": "SINGLE PLAYER",
+    "change_language": "Jezik"
+  },
+  "rules": {
+    "rules": "Pravila",
+    "previous": "Prethodno",
+    "next": "Sljedeće",
+    "start": "Kreni",
+    "good_luck": "Sretno!",
+    "tic_must_win": "Suočen si s križić-kružić pločom koju moraš pobijediti.",
+    "there_is_catch": "Ali postoji kvaka... svaka ploča je dio velike križić-kružić ploče!",
+    "win_inner_grid": "Moraš pobijediti unutarnje ploče da bi osvojio poziciju na glavnoj ploči. Jednom kad ju osvojiš, nitko ti ju ne može oduzeti.",
+    "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
+  }
 }
