@@ -10,7 +10,7 @@ The upcoming titles sort of describe the order of things you want to explore bef
 - [Pull Requests](#pull-requests)
 - [Useful Links](#useful-links)
 - [Code Style](#code-style)
-- [Adding Support for a New Language](#ddding-support-for-a-new-language)
+- [Adding Support for a New Language](#adding-support-for-a-new-language)
 
 ## Discord
 
