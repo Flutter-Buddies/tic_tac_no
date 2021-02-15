@@ -73,6 +73,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       yield JudgeThinking();
       this._judge.updateGame(event.square);
       if (this._judge.getIsGameOver()) {
+        //? yield a Ready() state here so the score can be updated
         yield GameOver(
           winner: this._judge.getWinner(),
         );

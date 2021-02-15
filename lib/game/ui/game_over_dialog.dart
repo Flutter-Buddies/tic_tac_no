@@ -51,7 +51,7 @@ class GameOverDialog extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'QUIT',
+                      'QUIT TO MENU',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
