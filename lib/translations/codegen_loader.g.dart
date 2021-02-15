@@ -80,7 +80,10 @@ static const Map<String,dynamic> ar = {
     "wins": "يفوز!",
     "nobody_wins": "لم يفز أحد 😲",
     "thinking": "جاري التفكير...",
-    "player_no_name": "بدون اسم"
+    "player_no_name": "بدون اسم",
+    "play_again": "العب مجدداً",
+    "quit_to_menu": "الخروج إلى القائمة",
+    "won": "فاز!"
   },
   "menu": {
     "online_multiplayer": "العب اونلاين",
