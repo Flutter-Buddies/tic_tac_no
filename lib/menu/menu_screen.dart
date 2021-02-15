@@ -14,6 +14,7 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     void primaryButtonPress(GameType gameType) {
       showModalBottomSheet(
+        isScrollControlled: true,
         backgroundColor: Colors.transparent,
         context: context,
         builder: (BuildContext context) {
@@ -141,7 +142,7 @@ class MenuScreen extends StatelessWidget {
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 12.0,
-                                                vertical: 4.0),
+                                                vertical: 0.0),
                                             child: Text(
                                               LocaleKeys.menu_coming_soon.tr(),
                                               style: GoogleFonts.cairo(),

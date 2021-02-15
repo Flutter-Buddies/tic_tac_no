@@ -30,7 +30,7 @@ class PrimaryButton extends StatelessWidget {
         child: Container(
           constraints: BoxConstraints(minWidth: 88, minHeight: 36),
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -301,6 +301,9 @@ class _GameStartModalState extends State<GameStartModal> {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 8.0,
+                ),
                 PrimaryButton(
                   buttonText: LocaleKeys.menu_start_game.tr(),
                   buttonPress: () {

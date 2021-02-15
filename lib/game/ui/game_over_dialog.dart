@@ -26,9 +26,11 @@ class GameOverDialog extends StatelessWidget {
             aspectRatio: 1.0,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CustomPaint(
-                painter: winner.symbol,
-              ),
+              child: winner.symbol != null
+                  ? CustomPaint(
+                      painter: winner.symbol,
+                    )
+                  : Container(),
             ),
           ),
         ),

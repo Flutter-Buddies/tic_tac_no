@@ -149,6 +149,7 @@ class GameScreenState extends State<GameScreen> {
       child: WillPopScope(
         onWillPop: () => backFunction(),
         child: SafeArea(
+          top: false,
           child: Scaffold(
             body: Stack(
               children: [

@@ -58,7 +58,7 @@ class PlayerColumn extends StatelessWidget {
                   builder: (context, state) {
                     if (state is AIThinking) {
                       return Container(
-                        height: 20,
+                        height: 16,
                         child: Text(
                           LocaleKeys.game_thinking.tr(),
                           textAlign: TextAlign.center,
