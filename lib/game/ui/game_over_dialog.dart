@@ -12,7 +12,11 @@ class GameOverDialog extends StatelessWidget {
       contentPadding: EdgeInsets.all(24.0),
       titlePadding: EdgeInsets.only(top: 24.0),
       backgroundColor: Color(0xff012E44),
-      title: Center(child: Text('${winner.name} won!'.toUpperCase())),
+      title: Center(
+        child: winner != null
+            ? Text('${winner.name} won!'.toUpperCase())
+            : Text('Draw'.toUpperCase()),
+      ),
       children: [
         FractionallySizedBox(
           widthFactor: 0.3,
