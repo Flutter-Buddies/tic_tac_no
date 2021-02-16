@@ -11,7 +11,7 @@
     "play_again": "JUGAR DE NUEVO",
     "win": "gana!",
     "wins": "gana!", // these translations change depending on who they refer to (player or AI) and can't be done accurately with only a single word from the whole phrase.
-    "won": "gana!",
+    "won": "ganó!",
     "nobody_wins": "Nadie gana 😲",
     "thinking": "Pensando...",
     "player_no_name": "No nombre"

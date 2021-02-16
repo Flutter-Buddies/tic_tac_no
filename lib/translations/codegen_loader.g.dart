@@ -185,10 +185,10 @@ class CodegenLoader extends AssetLoader {
       "return_to_game": "VOLVER AL JUEGO",
       "quit_to_menu": "SALIR AL MENÚ",
       "play_again": "JUGAR DE NUEVO",
-      "win": "gana!",
+      "win": "ganas!",
       "wins":
-          "gana!", // these translations change depending on who they refer to (player or AI) and can't be done accurately with only a single word from the whole phrase.
-      "won": "gana!",
+          "gana!",
+      "won": "ganó!", // this translation changes depending on who it refers to (player or AI) and can't be done accurately (perfectly) with only a single word from the whole phrase.
       "nobody_wins": "Nadie gana 😲",
       "thinking": "Pensando...",
       "player_no_name": "No nombre"
@@ -205,7 +205,7 @@ class CodegenLoader extends AssetLoader {
       "online_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR EN LINÉA",
       "searching_for_game": "Buscando por un juego...",
       "you":
-          "Tú", // this word is what determines how the win/won words above are conjugated.
+          "Tú", // this word is what determines how the "won" word above is conjugated.
       "player_1": "JUGADOR 1",
       "player_2": "JUGADOR 2",
       "ai": "AI",
