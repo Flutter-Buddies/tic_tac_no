@@ -11,7 +11,7 @@
     "play_again": "JUGAR DE NUEVO",
     "win": "ganas!",
     "wins": "gana!",
-    "won": "ganó!", // this translation changes depending on who it refers to (player or AI) and can't be done accurately (perfectly) with only a single word from the whole phrase.
+    "won": "ganó!",
     "nobody_wins": "Nadie gana 😲",
     "thinking": "Pensando...",
     "player_no_name": "No nombre"
@@ -27,7 +27,7 @@
     "local_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR LOCAL",
     "online_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR EN LINÉA",
     "searching_for_game": "Buscando por un juego...",
-    "you": "Tú", // this word is what determines how the "won" word above is conjugated.
+    "you": "Tú",
     "player_1": "JUGADOR 1",
     "player_2": "JUGADOR 2",
     "ai": "AI",
