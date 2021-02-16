@@ -5,6 +5,7 @@ enum SupportedLocale {
   en,
   ar,
   hr,
+  es,
 }
 
 class Utils {
@@ -35,6 +36,9 @@ class Utils {
         break;
       case SupportedLocale.hr:
         locale = Locale('hr');
+        break;
+      case SupportedLocale.es:
+        locale = Locale('es');
         break;
       default:
         locale = Locale('en');
