@@ -186,9 +186,9 @@ class CodegenLoader extends AssetLoader {
       "quit_to_menu": "SALIR AL MENÚ",
       "play_again": "JUGAR DE NUEVO",
       "win": "ganas!",
-      "wins":
-          "gana!",
-      "won": "ganó!", // this translation changes depending on who it refers to (player or AI) and can't be done accurately (perfectly) with only a single word from the whole phrase.
+      "wins": "gana!",
+      "won":
+          "ganó!", // this translation changes depending on who it refers to (player or AI) and can't be done accurately (perfectly) with only a single word from the whole phrase.
       "nobody_wins": "Nadie gana 😲",
       "thinking": "Pensando...",
       "player_no_name": "No nombre"
