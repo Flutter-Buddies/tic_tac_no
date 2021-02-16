@@ -43,6 +43,7 @@
 	<false/>
 	<key>CFBundleLocalizations</key>
 	<array>
+		<string>af</string>
 		<string>en</string>
 		<string>ar</string>
 		<string>hr</string>

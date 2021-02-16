@@ -1,0 +1,53 @@
+{
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "Is jy seker jy wil die spel verlaat",
+    "all_progress_lost": "Alle vordering gaan verlore wees",
+    "quit_game": "VERLAAT SPEL",
+    "return_to_game": "TERUG NA SPEL",
+    "quit_to_menu": "TERUG NA KEUSELYS",
+    "play_again": "SPEEL WEER",
+    "win": "Wen!",
+    "wins": "wen!",
+    "won": "het gewen!",
+    "nobody_wins": "Niemand wen nie 😲",
+    "thinking": "Besig...",
+    "player_no_name": "Geen naam"
+  },
+  "menu": {
+    "online_multiplayer": "AANLYN OPPONENT",
+    "coming_soon": "Binnekort!",
+    "how_to_play": "Hoe om te speel",
+    "easy": "MAKLIK",
+    "medium": "MEDIUM",
+    "hard": "MOEILIK",
+    "single_player_setup": "ENKEL SPELER OPSIES",
+    "local_multiplayer_setup": "LOKALE OPPONENT OPSIES",
+    "online_multiplayer_setup": "AANLYN OPPONENT OPSIES",
+    "searching_for_game": "Besig om spel te soek...",
+    "you": "JY",
+    "player_1": "SPELER 1",
+    "player_2": "SPELER 2",
+    "ai": "KI",
+    "start_game": "BEGIN SPEL",
+    "tic": "TIC",
+    "tac": "TAC",
+    "no": "NO",
+    "local_multiplayer": "LOKALE OPPONENT",
+    "single_player": "ENKELE SPELER",
+    "change_language": "Taal"
+  },
+  "rules": {
+    "rules": "Reels",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "start": "Begin",
+    "good_luck": "Sterkte!",
+    "tic_must_win": "Jy kry 'n nulletjies-en-kruisies bord wat jy moet web.",
+    "there_is_catch": "Maar die bord is deel van n groter bord",
+    "win_inner_grid": "Om enige plek op die groot bord te kry moet jy die klein bord binne daai posisie wen. Dan bly daai posisie joune.",
+    "one_more_thing": "Maklik genoeg? Daar is een ander oorweging... Jou eerste skuif bepaal die binne bord wat jou oponent mee gaan begin."
+  }
+}
