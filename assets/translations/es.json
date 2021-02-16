@@ -1,0 +1,53 @@
+{
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "¿Estás segura de que te gustarías salir del juego?",
+    "all_progress_lost": "Todo tu progreso será perdido",
+    "quit_game": "SALIR DEL JUEGO",
+    "return_to_game": "VOLVER AL JUEGO",
+    "quit_to_menu": "SALIR AL MENÚ",
+    "play_again": "JUGAR DE NUEVO",
+    "win": "ganas!",
+    "wins": "gana!",
+    "won": "ganó!", // this translation changes depending on who it refers to (player or AI) and can't be done accurately (perfectly) with only a single word from the whole phrase.
+    "nobody_wins": "Nadie gana 😲",
+    "thinking": "Pensando...",
+    "player_no_name": "No nombre"
+  },
+  "menu": {
+    "online_multiplayer": "MULTIJUGADOR EN LINÉA",
+    "coming_soon": "¡Próximamente!",
+    "how_to_play": "Cómo jugar",
+    "easy": "FÁCIL",
+    "medium": "MEDIO",
+    "hard": "DIFÍCIL",
+    "single_player_setup": "CONFIGURACIÓN PARA UN JUGADOR",
+    "local_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR LOCAL",
+    "online_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR EN LINÉA",
+    "searching_for_game": "Buscando por un juego...",
+    "you": "Tú", // this word is what determines how the "won" word above is conjugated.
+    "player_1": "JUGADOR 1",
+    "player_2": "JUGADOR 2",
+    "ai": "AI",
+    "start_game": "INICIAR EL JUEGO",
+    "tic": "TIC",
+    "tac": "TAC",
+    "no": "NO",
+    "local_multiplayer": "MULTIJUGADOR LOCAL",
+    "single_player": "UN JUGADOR",
+    "change_language": "Idioma"
+  },
+  "rules": {
+    "rules": "Reglas",
+    "previous": "Previa",
+    "next": "Próxima",
+    "start": "Empezar",
+    "good_luck": "¡Buena suerte!",
+    "tic_must_win": "Te enfrentas a una cuadrícula de tic-tac-toe que tienes que ganar.",
+    "there_is_catch": "Pero hay un truco... ¡cada cuadrícula es parte de una cuadrícula de tic-tac-toe más grande!",
+    "win_inner_grid": "Tienes que ganar la cuadrícula interior para reclamar la posición en la cuadrícula principal. Al reclamarlo, nadie más podrá reclamarlo de nuevo.",
+    "one_more_thing": "¿Fácil? Hay una cosa más... tu movimiento dentro de la cuadrícula interna determina la cuadrícula interna en la cual tu oponente tiene que jugar."
+  }
+}

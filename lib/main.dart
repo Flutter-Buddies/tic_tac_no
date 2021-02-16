@@ -21,6 +21,7 @@ void main() {
         Locale('en'),
         Locale('ar'),
         Locale('hr'),
+        Locale('es'),
       ],
       fallbackLocale: Locale('en'),
       child: App(),
