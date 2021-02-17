@@ -19,6 +19,7 @@ void main() {
       /// if language matches
       supportedLocales: [
         Locale('en'),
+        Locale('af'),
         Locale('ar'),
         Locale('hr'),
         Locale('es'),
