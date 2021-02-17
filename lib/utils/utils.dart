@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 enum SupportedLocale {
   en,
+  af,
   ar,
   hr,
   es,
@@ -30,6 +31,9 @@ class Utils {
     switch (supportedLocale) {
       case SupportedLocale.en:
         locale = Locale('en');
+        break;
+      case SupportedLocale.af:
+        locale = Locale('af');
         break;
       case SupportedLocale.ar:
         locale = Locale('ar');
