@@ -57,6 +57,7 @@ class GameOverDialog extends StatelessWidget {
                     child: Text(
                       '${LocaleKeys.game_quit_to_menu.tr()}',
                       style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -83,6 +84,7 @@ class GameOverDialog extends StatelessWidget {
                     child: Text(
                       '${LocaleKeys.game_play_again.tr()}',
                       style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
