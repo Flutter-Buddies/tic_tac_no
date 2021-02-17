@@ -17,15 +17,15 @@
     "player_no_name": "Bez imena"
   },
   "menu": {
-    "online_multiplayer": "ONLINE MULTIPLAYER",
+    "online_multiplayer": "VIŠE IGRAČA ONLINE",
     "coming_soon": "Uskoro!",
     "how_to_play": "Kako igrati",
     "easy": "LAGANO",
     "medium": "SREDNJE",
     "hard": "TEŠKO",
-    "single_player_setup": "SINGLE PLAYER SETUP",
-    "local_multiplayer_setup": "LOCAL MULTIPLAYER SETUP",
-    "online_multiplayer_setup": "ONLINE MULTIPLAYER SETUP",
+    "single_player_setup": "POSTAVKE ZA JEDNOG IGRAČA",
+    "local_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA",
+    "online_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA ONLINE",
     "searching_for_game": "Tražim igru...",
     "you": "TI",
     "player_1": "IGRAČ 1",
@@ -35,8 +35,8 @@
     "tic": "TIC",
     "tac": "TAC",
     "no": "NO",
-    "local_multiplayer": "LOCAL MULTIPLAYER",
-    "single_player": "SINGLE PLAYER",
+    "local_multiplayer": "VIŠE IGRAČA",
+    "single_player": "JEDAN IGRAČ",
     "change_language": "Jezik"
   },
   "rules": {
