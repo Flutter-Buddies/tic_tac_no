@@ -134,14 +134,14 @@ static const Map<String,dynamic> af = {
     "win": "Wen!",
     "wins": "wen!",
     "won": "het gewen!",
-    "nobody_wins": "Niemand wen nie 😲",
+    "nobody_wins": "Geen wenner😲",
     "thinking": "Besig...",
     "player_no_name": "Geen naam"
   },
   "menu": {
     "online_multiplayer": "AANLYN OPPONENT",
     "coming_soon": "Binnekort!",
-    "how_to_play": "Hoe om te speel",
+    "how_to_play": "Spel hulp",
     "easy": "MAKLIK",
     "medium": "MEDIUM",
     "hard": "MOEILIK",
