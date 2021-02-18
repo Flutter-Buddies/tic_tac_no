@@ -35,7 +35,7 @@ If an issue doesn't have an assignee, the position is open for anyone who wants 
 
 ## Branches
 
-We will try to work by the [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) branching model to keep ourselfs organized and with as little conflicts as possible. If you want to know more about this, read the link, but it is not necessary. Everything will be explained well enough here.
+We will try to work (**but are not currently**) by the [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) branching model to keep ourselfs organized and with as little conflicts as possible. If you want to know more about this, read the link, but it is not necessary. Everything will be explained well enough here.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Flutter-Buddies/tic_tac_no/master/doc/assets/gitflow.png" alt="gitflow" width="420" style="margin-right:16px;margin-bottom:16px"> 
