@@ -48,9 +48,6 @@ class CodegenLoader extends AssetLoader{
     "player_2": "PLAYER 2",
     "ai": "AI",
     "start_game": "START GAME",
-    "tic": "TIC",
-    "tac": "TAC",
-    "no": "NO",
     "local_multiplayer": "LOCAL MULTIPLAYER",
     "single_player": "SINGLE PLAYER",
     "change_language": "Language"
@@ -101,9 +98,6 @@ static const Map<String,dynamic> es = {
     "player_2": "JUGADOR 2",
     "ai": "AI",
     "start_game": "INICIAR EL JUEGO",
-    "tic": "TIC",
-    "tac": "TAC",
-    "no": "NO",
     "local_multiplayer": "MULTIJUGADOR LOCAL",
     "single_player": "UN JUGADOR",
     "change_language": "Idioma"
@@ -154,9 +148,6 @@ static const Map<String,dynamic> af = {
     "player_2": "SPELER 2",
     "ai": "KI",
     "start_game": "BEGIN SPEL",
-    "tic": "TIC",
-    "tac": "TAC",
-    "no": "NO",
     "local_multiplayer": "LOKALE OPPONENT",
     "single_player": "ENKELE SPELER",
     "change_language": "Taal"
@@ -207,9 +198,6 @@ static const Map<String,dynamic> ar = {
     "player_2": "لاعب 2",
     "ai": "الكمبيوتر",
     "start_game": "بدء اللعبة",
-    "tic": "تيك",
-    "tac": "تاك",
-    "no": "نو",
     "local_multiplayer": "العب مع صديقك",
     "single_player": "لاعب واحد",
     "change_language": "تغيير اللغة"
@@ -260,9 +248,6 @@ static const Map<String,dynamic> hr = {
     "player_2": "IGRAČ 2",
     "ai": "UI",
     "start_game": "POČNI IGRU",
-    "tic": "TIC",
-    "tac": "TAC",
-    "no": "NO",
     "local_multiplayer": "VIŠE IGRAČA",
     "single_player": "JEDAN IGRAČ",
     "change_language": "Jezik"
@@ -307,7 +292,6 @@ static const Map<String,dynamic> pl = {
     "local_multiplayer": "LOKALNY MULTIPLAYER",
     "local_multiplayer_setup": "USTAWIENIA LOKALNEGO MULTIPLAYERA",
     "medium": "ŚREDNI",
-    "no": "NO",
     "online_multiplayer": "MULTIPLAYER ONLINE",
     "online_multiplayer_setup": "USTAWIENIA MULTIPLAYERA ONLINE",
     "player_1": "GRACZ 1",
@@ -316,8 +300,6 @@ static const Map<String,dynamic> pl = {
     "single_player": "JEDEN GRACZ",
     "single_player_setup": "USTAWIENIA JEDNEGO GRACZA",
     "start_game": "ROZPOCZNIJ GRĘ",
-    "tac": "TAC",
-    "tic": "TIC",
     "you": "TY"
   },
   "rules": {

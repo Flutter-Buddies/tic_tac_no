@@ -32,9 +32,6 @@
     "player_2": "PLAYER 2",
     "ai": "AI",
     "start_game": "START GAME",
-    "tic": "TIC",
-    "tac": "TAC",
-    "no": "NO",
     "local_multiplayer": "LOCAL MULTIPLAYER",
     "single_player": "SINGLE PLAYER",
     "change_language": "Language"

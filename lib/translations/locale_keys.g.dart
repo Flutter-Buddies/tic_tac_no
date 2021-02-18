@@ -31,9 +31,6 @@ abstract class  LocaleKeys {
   static const menu_player_2 = 'menu.player_2';
   static const menu_ai = 'menu.ai';
   static const menu_start_game = 'menu.start_game';
-  static const menu_tic = 'menu.tic';
-  static const menu_tac = 'menu.tac';
-  static const menu_no = 'menu.no';
   static const menu_local_multiplayer = 'menu.local_multiplayer';
   static const menu_single_player = 'menu.single_player';
   static const menu_change_language = 'menu.change_language';
