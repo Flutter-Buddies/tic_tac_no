@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-This document will briefly describe basic guidelines for contributors. All project communication shall be done at [issues](https://github.com/Flutter-Buddies/tic_tac_no/issues) or FlutterBuddies Discord  [server](https://discord.gg/X3pfRES6). Everything in this text that you find confusing or have any objections, can and should be discussed at issues or Discord.
+This document will briefly describe basic guidelines for contributors. All project communication shall be done at [issues](https://github.com/Flutter-Buddies/tic_tac_no/issues) or FlutterBuddies Discord  [server](http://flutterbuddies.com/). Everything in this text that you find confusing or have any objections, can and should be discussed at issues or Discord.
 
 The upcoming titles sort of describe the order of things you want to explore before contributing.
 
