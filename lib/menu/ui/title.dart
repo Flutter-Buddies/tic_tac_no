@@ -11,7 +11,7 @@ class TitleWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          LocaleKeys.menu_tic.tr(),
+          'TIC',
           style: Utils.currentLocale(context) == Locale('ar')
               ? GoogleFonts.cairo(
                   textStyle: Theme.of(context).textTheme.headline1,
@@ -21,7 +21,7 @@ class TitleWidget extends StatelessWidget {
                 ),
         ),
         Text(
-          LocaleKeys.menu_tac.tr(),
+          'TAC',
           style: Utils.currentLocale(context) == Locale('ar')
               ? GoogleFonts.cairo(
                   textStyle: Theme.of(context).textTheme.headline1,
@@ -31,7 +31,7 @@ class TitleWidget extends StatelessWidget {
                 ),
         ),
         Text(
-          LocaleKeys.menu_no.tr(),
+          'NO',
           style: Utils.currentLocale(context) == Locale('ar')
               ? GoogleFonts.cairo(
                   textStyle: Theme.of(context).textTheme.headline1,

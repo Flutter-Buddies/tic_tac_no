@@ -32,9 +32,6 @@
     "player_2": "SPELER 2",
     "ai": "KI",
     "start_game": "BEGIN SPEL",
-    "tic": "TIC",
-    "tac": "TAC",
-    "no": "NO",
     "local_multiplayer": "LOKALE OPPONENT",
     "single_player": "ENKELE SPELER",
     "change_language": "Taal"
