@@ -14,7 +14,113 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> af = {
+  static const Map<String,dynamic> en = {
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "Are you sure you'd like to quit?",
+    "all_progress_lost": "All progress will be lost",
+    "quit_game": "QUIT GAME",
+    "return_to_game": "RETURN TO GAME",
+    "quit_to_menu": "QUIT TO MENU",
+    "play_again": "PLAY AGAIN",
+    "win": "win!",
+    "wins": "wins!",
+    "won": "won!",
+    "nobody_wins": "Nobody wins 😲",
+    "thinking": "Thinking...",
+    "player_no_name": "No name"
+  },
+  "menu": {
+    "online_multiplayer": "ONLINE MULTIPLAYER",
+    "coming_soon": "Coming Soon!",
+    "how_to_play": "How to play",
+    "easy": "EASY",
+    "medium": "MEDIUM",
+    "hard": "HARD",
+    "single_player_setup": "SINGLE PLAYER SETUP",
+    "local_multiplayer_setup": "LOCAL MULTIPLAYER SETUP",
+    "online_multiplayer_setup": "ONLINE MULTIPLAYER SETUP",
+    "searching_for_game": "Searching for game...",
+    "you": "YOU",
+    "player_1": "PLAYER 1",
+    "player_2": "PLAYER 2",
+    "ai": "AI",
+    "start_game": "START GAME",
+    "tic": "TIC",
+    "tac": "TAC",
+    "no": "NO",
+    "local_multiplayer": "LOCAL MULTIPLAYER",
+    "single_player": "SINGLE PLAYER",
+    "change_language": "Language"
+  },
+  "rules": {
+    "rules": "Rules",
+    "previous": "Previous",
+    "next": "Next",
+    "start": "Start",
+    "good_luck": "Good luck!",
+    "tic_must_win": "You’re faced with a tic-tac-toe board you must win.",
+    "there_is_catch": "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
+    "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
+    "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent must play."
+  }
+};
+static const Map<String,dynamic> es = {
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "¿Estás segura de que te gustarías salir del juego?",
+    "all_progress_lost": "Todo tu progreso será perdido",
+    "quit_game": "SALIR DEL JUEGO",
+    "return_to_game": "VOLVER AL JUEGO",
+    "quit_to_menu": "SALIR AL MENÚ",
+    "play_again": "JUGAR DE NUEVO",
+    "win": "ganas!",
+    "wins": "gana!",
+    "won": "ganó!",
+    "nobody_wins": "Nadie gana 😲",
+    "thinking": "Pensando...",
+    "player_no_name": "No nombre"
+  },
+  "menu": {
+    "online_multiplayer": "MULTIJUGADOR EN LINÉA",
+    "coming_soon": "¡Próximamente!",
+    "how_to_play": "Cómo jugar",
+    "easy": "FÁCIL",
+    "medium": "MEDIO",
+    "hard": "DIFÍCIL",
+    "single_player_setup": "CONFIGURACIÓN PARA UN JUGADOR",
+    "local_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR LOCAL",
+    "online_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR EN LINÉA",
+    "searching_for_game": "Buscando por un juego...",
+    "you": "Tú",
+    "player_1": "JUGADOR 1",
+    "player_2": "JUGADOR 2",
+    "ai": "AI",
+    "start_game": "INICIAR EL JUEGO",
+    "tic": "TIC",
+    "tac": "TAC",
+    "no": "NO",
+    "local_multiplayer": "MULTIJUGADOR LOCAL",
+    "single_player": "UN JUGADOR",
+    "change_language": "Idioma"
+  },
+  "rules": {
+    "rules": "Reglas",
+    "previous": "Previa",
+    "next": "Próxima",
+    "start": "Empezar",
+    "good_luck": "¡Buena suerte!",
+    "tic_must_win": "Te enfrentas a una cuadrícula de tic-tac-toe que tienes que ganar.",
+    "there_is_catch": "Pero hay un truco... ¡cada cuadrícula es parte de una cuadrícula de tic-tac-toe más grande!",
+    "win_inner_grid": "Tienes que ganar la cuadrícula interior para reclamar la posición en la cuadrícula principal. Al reclamarlo, nadie más podrá reclamarlo de nuevo.",
+    "one_more_thing": "¿Fácil? Hay una cosa más... tu movimiento dentro de la cuadrícula interna determina la cuadrícula interna en la cual tu oponente tiene que jugar."
+  }
+};
+static const Map<String,dynamic> af = {
   "global": {
     "app_name": "Tic-Tac-No"
   },
@@ -139,15 +245,15 @@ static const Map<String,dynamic> hr = {
     "player_no_name": "Bez imena"
   },
   "menu": {
-    "online_multiplayer": "ONLINE MULTIPLAYER",
+    "online_multiplayer": "VIŠE IGRAČA ONLINE",
     "coming_soon": "Uskoro!",
     "how_to_play": "Kako igrati",
     "easy": "LAGANO",
     "medium": "SREDNJE",
     "hard": "TEŠKO",
-    "single_player_setup": "SINGLE PLAYER SETUP",
-    "local_multiplayer_setup": "LOCAL MULTIPLAYER SETUP",
-    "online_multiplayer_setup": "ONLINE MULTIPLAYER SETUP",
+    "single_player_setup": "POSTAVKE ZA JEDNOG IGRAČA",
+    "local_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA",
+    "online_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA ONLINE",
     "searching_for_game": "Tražim igru...",
     "you": "TI",
     "player_1": "IGRAČ 1",
@@ -157,8 +263,8 @@ static const Map<String,dynamic> hr = {
     "tic": "TIC",
     "tac": "TAC",
     "no": "NO",
-    "local_multiplayer": "LOCAL MULTIPLAYER",
-    "single_player": "SINGLE PLAYER",
+    "local_multiplayer": "VIŠE IGRAČA",
+    "single_player": "JEDAN IGRAČ",
     "change_language": "Jezik"
   },
   "rules": {
@@ -173,111 +279,58 @@ static const Map<String,dynamic> hr = {
     "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
   }
 };
-static const Map<String,dynamic> en = {
+static const Map<String,dynamic> pl = {
+  "game": {
+    "all_progress_lost": "Cały postęp będzie stracony",
+    "are_you_sure_quit": "Czy na pewno chcesz wyjść?",
+    "nobody_wins": "Nikt nie wygrał 😲",
+    "play_again": "ZAGRAJ PONOWNIE",
+    "player_no_name": "Bez imienia",
+    "quit_game": "ZAKOŃCZ GRĘ",
+    "quit_to_menu": "WYJDŹ DO MENU",
+    "return_to_game": "WRÓĆ DO GRY",
+    "thinking": "Myślę...",
+    "win": "wygrywasz!",
+    "wins": "wygrywa!",
+    "won": "wygrywasz!"
+  },
   "global": {
     "app_name": "Tic-Tac-No"
   },
-  "game": {
-    "are_you_sure_quit": "Are you sure you'd like to quit?",
-    "all_progress_lost": "All progress will be lost",
-    "quit_game": "QUIT GAME",
-    "return_to_game": "RETURN TO GAME",
-    "quit_to_menu": "QUIT TO MENU",
-    "play_again": "PLAY AGAIN",
-    "win": "win!",
-    "wins": "wins!",
-    "won": "won!",
-    "nobody_wins": "Nobody wins 😲",
-    "thinking": "Thinking...",
-    "player_no_name": "No name"
-  },
   "menu": {
-    "online_multiplayer": "ONLINE MULTIPLAYER",
-    "coming_soon": "Coming Soon!",
-    "how_to_play": "How to play",
-    "easy": "EASY",
-    "medium": "MEDIUM",
-    "hard": "HARD",
-    "single_player_setup": "SINGLE PLAYER SETUP",
-    "local_multiplayer_setup": "LOCAL MULTIPLAYER SETUP",
-    "online_multiplayer_setup": "ONLINE MULTIPLAYER SETUP",
-    "searching_for_game": "Searching for game...",
-    "you": "YOU",
-    "player_1": "PLAYER 1",
-    "player_2": "PLAYER 2",
-    "ai": "AI",
-    "start_game": "START GAME",
-    "tic": "TIC",
-    "tac": "TAC",
+    "ai": "SI",
+    "change_language": "Język",
+    "coming_soon": "Wkrótce!",
+    "easy": "ŁATWY",
+    "hard": "TRUDNY",
+    "how_to_play": "Jak grać",
+    "local_multiplayer": "LOKALNY MULTIPLAYER",
+    "local_multiplayer_setup": "USTAWIENIA LOKALNEGO MULTIPLAYERA",
+    "medium": "ŚREDNI",
     "no": "NO",
-    "local_multiplayer": "LOCAL MULTIPLAYER",
-    "single_player": "SINGLE PLAYER",
-    "change_language": "Language"
+    "online_multiplayer": "MULTIPLAYER ONLINE",
+    "online_multiplayer_setup": "USTAWIENIA MULTIPLAYERA ONLINE",
+    "player_1": "GRACZ 1",
+    "player_2": "GRACZ 2",
+    "searching_for_game": "Szukanie gry...",
+    "single_player": "JEDEN GRACZ",
+    "single_player_setup": "USTAWIENIA JEDNEGO GRACZA",
+    "start_game": "ROZPOCZNIJ GRĘ",
+    "tac": "TAC",
+    "tic": "TIC",
+    "you": "TY"
   },
   "rules": {
-    "rules": "Rules",
-    "previous": "Previous",
-    "next": "Next",
+    "good_luck": "Powodzenia!",
+    "next": "Następny",
+    "one_more_thing": "Łatwe? Jeszcze jedno... wybrane pole na wewnętrznej planszy determinuje planszę następnego ruchu dla twojego przeciwnika.",
+    "previous": "Poprzedni",
+    "rules": "Zasady",
     "start": "Start",
-    "good_luck": "Good luck!",
-    "tic_must_win": "You’re faced with a tic-tac-toe board you must win.",
-    "there_is_catch": "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
-    "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
-    "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent must play."
+    "there_is_catch": "Ale jest haczyk... każda plansza jest częścią większej planszy Kółko i Krzyżyk!",
+    "tic_must_win": "Trafiasz na planszę Kółko i Krzyżyk którą musisz wygrać!",
+    "win_inner_grid": "Musisz wygrać na wewnętrznej planszy aby przejąć ją na głównej planszy. Nikt ci nie odbierze przejętej planszy."
   }
 };
-static const Map<String,dynamic> es = {
-  "global": {
-    "app_name": "Tic-Tac-No"
-  },
-  "game": {
-    "are_you_sure_quit": "¿Estás segura de que te gustarías salir del juego?",
-    "all_progress_lost": "Todo tu progreso será perdido",
-    "quit_game": "SALIR DEL JUEGO",
-    "return_to_game": "VOLVER AL JUEGO",
-    "quit_to_menu": "SALIR AL MENÚ",
-    "play_again": "JUGAR DE NUEVO",
-    "win": "ganas!",
-    "wins": "gana!",
-    "won": "ganó!",
-    "nobody_wins": "Nadie gana 😲",
-    "thinking": "Pensando...",
-    "player_no_name": "No nombre"
-  },
-  "menu": {
-    "online_multiplayer": "MULTIJUGADOR EN LINÉA",
-    "coming_soon": "¡Próximamente!",
-    "how_to_play": "Cómo jugar",
-    "easy": "FÁCIL",
-    "medium": "MEDIO",
-    "hard": "DIFÍCIL",
-    "single_player_setup": "CONFIGURACIÓN PARA UN JUGADOR",
-    "local_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR LOCAL",
-    "online_multiplayer_setup": "CONFIGURACIÓN PARA MULTIJUGADOR EN LINÉA",
-    "searching_for_game": "Buscando por un juego...",
-    "you": "Tú",
-    "player_1": "JUGADOR 1",
-    "player_2": "JUGADOR 2",
-    "ai": "AI",
-    "start_game": "INICIAR EL JUEGO",
-    "tic": "TIC",
-    "tac": "TAC",
-    "no": "NO",
-    "local_multiplayer": "MULTIJUGADOR LOCAL",
-    "single_player": "UN JUGADOR",
-    "change_language": "Idioma"
-  },
-  "rules": {
-    "rules": "Reglas",
-    "previous": "Previa",
-    "next": "Próxima",
-    "start": "Empezar",
-    "good_luck": "¡Buena suerte!",
-    "tic_must_win": "Te enfrentas a una cuadrícula de tic-tac-toe que tienes que ganar.",
-    "there_is_catch": "Pero hay un truco... ¡cada cuadrícula es parte de una cuadrícula de tic-tac-toe más grande!",
-    "win_inner_grid": "Tienes que ganar la cuadrícula interior para reclamar la posición en la cuadrícula principal. Al reclamarlo, nadie más podrá reclamarlo de nuevo.",
-    "one_more_thing": "¿Fácil? Hay una cosa más... tu movimiento dentro de la cuadrícula interna determina la cuadrícula interna en la cual tu oponente tiene que jugar."
-  }
-};
-static const Map<String, Map<String,dynamic>> mapLocales = {"af": af, "ar": ar, "hr": hr, "en": en, "es": es};
+static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "es": es, "af": af, "ar": ar, "hr": hr, "pl": pl};
 }

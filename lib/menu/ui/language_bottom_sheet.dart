@@ -73,6 +73,12 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                       showCheck: Utils.currentLocale(context) == Locale('es'),
                       locale: SupportedLocale.es,
                     ),
+                    LanguageListTile(
+                      languageEmoji: '🇵🇱',
+                      languageName: 'Polski',
+                      showCheck: Utils.currentLocale(context) == Locale('pl'),
+                      locale: SupportedLocale.pl,
+                    ),
                   ],
                 ),
               ),
