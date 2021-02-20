@@ -4,12 +4,7 @@ import 'package:tic_tac_no/utils/utils.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class LanguageBottomSheet extends StatefulWidget {
-  @override
-  _LanguageBottomSheetState createState() => _LanguageBottomSheetState();
-}
-
-class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
+class LanguageBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -132,7 +127,6 @@ class LanguageListTile extends StatelessWidget {
           : null,
       onTap: () {
         Utils.changeLocale(context, locale);
-        Navigator.pop(context);
       },
     );
   }
