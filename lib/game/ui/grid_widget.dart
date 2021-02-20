@@ -3,9 +3,9 @@ import 'package:tic_tac_no/game/data/models/grid.dart';
 import 'package:tic_tac_no/game/ui/inner_grid_widget.dart';
 
 class GridWidget extends StatelessWidget {
-  final Grid grid;
+  const GridWidget({@required this.grid});
 
-  GridWidget({@required this.grid});
+  final Grid grid;
 
   @override
   Widget build(BuildContext context) {

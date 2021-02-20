@@ -4,14 +4,7 @@ import 'package:flutter/material.dart';
 enum PlayerType { me, ai, friend, onlineFriend }
 
 class Player extends Equatable {
-  final int id;
-  final String name;
-  final Color color;
-  final CustomPainter symbol;
-  final PlayerType type;
-  final int aiStrength;
-
-  Player({
+  const Player({
     this.id,
     this.name: 'No name',
     @required this.color,
@@ -19,6 +12,13 @@ class Player extends Equatable {
     @required this.type,
     this.aiStrength,
   });
+
+  final int id;
+  final String name;
+  final Color color;
+  final CustomPainter symbol;
+  final PlayerType type;
+  final int aiStrength;
 
   @override
   List<Object> get props => [id, name, color, symbol, type, aiStrength];

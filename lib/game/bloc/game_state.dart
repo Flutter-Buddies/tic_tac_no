@@ -10,12 +10,6 @@ class AIThinking extends GameState {}
 class JudgeThinking extends GameState {}
 
 class Ready extends GameState {
-  final Grid grid;
-  final List<Player> players;
-  final Player currentPlayer;
-  final Map<int, int> score;
-  final Player winner;
-
   Ready({
     @required this.grid,
     @required this.players,
@@ -23,10 +17,16 @@ class Ready extends GameState {
     @required this.score,
     @required this.winner,
   });
+
+  final Grid grid;
+  final List<Player> players;
+  final Player currentPlayer;
+  final Map<int, int> score;
+  final Player winner;
 }
 
 class GameOver extends GameState {
-  final Player winner;
-
   GameOver({this.winner});
+
+  final Player winner;
 }

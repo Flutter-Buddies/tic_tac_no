@@ -41,7 +41,7 @@ class GameScreenState extends State<GameScreen> {
     super.dispose();
   }
 
-  Future<bool> backFunction() async {
+  Future<void> _backFunction() async {
     showModalBottomSheet(
       context: context,
       builder: (context) => Container(
@@ -57,11 +57,11 @@ class GameScreenState extends State<GameScreen> {
               LocaleKeys.game_are_you_sure_quit.tr(),
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 4,
             ),
             Text(LocaleKeys.game_all_progress_lost.tr()),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -147,7 +147,7 @@ class GameScreenState extends State<GameScreen> {
         }
       },
       child: WillPopScope(
-        onWillPop: () => backFunction(),
+        onWillPop: () => _backFunction(),
         child: SafeArea(
           top: false,
           child: Scaffold(
@@ -170,7 +170,7 @@ class GameScreenState extends State<GameScreen> {
                       //* Player info section
                       // Wrapping with expanded because this is the section that will resize based on screen size
                       // and we want to to scale vertically
-                      SizedBox(
+                      const SizedBox(
                         height: 8.0,
                       ),
                       Expanded(
@@ -251,7 +251,7 @@ class GameScreenState extends State<GameScreen> {
                       SizedBox(
                         height: 30,
                         child: IconButton(
-                          onPressed: () => backFunction(),
+                          onPressed: () => _backFunction(),
                           icon: Icon(
                             Icons.arrow_back,
                             size: 30,

@@ -6,9 +6,11 @@ import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class PlayerColumn extends StatelessWidget {
+  const PlayerColumn({this.player, this.isPlayerTurn});
+
   final Player player;
   final bool isPlayerTurn;
-  PlayerColumn({this.player, this.isPlayerTurn});
+
   @override
   Widget build(BuildContext context) {
     // Opacity to handle the overall player info opacity depending on if it's their turn

@@ -11,7 +11,7 @@ import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class GameStartModal extends StatefulWidget {
-  GameStartModal({this.gameType});
+  const GameStartModal({this.gameType});
   final GameType gameType;
   @override
   _GameStartModalState createState() => _GameStartModalState();
@@ -124,7 +124,7 @@ class _GameStartModalState extends State<GameStartModal> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: SizedBox(
+                  child: const SizedBox(
                     child: CircularProgressIndicator(),
                     width: 70,
                     height: 70,
@@ -156,7 +156,7 @@ class _GameStartModalState extends State<GameStartModal> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
@@ -301,7 +301,7 @@ class _GameStartModalState extends State<GameStartModal> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8.0,
                 ),
                 PrimaryButton(

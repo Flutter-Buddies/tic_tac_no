@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
-  PrimaryButton(
+  const PrimaryButton(
       {this.buttonIcon,
       this.buttonText,
       this.buttonPress,

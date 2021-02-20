@@ -88,7 +88,7 @@ class _RulesScreenState extends State<RulesScreen> {
                   ),
               ],
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
           ],
         ),
       ),

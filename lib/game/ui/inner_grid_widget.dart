@@ -5,11 +5,11 @@ import 'package:tic_tac_no/game/ui/square_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InnerGridWidget extends StatefulWidget {
-  final InnerGrid innerGrid;
-
-  InnerGridWidget({
+  const InnerGridWidget({
     @required this.innerGrid,
   });
+
+  final InnerGrid innerGrid;
 
   @override
   _InnerGridWidgetState createState() => _InnerGridWidgetState();

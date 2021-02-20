@@ -15,18 +15,18 @@ part 'game_event.dart';
 part 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  List<Player> _players;
-  Grid _grid;
-
-  Judge _judge;
-  AI _ai;
-
   GameBloc() : super(Loading()) {
     this._grid = Grid();
     this._judge = Judge(
       grid: this._grid,
     );
   }
+
+  List<Player> _players;
+  Grid _grid;
+
+  Judge _judge;
+  AI _ai;
 
   Grid getGrid() {
     return this._judge.getGrid();

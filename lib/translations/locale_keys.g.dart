@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const global_app_name = 'global.app_name';
   static const global = 'global';
   static const game_are_you_sure_quit = 'game.are_you_sure_quit';
@@ -45,5 +45,4 @@ abstract class  LocaleKeys {
   static const rules_win_inner_grid = 'rules.win_inner_grid';
   static const rules_one_more_thing = 'rules.one_more_thing';
   static const rules = 'rules';
-
 }
