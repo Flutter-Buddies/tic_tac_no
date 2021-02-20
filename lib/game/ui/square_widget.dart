@@ -33,8 +33,8 @@ class SquareWidget extends StatelessWidget {
           child: Center(
             child: this.square.player != null
                 ? Container(
-                    width: 30,
-                    height: 30,
+                    width: 26,
+                    height: 26,
                     child: CustomPaint(
                       painter: this.square.player.symbol,
                     ),

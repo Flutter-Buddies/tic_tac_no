@@ -70,22 +70,32 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
             color: _decideBackgroundColor(),
           ),
           curve: Curves.easeIn,
-          child: Table(
-            border: TableBorder(
-              top: _buildBorderSide(context),
-              bottom: _buildBorderSide(context),
-              left: _buildBorderSide(context),
-              right: _buildBorderSide(context),
-            ),
+          child: Stack(
             children: [
-              TableRow(
-                children: _buildSquareWidgets(0),
-              ),
-              TableRow(
-                children: _buildSquareWidgets(1),
-              ),
-              TableRow(
-                children: _buildSquareWidgets(2),
+              if (widget.innerGrid.isPlayable)
+                Positioned.fill(
+                  child: Container(
+                    color: Colors.white.withOpacity(0.2),
+                  ),
+                ),
+              Table(
+                border: TableBorder(
+                  top: _buildBorderSide(context),
+                  bottom: _buildBorderSide(context),
+                  left: _buildBorderSide(context),
+                  right: _buildBorderSide(context),
+                ),
+                children: [
+                  TableRow(
+                    children: _buildSquareWidgets(0),
+                  ),
+                  TableRow(
+                    children: _buildSquareWidgets(1),
+                  ),
+                  TableRow(
+                    children: _buildSquareWidgets(2),
+                  ),
+                ],
               ),
             ],
           ),
@@ -136,7 +146,7 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
       color: this.widget.innerGrid.isPlayable
           ? context.watch<GameBloc>().getCurrentPlayer().color
           : _isNotPlayableColor,
-      width: this.widget.innerGrid.isPlayable ? 3.0 : 1.0,
+      width: this.widget.innerGrid.isPlayable ? 4.0 : 1.0,
     );
   }
 
