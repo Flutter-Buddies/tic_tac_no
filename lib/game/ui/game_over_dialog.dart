@@ -7,8 +7,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:tic_tac_no/utils/utils.dart';
 
 class GameOverDialog extends StatelessWidget {
+  const GameOverDialog({@required this.winner});
+
   final Player winner;
-  GameOverDialog({@required this.winner});
 
   String _getWinnerString(BuildContext context) {
     if (Utils.isLocaleConjugationRequired(context) &&
@@ -44,7 +45,7 @@ class GameOverDialog extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 24.0,
         ),
         Row(
@@ -73,7 +74,7 @@ class GameOverDialog extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 16.0,
             ),
             Expanded(

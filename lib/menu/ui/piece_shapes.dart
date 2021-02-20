@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CrossPainter extends CustomPainter {
-  CrossPainter({this.drawingColor});
+  const CrossPainter({this.drawingColor});
   final Color drawingColor;
   @override
   void paint(Canvas canvas, Size size) {

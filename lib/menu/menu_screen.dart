@@ -176,7 +176,7 @@ class MenuScreen extends StatelessWidget {
                             color: Colors.white,
                             size: 14,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 2,
                           ),
                           Text(
@@ -202,7 +202,7 @@ class MenuScreen extends StatelessWidget {
                             color: Colors.white,
                             size: 14,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 2,
                           ),
                           Text(

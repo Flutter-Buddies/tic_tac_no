@@ -4,21 +4,21 @@ part of 'game_bloc.dart';
 abstract class GameEvent {}
 
 class SetPlayers extends GameEvent {
-  final Player player1;
-  final Player player2;
-
   SetPlayers({
     @required this.player1,
     @required this.player2,
   });
+
+  final Player player1;
+  final Player player2;
 }
 
 class LoadGame extends GameEvent {}
 
 class SquareTapped extends GameEvent {
-  final Square square;
-
   SquareTapped({this.square});
+
+  final Square square;
 }
 
 class AIMove extends GameEvent {}

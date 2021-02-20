@@ -5,9 +5,9 @@ import 'package:tic_tac_no/game/data/models/square.dart';
 
 // TODO override operator==
 class SquareWidget extends StatelessWidget {
-  final Square square;
+  const SquareWidget({this.square});
 
-  SquareWidget({this.square});
+  final Square square;
 
   @override
   Widget build(BuildContext context) {

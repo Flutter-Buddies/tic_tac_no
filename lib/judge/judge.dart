@@ -6,13 +6,6 @@ import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
 
 class Judge {
-  List<Player> players;
-  Grid _grid;
-  Player _currentPlayer;
-  Map<int, int> _score;
-  Player _winner;
-  bool _isGameOver = false;
-
   Judge({
     this.players,
     @required grid,
@@ -26,6 +19,13 @@ class Judge {
       };
     }
   }
+
+  List<Player> players;
+  Grid _grid;
+  Player _currentPlayer;
+  Map<int, int> _score;
+  Player _winner;
+  bool _isGameOver = false;
 
   Grid getGrid() => this._grid;
   Player getCurrentPlayer() => this._currentPlayer;

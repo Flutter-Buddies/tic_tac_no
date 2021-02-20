@@ -4,12 +4,12 @@ import 'package:tic_tac_no/ai/ai.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
 
 class HumanAI extends AI {
-  Player _opponent;
-
   HumanAI(Player player, Player opponent) {
     this.player = player;
     this._opponent = opponent;
   }
+
+  Player _opponent;
 
   Square makeMove(Grid grid) {
     InnerGrid playableInnerGrid = this.getPlayableInnerGrid(grid);

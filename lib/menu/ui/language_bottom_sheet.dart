@@ -91,11 +91,6 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
 }
 
 class LanguageListTile extends StatelessWidget {
-  final String languageEmoji;
-  final String languageName;
-  final bool showCheck;
-  final SupportedLocale locale;
-
   const LanguageListTile({
     Key key,
     @required this.languageEmoji,
@@ -103,6 +98,11 @@ class LanguageListTile extends StatelessWidget {
     @required this.showCheck,
     @required this.locale,
   }) : super(key: key);
+
+  final String languageEmoji;
+  final String languageName;
+  final bool showCheck;
+  final SupportedLocale locale;
 
   @override
   Widget build(BuildContext context) {
