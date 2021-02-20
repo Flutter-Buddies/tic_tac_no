@@ -14,57 +14,7 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> pl = {
-  "game": {
-    "all_progress_lost": "Cały postęp będzie stracony",
-    "are_you_sure_quit": "Czy na pewno chcesz wyjść?",
-    "nobody_wins": "Nikt nie wygrał 😲",
-    "play_again": "ZAGRAJ PONOWNIE",
-    "player_no_name": "Bez imienia",
-    "quit_game": "ZAKOŃCZ GRĘ",
-    "quit_to_menu": "WYJDŹ DO MENU",
-    "return_to_game": "WRÓĆ DO GRY",
-    "thinking": "Myślę...",
-    "win": "wygrywasz!",
-    "wins": "wygrywa!",
-    "won": "wygrywa!"
-  },
-  "global": {
-    "app_name": "Tic-Tac-No"
-  },
-  "menu": {
-    "ai": "SI",
-    "change_language": "Język",
-    "coming_soon": "Wkrótce!",
-    "easy": "ŁATWY",
-    "hard": "TRUDNY",
-    "how_to_play": "Jak grać",
-    "local_multiplayer": "LOKALNY MULTIPLAYER",
-    "local_multiplayer_setup": "USTAWIENIA LOKALNEGO MULTIPLAYERA",
-    "medium": "ŚREDNI",
-    "online_multiplayer": "MULTIPLAYER ONLINE",
-    "online_multiplayer_setup": "USTAWIENIA MULTIPLAYERA ONLINE",
-    "player_1": "GRACZ 1",
-    "player_2": "GRACZ 2",
-    "searching_for_game": "Szukanie gry...",
-    "single_player": "JEDEN GRACZ",
-    "single_player_setup": "USTAWIENIA JEDNEGO GRACZA",
-    "start_game": "ROZPOCZNIJ GRĘ",
-    "you": "TY"
-  },
-  "rules": {
-    "good_luck": "Powodzenia!",
-    "next": "Następny",
-    "one_more_thing": "Łatwe? Jeszcze jedno... wybrane pole na wewnętrznej planszy determinuje planszę następnego ruchu dla twojego przeciwnika.",
-    "previous": "Poprzedni",
-    "rules": "Zasady",
-    "start": "Start",
-    "there_is_catch": "Ale jest haczyk... każda plansza jest częścią większej planszy Kółko i Krzyżyk!",
-    "tic_must_win": "Trafiasz na planszę Kółko i Krzyżyk którą musisz wygrać!",
-    "win_inner_grid": "Musisz wygrać na wewnętrznej planszy aby przejąć ją na głównej planszy. Nikt ci nie odbierze przejętej planszy."
-  }
-};
-static const Map<String,dynamic> en = {
+  static const Map<String,dynamic> en = {
   "global": {
     "app_name": "Tic-Tac-No"
   },
@@ -112,106 +62,6 @@ static const Map<String,dynamic> en = {
     "there_is_catch": "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
     "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
     "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent must play."
-  }
-};
-static const Map<String,dynamic> hr = {
-  "global": {
-    "app_name": "Tic-Tac-No"
-  },
-  "game": {
-    "are_you_sure_quit": "Jesi li siguran da želiš završiti?",
-    "all_progress_lost": "Sav progres bit će izgubljen",
-    "quit_game": "ZAVRŠI IGRU",
-    "return_to_game": "VRATI SE U IGRU",
-    "quit_to_menu": "IZAĐI U MENI",
-    "play_again": "IGRAJ PONOVO",
-    "win": "pobjeđuješ!",
-    "wins": "pobjeđuje!",
-    "won": "je pobijedio!",
-    "nobody_wins": "Nerješeno 😲",
-    "thinking": "Razmišlja...",
-    "player_no_name": "Bez imena"
-  },
-  "menu": {
-    "online_multiplayer": "VIŠE IGRAČA ONLINE",
-    "coming_soon": "Uskoro!",
-    "how_to_play": "Kako igrati",
-    "easy": "LAGANO",
-    "medium": "SREDNJE",
-    "hard": "TEŠKO",
-    "single_player_setup": "POSTAVKE ZA JEDNOG IGRAČA",
-    "local_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA",
-    "online_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA ONLINE",
-    "searching_for_game": "Tražim igru...",
-    "you": "TI",
-    "player_1": "IGRAČ 1",
-    "player_2": "IGRAČ 2",
-    "ai": "UI",
-    "start_game": "POČNI IGRU",
-    "local_multiplayer": "VIŠE IGRAČA",
-    "single_player": "JEDAN IGRAČ",
-    "change_language": "Jezik"
-  },
-  "rules": {
-    "rules": "Pravila",
-    "previous": "Prethodno",
-    "next": "Sljedeće",
-    "start": "Kreni",
-    "good_luck": "Sretno!",
-    "tic_must_win": "Suočen si s križić-kružić pločom koju moraš pobijediti.",
-    "there_is_catch": "Ali postoji kvaka... svaka ploča je dio velike križić-kružić ploče!",
-    "win_inner_grid": "Moraš pobijediti unutarnje ploče da bi osvojio poziciju na glavnoj ploči. Jednom kad ju osvojiš, nitko ti ju ne može oduzeti.",
-    "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
-  }
-};
-static const Map<String,dynamic> af = {
-  "global": {
-    "app_name": "Tic-Tac-No"
-  },
-  "game": {
-    "are_you_sure_quit": "Is jy seker jy wil die spel verlaat",
-    "all_progress_lost": "Alle vordering gaan verlore wees",
-    "quit_game": "VERLAAT SPEL",
-    "return_to_game": "TERUG NA SPEL",
-    "quit_to_menu": "TERUG NA KEUSELYS",
-    "play_again": "SPEEL WEER",
-    "win": "Wen!",
-    "wins": "wen!",
-    "won": "het gewen!",
-    "nobody_wins": "Geen wenner😲",
-    "thinking": "Besig...",
-    "player_no_name": "Geen naam"
-  },
-  "menu": {
-    "online_multiplayer": "AANLYN OPPONENT",
-    "coming_soon": "Binnekort!",
-    "how_to_play": "Spel hulp",
-    "easy": "MAKLIK",
-    "medium": "MEDIUM",
-    "hard": "MOEILIK",
-    "single_player_setup": "ENKEL SPELER OPSIES",
-    "local_multiplayer_setup": "LOKALE OPPONENT OPSIES",
-    "online_multiplayer_setup": "AANLYN OPPONENT OPSIES",
-    "searching_for_game": "Besig om spel te soek...",
-    "you": "JY",
-    "player_1": "SPELER 1",
-    "player_2": "SPELER 2",
-    "ai": "KI",
-    "start_game": "BEGIN SPEL",
-    "local_multiplayer": "LOKALE OPPONENT",
-    "single_player": "ENKELE SPELER",
-    "change_language": "Taal"
-  },
-  "rules": {
-    "rules": "Reels",
-    "previous": "Vorige",
-    "next": "Volgende",
-    "start": "Begin",
-    "good_luck": "Sterkte!",
-    "tic_must_win": "Jy kry 'n nulletjies-en-kruisies bord wat jy moet web.",
-    "there_is_catch": "Maar die bord is deel van n groter bord",
-    "win_inner_grid": "Om enige plek op die groot bord te kry moet jy die klein bord binne daai posisie wen. Dan bly daai posisie joune.",
-    "one_more_thing": "Maklik genoeg? Daar is een ander oorweging... Jou eerste skuif bepaal die binne bord wat jou oponent mee gaan begin."
   }
 };
 static const Map<String,dynamic> es = {
@@ -264,6 +114,56 @@ static const Map<String,dynamic> es = {
     "one_more_thing": "¿Fácil? Hay una cosa más... tu movimiento dentro de la cuadrícula interna determina la cuadrícula interna en la cual tu oponente tiene que jugar."
   }
 };
+static const Map<String,dynamic> af = {
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "Is jy seker jy wil die spel verlaat",
+    "all_progress_lost": "Alle vordering gaan verlore wees",
+    "quit_game": "VERLAAT SPEL",
+    "return_to_game": "TERUG NA SPEL",
+    "quit_to_menu": "TERUG NA KEUSELYS",
+    "play_again": "SPEEL WEER",
+    "win": "Wen!",
+    "wins": "wen!",
+    "won": "het gewen!",
+    "nobody_wins": "Geen wenner😲",
+    "thinking": "Besig...",
+    "player_no_name": "Geen naam"
+  },
+  "menu": {
+    "online_multiplayer": "AANLYN OPPONENT",
+    "coming_soon": "Binnekort!",
+    "how_to_play": "Spel hulp",
+    "easy": "MAKLIK",
+    "medium": "MEDIUM",
+    "hard": "MOEILIK",
+    "single_player_setup": "ENKEL SPELER OPSIES",
+    "local_multiplayer_setup": "LOKALE OPPONENT OPSIES",
+    "online_multiplayer_setup": "AANLYN OPPONENT OPSIES",
+    "searching_for_game": "Besig om spel te soek...",
+    "you": "JY",
+    "player_1": "SPELER 1",
+    "player_2": "SPELER 2",
+    "ai": "KI",
+    "start_game": "BEGIN SPEL",
+    "local_multiplayer": "LOKALE OPPONENT",
+    "single_player": "ENKELE SPELER",
+    "change_language": "Taal"
+  },
+  "rules": {
+    "rules": "Reels",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "start": "Begin",
+    "good_luck": "Sterkte!",
+    "tic_must_win": "Jy kry 'n nulletjies-en-kruisies bord wat jy moet web.",
+    "there_is_catch": "Maar die bord is deel van n groter bord",
+    "win_inner_grid": "Om enige plek op die groot bord te kry moet jy die klein bord binne daai posisie wen. Dan bly daai posisie joune.",
+    "one_more_thing": "Maklik genoeg? Daar is een ander oorweging... Jou eerste skuif bepaal die binne bord wat jou oponent mee gaan begin."
+  }
+};
 static const Map<String,dynamic> ar = {
   "global": {
     "app_name": "تيك تاك نو"
@@ -314,5 +214,105 @@ static const Map<String,dynamic> ar = {
     "one_more_thing": "سهلة؟ باقي شيء واحد... حركتك في لوح داخلي تحدد وين خصمك يلعب."
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"pl": pl, "en": en, "hr": hr, "af": af, "es": es, "ar": ar};
+static const Map<String,dynamic> hr = {
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "game": {
+    "are_you_sure_quit": "Jesi li siguran da želiš završiti?",
+    "all_progress_lost": "Sav progres bit će izgubljen",
+    "quit_game": "ZAVRŠI IGRU",
+    "return_to_game": "VRATI SE U IGRU",
+    "quit_to_menu": "IZAĐI U MENI",
+    "play_again": "IGRAJ PONOVO",
+    "win": "pobjeđuješ!",
+    "wins": "pobjeđuje!",
+    "won": "je pobijedio!",
+    "nobody_wins": "Nerješeno 😲",
+    "thinking": "Razmišlja...",
+    "player_no_name": "Bez imena"
+  },
+  "menu": {
+    "online_multiplayer": "VIŠE IGRAČA ONLINE",
+    "coming_soon": "Uskoro!",
+    "how_to_play": "Kako igrati",
+    "easy": "LAGANO",
+    "medium": "SREDNJE",
+    "hard": "TEŠKO",
+    "single_player_setup": "POSTAVKE ZA JEDNOG IGRAČA",
+    "local_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA",
+    "online_multiplayer_setup": "POSTAVKE ZA VIŠE IGRAČA ONLINE",
+    "searching_for_game": "Tražim igru...",
+    "you": "TI",
+    "player_1": "IGRAČ 1",
+    "player_2": "IGRAČ 2",
+    "ai": "UI",
+    "start_game": "POČNI IGRU",
+    "local_multiplayer": "VIŠE IGRAČA",
+    "single_player": "JEDAN IGRAČ",
+    "change_language": "Jezik"
+  },
+  "rules": {
+    "rules": "Pravila",
+    "previous": "Prethodno",
+    "next": "Sljedeće",
+    "start": "Kreni",
+    "good_luck": "Sretno!",
+    "tic_must_win": "Suočen si s križić-kružić pločom koju moraš pobijediti.",
+    "there_is_catch": "Ali postoji kvaka... svaka ploča je dio velike križić-kružić ploče!",
+    "win_inner_grid": "Moraš pobijediti unutarnje ploče da bi osvojio poziciju na glavnoj ploči. Jednom kad ju osvojiš, nitko ti ju ne može oduzeti.",
+    "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
+  }
+};
+static const Map<String,dynamic> pl = {
+  "game": {
+    "all_progress_lost": "Cały postęp będzie stracony",
+    "are_you_sure_quit": "Czy na pewno chcesz wyjść?",
+    "nobody_wins": "Nikt nie wygrał 😲",
+    "play_again": "ZAGRAJ PONOWNIE",
+    "player_no_name": "Bez imienia",
+    "quit_game": "ZAKOŃCZ GRĘ",
+    "quit_to_menu": "WYJDŹ DO MENU",
+    "return_to_game": "WRÓĆ DO GRY",
+    "thinking": "Myślę...",
+    "win": "wygrywasz!",
+    "wins": "wygrywa!",
+    "won": "wygrywa!"
+  },
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "menu": {
+    "ai": "SI",
+    "change_language": "Język",
+    "coming_soon": "Wkrótce!",
+    "easy": "ŁATWY",
+    "hard": "TRUDNY",
+    "how_to_play": "Jak grać",
+    "local_multiplayer": "LOKALNY MULTIPLAYER",
+    "local_multiplayer_setup": "USTAWIENIA LOKALNEGO MULTIPLAYERA",
+    "medium": "ŚREDNI",
+    "online_multiplayer": "MULTIPLAYER ONLINE",
+    "online_multiplayer_setup": "USTAWIENIA MULTIPLAYERA ONLINE",
+    "player_1": "GRACZ 1",
+    "player_2": "GRACZ 2",
+    "searching_for_game": "Szukanie gry...",
+    "single_player": "JEDEN GRACZ",
+    "single_player_setup": "USTAWIENIA JEDNEGO GRACZA",
+    "start_game": "ROZPOCZNIJ GRĘ",
+    "you": "TY"
+  },
+  "rules": {
+    "good_luck": "Powodzenia!",
+    "next": "Następny",
+    "one_more_thing": "Łatwe? Jeszcze jedno... wybrane pole na wewnętrznej planszy determinuje planszę następnego ruchu dla twojego przeciwnika.",
+    "previous": "Poprzedni",
+    "rules": "Zasady",
+    "start": "Start",
+    "there_is_catch": "Ale jest haczyk... każda plansza jest częścią większej planszy Kółko i Krzyżyk!",
+    "tic_must_win": "Trafiasz na planszę Kółko i Krzyżyk którą musisz wygrać!",
+    "win_inner_grid": "Musisz wygrać na wewnętrznej planszy aby przejąć ją na głównej planszy. Nikt ci nie odbierze przejętej planszy."
+  }
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "es": es, "af": af, "ar": ar, "hr": hr, "pl": pl};
 }
