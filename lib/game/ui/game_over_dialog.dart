@@ -4,10 +4,20 @@ import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/utils.dart';
 
 class GameOverDialog extends StatelessWidget {
   final Player winner;
   GameOverDialog({@required this.winner});
+
+  String _getWinnerString(BuildContext context) {
+    if (Utils.isLocaleConjugationRequired(context) &&
+        winner.type == PlayerType.me) {
+      return '${winner.name} ${LocaleKeys.game_win.tr()}'.toUpperCase();
+    }
+    return '${winner.name} ${LocaleKeys.game_won.tr()}'.toUpperCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
@@ -16,7 +26,7 @@ class GameOverDialog extends StatelessWidget {
       backgroundColor: Color(0xff012E44),
       title: Center(
         child: winner != null
-            ? Text('${winner.name} ${LocaleKeys.game_won.tr()}'.toUpperCase())
+            ? Text(_getWinnerString(context))
             : Text('${LocaleKeys.game_nobody_wins.tr()}'.toUpperCase()),
       ),
       children: [

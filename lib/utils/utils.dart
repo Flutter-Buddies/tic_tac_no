@@ -21,6 +21,16 @@ class Utils {
     }
   }
 
+  static bool isLocaleConjugationRequired(BuildContext context) {
+    switch (context.locale.languageCode) {
+      case 'pl':
+        return true;
+        break;
+      default:
+        return false;
+    }
+  }
+
   static Locale currentLocale(BuildContext context) {
     return context.locale;
   }

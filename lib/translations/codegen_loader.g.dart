@@ -277,7 +277,7 @@ static const Map<String,dynamic> pl = {
     "thinking": "Myślę...",
     "win": "wygrywasz!",
     "wins": "wygrywa!",
-    "won": "wygrywasz!"
+    "won": "wygrywa!"
   },
   "global": {
     "app_name": "Tic-Tac-No"
