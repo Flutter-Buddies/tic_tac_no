@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/ui/game_over_dialog.dart';
+import 'package:tic_tac_no/game/ui/game_over_draw_line.dart';
 import 'package:tic_tac_no/game/ui/grid_widget.dart';
 import 'package:tic_tac_no/game/ui/player_column.dart';
 import 'package:confetti/confetti.dart';
@@ -114,7 +115,7 @@ class GameScreenState extends State<GameScreen> {
   Future<void> _showGameOver(Player winner) async {
     // Delay used to give the user a little time to process they won and
     // to give time for animation of line going through 3 winning squares (todo: create this animation 😅)
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 3));
     await showDialog(
       context: context,
       barrierColor: Colors.black26,
@@ -243,8 +244,16 @@ class GameScreenState extends State<GameScreen> {
                       //* Grid
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: GridWidget(
-                          grid: this._grid,
+                        child: AspectRatio(
+                          aspectRatio: 1.0,
+                          child: Stack(
+                            children: [
+                              GridWidget(
+                                grid: this._grid,
+                              ),
+                              IgnorePointer(child: GameOverDrawLine()),
+                            ],
+                          ),
                         ),
                       ),
                       //* Button to go back
