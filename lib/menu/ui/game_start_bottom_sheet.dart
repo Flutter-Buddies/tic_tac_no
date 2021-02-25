@@ -205,8 +205,10 @@ class _GameStartModalState extends State<GameStartModal> {
                               circleColor: p1ColourList[index],
                               selectorFunction: () {
                                 _p1Value = index;
-
                                 updatePlayer1Colour(_p1Value);
+                                context
+                                    .read<TtnAudio>()
+                                    .playSound(SoundEvents.ButtonClick);
                               },
                             );
                           }),
@@ -231,6 +233,9 @@ class _GameStartModalState extends State<GameStartModal> {
                           child: GestureDetector(
                             onTap: () {
                               updatePlayer2Piece();
+                              context
+                                  .read<TtnAudio>()
+                                  .playSound(SoundEvents.ButtonClick);
                             },
                             child: Container(
                               margin: EdgeInsets.all(8),
@@ -260,6 +265,8 @@ class _GameStartModalState extends State<GameStartModal> {
                                               _aiValue--;
                                             }
                                           });
+                                          context.read<TtnAudio>().playSound(
+                                              SoundEvents.ButtonClick);
                                         },
                                         child: Icon(
                                           Icons.arrow_left,
@@ -282,6 +289,8 @@ class _GameStartModalState extends State<GameStartModal> {
                                               _aiValue++;
                                             }
                                           });
+                                          context.read<TtnAudio>().playSound(
+                                              SoundEvents.ButtonClick);
                                         },
                                         child: Icon(
                                           Icons.arrow_right,
@@ -299,6 +308,9 @@ class _GameStartModalState extends State<GameStartModal> {
                                     selectorFunction: () {
                                       _p2Value = index;
                                       updatePlayer2Colour(_p2Value);
+                                      context
+                                          .read<TtnAudio>()
+                                          .playSound(SoundEvents.ButtonClick);
                                     },
                                   );
                                 }),
@@ -338,6 +350,7 @@ class _GameStartModalState extends State<GameStartModal> {
                         ),
                       ),
                     );
+                    context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
                     Navigator.of(context).pushNamed('/game');
                   },
                   buttonGradient: LinearGradient(

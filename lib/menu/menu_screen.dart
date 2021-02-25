@@ -7,12 +7,15 @@ import 'package:tic_tac_no/menu/ui/title.dart';
 import 'package:tic_tac_no/menu/ui/game_start_bottom_sheet.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/audio.dart';
 import 'package:tic_tac_no/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void primaryButtonPress(GameType gameType) {
+      context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
       showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
