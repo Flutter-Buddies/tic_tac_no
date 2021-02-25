@@ -42,6 +42,8 @@ class TtnAudio {
         );
         break;
       case SoundEvents.GameWon:
+        // Need to wait for inner grid win to finish playing
+        await Future.delayed(const Duration(milliseconds: 500));
         await player.play(
           'player_win_1.wav',
           mode: PlayerMode.LOW_LATENCY,
@@ -49,6 +51,8 @@ class TtnAudio {
         );
         break;
       case SoundEvents.GameLost:
+        // Ned to wait for innter grid win the finish playing
+        await Future.delayed(const Duration(milliseconds: 500));
         await player.play(
           'game_over_1.wav',
           mode: PlayerMode.LOW_LATENCY,

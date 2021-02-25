@@ -4,6 +4,7 @@ import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/audio.dart';
 import 'package:tic_tac_no/utils/utils.dart';
 
 class GameOverDialog extends StatelessWidget {
@@ -54,6 +55,7 @@ class GameOverDialog extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
+                  context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
                   context.read<GameBloc>().add(Reset());
                   Navigator.of(context)
                       .popUntil((route) => route.settings.name == '/');
@@ -81,6 +83,8 @@ class GameOverDialog extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   // Reset the board then close the modal
+
+                  context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
                   context.read<GameBloc>().add(Reset());
 
                   Navigator.pop(context);

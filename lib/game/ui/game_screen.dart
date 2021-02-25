@@ -11,6 +11,7 @@ import 'package:tic_tac_no/game/ui/player_column.dart';
 import 'package:confetti/confetti.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/audio.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -68,6 +69,7 @@ class GameScreenState extends State<GameScreen> {
               children: [
                 GestureDetector(
                   onTap: () {
+                    context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
                     Navigator.of(context)
                         .popUntil((route) => route.settings.name == '/');
                     context.read<GameBloc>().add(Reset());
@@ -88,7 +90,10 @@ class GameScreenState extends State<GameScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
+                  onTap: () {
+                    context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
+                    Navigator.of(context).pop();
+                  },
                   child: Container(
                     height: 48,
                     width: 150,
@@ -143,6 +148,12 @@ class GameScreenState extends State<GameScreen> {
         if (state is GameOver) {
           if (state.winner != null) {
             _confettiController.play();
+            // If game was won by ai play game lost sound else play game won sound
+            if (state.winner.aiStrength != null) {
+              context.read<TtnAudio>().playSound(SoundEvents.GameLost);
+            } else {
+              context.read<TtnAudio>().playSound(SoundEvents.GameWon);
+            }
           }
           _showGameOver(state.winner);
         }
@@ -260,7 +271,12 @@ class GameScreenState extends State<GameScreen> {
                       SizedBox(
                         height: 30,
                         child: IconButton(
-                          onPressed: () => _backFunction(),
+                          onPressed: () {
+                            context
+                                .read<TtnAudio>()
+                                .playSound(SoundEvents.ButtonClick);
+                            _backFunction();
+                          },
                           icon: Icon(
                             Icons.arrow_back,
                             size: 30,

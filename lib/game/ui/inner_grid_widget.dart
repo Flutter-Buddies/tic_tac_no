@@ -3,6 +3,7 @@ import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/inner_grid.dart';
 import 'package:tic_tac_no/game/ui/square_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tic_tac_no/utils/audio.dart';
 
 class InnerGridWidget extends StatefulWidget {
   const InnerGridWidget({
@@ -60,6 +61,7 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
     if (widget.innerGrid.winner != null && !_didAnimateWinner) {
       _animationControllerPadding.forward();
       _animationControllerOpacity.forward();
+      context.read<TtnAudio>().playSound(SoundEvents.InnerGridWin);
       _didAnimateWinner = true;
     }
     return Stack(
