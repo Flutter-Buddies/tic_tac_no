@@ -1,3 +1,5 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +11,7 @@ import 'package:tic_tac_no/menu/ui/piece_shapes.dart';
 import 'package:tic_tac_no/menu/menu_enums.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/audio.dart';
 
 class GameStartModal extends StatefulWidget {
   const GameStartModal({this.gameType});
@@ -176,7 +179,7 @@ class _GameStartModalState extends State<GameStartModal> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
+                          onTap: () async {
                             updatePlayer1Piece();
                           },
                           child: Padding(

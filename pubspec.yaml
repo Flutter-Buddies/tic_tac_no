@@ -23,12 +23,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  audioplayers: ^0.17.4
   confetti: ^0.5.4+1
   cupertino_icons: ^1.0.0
+  easy_localization: ^2.3.3+1
   equatable: ^1.2.5
   flutter_bloc: ^6.1.0
   google_fonts: ^1.1.1
-  easy_localization: ^2.3.3+1
+  provider: ^4.3.3
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +47,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/audio/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
