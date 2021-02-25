@@ -181,6 +181,9 @@ class _GameStartModalState extends State<GameStartModal> {
                         GestureDetector(
                           onTap: () async {
                             updatePlayer1Piece();
+                            context
+                                .read<TtnAudio>()
+                                .playSound(SoundEvents.ButtonClick);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
