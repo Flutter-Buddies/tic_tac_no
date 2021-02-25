@@ -9,6 +9,7 @@ import 'package:tic_tac_no/ai/human_ai.dart';
 import 'package:tic_tac_no/ai/random_ai.dart';
 import 'package:tic_tac_no/ai/winner_ai.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
+import 'package:tic_tac_no/game/data/models/winning_positions.dart';
 import 'package:tic_tac_no/judge/judge.dart';
 
 part 'game_event.dart';
@@ -82,6 +83,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         );
         yield GameOver(
           winner: this._judge.getWinner(),
+          winningPositions: this._judge.getWinningPositions(),
         );
       } else {
         yield Ready(

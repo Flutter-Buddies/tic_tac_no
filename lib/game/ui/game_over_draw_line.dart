@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
+import 'package:tic_tac_no/game/data/models/winning_positions.dart';
 
 class GameOverDrawLine extends StatefulWidget {
   @override
@@ -45,47 +46,54 @@ class _GameOverDrawLineState extends State<GameOverDrawLine>
           animationController.reset();
         }
       },
-      child: Container(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return Center(
-              // Line goes all the way to the edge for the calculations to work so
-              // ClipRect added so the lines don't look like they go to the edge
-              child: ClipRect(
-                child: Container(
-                  child: Align(
-                    widthFactor: 0.9,
-                    heightFactor: 0.9,
-                    child: Container(
-                      width: constraints.maxWidth,
-                      height: constraints.maxHeight,
-                      child: CustomPaint(
-                        painter: WinningLine(
-                          animation.value,
-                          LineType.Veritical,
-                          3,
+      child: BlocBuilder<GameBloc, GameState>(
+        builder: (context, state) {
+          if (state is GameOver && state.winningPositions != null) {
+            return Container(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Center(
+                    // Line goes all the way to the edge for the calculations to work so
+                    // ClipRect added so the lines don't look like they go to the edge
+                    child: ClipRect(
+                      child: Container(
+                        child: Align(
+                          widthFactor: 0.9,
+                          heightFactor: 0.9,
+                          child: Container(
+                            width: constraints.maxWidth,
+                            height: constraints.maxHeight,
+                            child: CustomPaint(
+                              painter: WinningLine(
+                                animation.value,
+                                state.winningPositions,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             );
-          },
-        ),
+          } else {
+            return Container();
+          }
+        },
       ),
     );
   }
 }
 
-enum LineType { Veritical, Horizontal, DiagonalBack, DiagonalForward }
-
 class WinningLine extends CustomPainter {
   final double animationValue;
-  final LineType lineType;
-  final int thirdPosition; // 0 = diagonal
+  final WinningPositions winningPositions;
 
-  WinningLine(this.animationValue, this.lineType, [this.thirdPosition = 0]);
+  WinningLine(
+    this.animationValue,
+    this.winningPositions,
+  );
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -120,26 +128,26 @@ class WinningLine extends CustomPainter {
       return offset;
     }
 
-    switch (lineType) {
+    switch (winningPositions.lineType) {
       case LineType.Veritical:
         startingPoint = translation(
             lineType: LineType.Veritical,
             offset: Offset(0, 0),
-            thirdPosition: thirdPosition);
+            thirdPosition: winningPositions.thirdPosition);
         endingPoint = translation(
             lineType: LineType.Veritical,
             offset: Offset(0, size.height * animationValue),
-            thirdPosition: thirdPosition);
+            thirdPosition: winningPositions.thirdPosition);
         break;
       case LineType.Horizontal:
         startingPoint = translation(
             lineType: LineType.Horizontal,
             offset: Offset(0, 0),
-            thirdPosition: thirdPosition);
+            thirdPosition: winningPositions.thirdPosition);
         endingPoint = translation(
             lineType: LineType.Horizontal,
             offset: Offset(size.width * animationValue, 0),
-            thirdPosition: thirdPosition);
+            thirdPosition: winningPositions.thirdPosition);
         break;
       case LineType.DiagonalForward:
         startingPoint = Offset(0, size.height);

@@ -26,7 +26,8 @@ class Ready extends GameState {
 }
 
 class GameOver extends GameState {
-  GameOver({this.winner});
+  GameOver({this.winner, this.winningPositions});
 
   final Player winner;
+  final WinningPositions winningPositions;
 }

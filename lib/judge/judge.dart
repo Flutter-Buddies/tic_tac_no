@@ -4,6 +4,7 @@ import 'package:tic_tac_no/game/data/models/grid.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
+import 'package:tic_tac_no/game/data/models/winning_positions.dart';
 
 class Judge {
   Judge({
@@ -26,12 +27,14 @@ class Judge {
   Map<int, int> _score;
   Player _winner;
   bool _isGameOver = false;
+  WinningPositions _winningPositions;
 
   Grid getGrid() => this._grid;
   Player getCurrentPlayer() => this._currentPlayer;
   Map<int, int> get score => _score;
   Player getWinner() => this._winner;
   bool getIsGameOver() => this._isGameOver;
+  WinningPositions getWinningPositions() => this._winningPositions;
 
   void updatePlayers(List<Player> players) {
     this.players = players;
@@ -187,6 +190,8 @@ class Judge {
       if (this._grid.innerGrids[i][0].winner == this._currentPlayer &&
           this._grid.innerGrids[i][1].winner == this._currentPlayer &&
           this._grid.innerGrids[i][2].winner == this._currentPlayer) {
+        this._winningPositions = WinningPositions(
+            lineType: LineType.Horizontal, thirdPosition: i + 1);
         return true;
       }
     }
@@ -198,6 +203,8 @@ class Judge {
       if (this._grid.innerGrids[0][i].winner == this._currentPlayer &&
           this._grid.innerGrids[1][i].winner == this._currentPlayer &&
           this._grid.innerGrids[2][i].winner == this._currentPlayer) {
+        this._winningPositions = WinningPositions(
+            lineType: LineType.Veritical, thirdPosition: i + 1);
         return true;
       }
     }
@@ -208,6 +215,8 @@ class Judge {
     if (this._grid.innerGrids[0][0].winner == this._currentPlayer &&
         this._grid.innerGrids[1][1].winner == this._currentPlayer &&
         this._grid.innerGrids[2][2].winner == this._currentPlayer) {
+      this._winningPositions =
+          WinningPositions(lineType: LineType.DiagonalBack, thirdPosition: 0);
       return true;
     }
 
@@ -217,6 +226,8 @@ class Judge {
     if (this._grid.innerGrids[0][2].winner == this._currentPlayer &&
         this._grid.innerGrids[1][1].winner == this._currentPlayer &&
         this._grid.innerGrids[2][0].winner == this._currentPlayer) {
+      this._winningPositions = WinningPositions(
+          lineType: LineType.DiagonalForward, thirdPosition: 0);
       return true;
     }
 
