@@ -23,6 +23,8 @@ class App extends StatelessWidget {
         statusBarColor: Colors.transparent,
       ),
     );
+    // Sets the app to full screen
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
