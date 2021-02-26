@@ -11,26 +11,29 @@ import 'package:tic_tac_no/utils/audio.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
-  runApp(BlocProvider(
-    create: (context) => GameBloc(),
-    child: EasyLocalization(
-        path: 'assets/translations',
-        assetLoader: CodegenLoader(),
+  runApp(
+    BlocProvider(
+      create: (context) => GameBloc(),
+      child: EasyLocalization(
+          path: 'assets/translations',
+          assetLoader: CodegenLoader(),
 
-        /// don't make country specific so it works in any country
-        /// if language matches
-        supportedLocales: [
-          Locale('en'),
-          Locale('af'),
-          Locale('ar'),
-          Locale('hr'),
-          Locale('es'),
-          Locale('pl'),
-        ],
-        fallbackLocale: Locale('en'),
-        child: Provider(
-          create: (context) => TtnAudio(),
-          child: App(),
-        )),
-  ));
+          /// don't make country specific so it works in any country
+          /// if language matches
+          supportedLocales: [
+            Locale('en'),
+            Locale('af'),
+            Locale('ar'),
+            Locale('hr'),
+            Locale('es'),
+            Locale('pl'),
+          ],
+          fallbackLocale: Locale('en'),
+          child: Provider(
+            create: (context) => UIAudio()..preloadSounds(),
+            lazy: false,
+            child: App(),
+          )),
+    ),
+  );
 }

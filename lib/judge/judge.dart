@@ -5,6 +5,7 @@ import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
 import 'package:tic_tac_no/game/data/models/winning_positions.dart';
+import 'package:tic_tac_no/utils/audio.dart';
 
 class Judge {
   Judge({
@@ -71,7 +72,7 @@ class Judge {
     }
   }
 
-  void updateGame(Square tappedSquare) {
+  void updateGame(Square tappedSquare, GameAudio audio) {
     // check if move can be made at this square
     if (tappedSquare.parentInnerGrid.isPlayable == false) {
       return;
@@ -79,6 +80,8 @@ class Judge {
     if (tappedSquare.player != null) {
       return;
     }
+
+    audio.playSound(GameSounds.PlacingPiece);
 
     final Position innerGridPosition = tappedSquare.parentInnerGrid.position;
     // update square's player (occupant)
@@ -100,6 +103,7 @@ class Judge {
         _grid.innerGrids[innerGridPosition.x][innerGridPosition.y].winner =
             this._currentPlayer;
         _score[_currentPlayer.id]++;
+        audio.playSound(GameSounds.InnerGridWin);
         // chick did current player win entire game
         if (this._didWinGame()) {
           this._isGameOver = true;

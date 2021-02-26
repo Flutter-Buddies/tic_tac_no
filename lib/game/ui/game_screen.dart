@@ -69,7 +69,7 @@ class GameScreenState extends State<GameScreen> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
+                    context.read<UIAudio>().playSound(UISounds.ButtonClick);
                     Navigator.of(context)
                         .popUntil((route) => route.settings.name == '/');
                     context.read<GameBloc>().add(Reset());
@@ -91,7 +91,7 @@ class GameScreenState extends State<GameScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
+                    context.read<UIAudio>().playSound(UISounds.ButtonClick);
                     Navigator.of(context).pop();
                   },
                   child: Container(
@@ -150,9 +150,9 @@ class GameScreenState extends State<GameScreen> {
             _confettiController.play();
             // If game was won by ai play game lost sound else play game won sound
             if (state.winner.aiStrength != null) {
-              context.read<TtnAudio>().playSound(SoundEvents.GameLost);
+              // context.read<GameAudio>().playSound(SoundEvents.GameLost);
             } else {
-              context.read<TtnAudio>().playSound(SoundEvents.GameWon);
+              // context.read<GameAudio>().playSound(SoundEvents.GameWon);
             }
           }
           _showGameOver(state.winner);
@@ -273,8 +273,8 @@ class GameScreenState extends State<GameScreen> {
                         child: IconButton(
                           onPressed: () {
                             context
-                                .read<TtnAudio>()
-                                .playSound(SoundEvents.ButtonClick);
+                                .read<UIAudio>()
+                                .playSound(UISounds.ButtonClick);
                             _backFunction();
                           },
                           icon: Icon(

@@ -55,7 +55,7 @@ class GameOverDialog extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
+                  context.read<UIAudio>().playSound(UISounds.ButtonClick);
                   context.read<GameBloc>().add(Reset());
                   Navigator.of(context)
                       .popUntil((route) => route.settings.name == '/');
@@ -84,7 +84,7 @@ class GameOverDialog extends StatelessWidget {
                 onTap: () {
                   // Reset the board then close the modal
 
-                  context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
+                  context.read<UIAudio>().playSound(UISounds.ButtonClick);
                   context.read<GameBloc>().add(Reset());
 
                   Navigator.pop(context);

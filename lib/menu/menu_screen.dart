@@ -15,7 +15,7 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void primaryButtonPress(GameType gameType) {
-      context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
+      context.read<UIAudio>().playSound(UISounds.ButtonClick);
       showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,

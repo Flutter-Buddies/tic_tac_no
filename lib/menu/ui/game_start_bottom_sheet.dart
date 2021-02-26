@@ -1,5 +1,3 @@
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -182,8 +180,8 @@ class _GameStartModalState extends State<GameStartModal> {
                           onTap: () async {
                             updatePlayer1Piece();
                             context
-                                .read<TtnAudio>()
-                                .playSound(SoundEvents.ButtonClick);
+                                .read<UIAudio>()
+                                .playSound(UISounds.ButtonClick);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
@@ -207,8 +205,8 @@ class _GameStartModalState extends State<GameStartModal> {
                                 _p1Value = index;
                                 updatePlayer1Colour(_p1Value);
                                 context
-                                    .read<TtnAudio>()
-                                    .playSound(SoundEvents.ButtonClick);
+                                    .read<UIAudio>()
+                                    .playSound(UISounds.ButtonClick);
                               },
                             );
                           }),
@@ -234,8 +232,8 @@ class _GameStartModalState extends State<GameStartModal> {
                             onTap: () {
                               updatePlayer2Piece();
                               context
-                                  .read<TtnAudio>()
-                                  .playSound(SoundEvents.ButtonClick);
+                                  .read<UIAudio>()
+                                  .playSound(UISounds.ButtonClick);
                             },
                             child: Container(
                               margin: EdgeInsets.all(8),
@@ -265,8 +263,9 @@ class _GameStartModalState extends State<GameStartModal> {
                                               _aiValue--;
                                             }
                                           });
-                                          context.read<TtnAudio>().playSound(
-                                              SoundEvents.ButtonClick);
+                                          context
+                                              .read<UIAudio>()
+                                              .playSound(UISounds.ButtonClick);
                                         },
                                         child: Icon(
                                           Icons.arrow_left,
@@ -289,8 +288,9 @@ class _GameStartModalState extends State<GameStartModal> {
                                               _aiValue++;
                                             }
                                           });
-                                          context.read<TtnAudio>().playSound(
-                                              SoundEvents.ButtonClick);
+                                          context
+                                              .read<UIAudio>()
+                                              .playSound(UISounds.ButtonClick);
                                         },
                                         child: Icon(
                                           Icons.arrow_right,
@@ -309,8 +309,8 @@ class _GameStartModalState extends State<GameStartModal> {
                                       _p2Value = index;
                                       updatePlayer2Colour(_p2Value);
                                       context
-                                          .read<TtnAudio>()
-                                          .playSound(SoundEvents.ButtonClick);
+                                          .read<UIAudio>()
+                                          .playSound(UISounds.ButtonClick);
                                     },
                                   );
                                 }),
@@ -350,7 +350,7 @@ class _GameStartModalState extends State<GameStartModal> {
                         ),
                       ),
                     );
-                    context.read<TtnAudio>().playSound(SoundEvents.ButtonClick);
+                    context.read<UIAudio>().playSound(UISounds.ButtonClick);
                     Navigator.of(context).pushNamed('/game');
                   },
                   buttonGradient: LinearGradient(

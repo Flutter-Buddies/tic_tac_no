@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
-import 'package:tic_tac_no/utils/audio.dart';
 
 // TODO override operator==
 class SquareWidget extends StatelessWidget {
@@ -15,8 +14,6 @@ class SquareWidget extends StatelessWidget {
     //print(square.player);
     return GestureDetector(
       onTap: () {
-        //! Audio plays even if it's not a valid move
-        context.read<TtnAudio>().playSound(SoundEvents.PlacingPiece);
         BlocProvider.of<GameBloc>(context)
             .add(SquareTapped(square: this.square));
         print(

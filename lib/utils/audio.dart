@@ -1,17 +1,19 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-enum SoundEvents { ButtonClick, PlacingPiece, InnerGridWin, GameWon, GameLost }
+enum GameSounds { PlacingPiece, InnerGridWin, GameWon, GameLost }
+enum UISounds { ButtonClick }
 
-class TtnAudio {
-  // Member fields
+abstract class BaseAudio {
   final AudioCache player = AudioCache(prefix: 'assets/audio/');
 
-  // Constructor
-  TtnAudio() {
-    // Load all the audio files when the class is instantiated to prevent lag
+  void preloadSounds() {}
+}
+
+class GameAudio extends BaseAudio {
+  @override
+  void preloadSounds() {
     player.loadAll([
-      'button_click_wav',
       'piece_placement_1.mp3',
       'success_1.wav',
       'player_win_1.wav',
@@ -19,29 +21,22 @@ class TtnAudio {
     ]);
   }
 
-  void playSound(SoundEvents soundEvent) async {
+  void playSound(GameSounds soundEvent) async {
     switch (soundEvent) {
-      case SoundEvents.ButtonClick:
-        await player.play(
-          'button_click_1.wav',
-          mode: PlayerMode.LOW_LATENCY,
-          volume: 0.5,
-        );
-        break;
-      case SoundEvents.PlacingPiece:
+      case GameSounds.PlacingPiece:
         await player.play(
           'piece_placement_1.mp3',
           mode: PlayerMode.LOW_LATENCY,
         );
         break;
-      case SoundEvents.InnerGridWin:
+      case GameSounds.InnerGridWin:
         await player.play(
           'success_1.wav',
           mode: PlayerMode.LOW_LATENCY,
           volume: 0.2,
         );
         break;
-      case SoundEvents.GameWon:
+      case GameSounds.GameWon:
         // Need to wait for inner grid win to finish playing
         await Future.delayed(const Duration(milliseconds: 500));
         await player.play(
@@ -50,13 +45,34 @@ class TtnAudio {
           volume: 0.2,
         );
         break;
-      case SoundEvents.GameLost:
+      case GameSounds.GameLost:
         // Ned to wait for innter grid win the finish playing
         await Future.delayed(const Duration(milliseconds: 500));
         await player.play(
           'game_over_1.wav',
           mode: PlayerMode.LOW_LATENCY,
           volume: 0.2,
+        );
+        break;
+    }
+  }
+}
+
+class UIAudio extends BaseAudio {
+  @override
+  void preloadSounds() {
+    player.loadAll([
+      'button_click_1.wav',
+    ]);
+  }
+
+  void playSound(UISounds uiSound) async {
+    switch (uiSound) {
+      case UISounds.ButtonClick:
+        await player.play(
+          'button_click_1.wav',
+          mode: PlayerMode.LOW_LATENCY,
+          volume: 0.5,
         );
         break;
     }
