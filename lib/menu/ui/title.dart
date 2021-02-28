@@ -10,7 +10,7 @@ class TitleWidget extends StatelessWidget {
       children: [
         Text(
           'TIC',
-          style: Utils.currentLocale(context) == Locale('ar')
+          style: Utils.isCurrentLocaleRTL(context)
               ? GoogleFonts.cairo(
                   textStyle: Theme.of(context).textTheme.headline1,
                 )
@@ -20,7 +20,7 @@ class TitleWidget extends StatelessWidget {
         ),
         Text(
           'TAC',
-          style: Utils.currentLocale(context) == Locale('ar')
+          style: Utils.isCurrentLocaleRTL(context)
               ? GoogleFonts.cairo(
                   textStyle: Theme.of(context).textTheme.headline1,
                 )
@@ -30,7 +30,7 @@ class TitleWidget extends StatelessWidget {
         ),
         Text(
           'NO',
-          style: Utils.currentLocale(context) == Locale('ar')
+          style: Utils.isCurrentLocaleRTL(context)
               ? GoogleFonts.cairo(
                   textStyle: Theme.of(context).textTheme.headline1,
                 )
