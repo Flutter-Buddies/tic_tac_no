@@ -1,0 +1,50 @@
+{
+  "game": {
+    "all_progress_lost": "כל ההתקדמות לא תשמר",
+    "are_you_sure_quit": "האם אתה בטוח שברצונך לצאת?",
+    "nobody_wins": "אין מנצחים 😲",
+    "play_again": "שחק שוב",
+    "player_no_name": "אין שם",
+    "quit_game": "צא מהמשחק",
+    "quit_to_menu": "יציאה לתפריט",
+    "return_to_game": "חזור למשחק",
+    "thinking": "חושב...",
+    "win": "ניצחון!",
+    "wins": "ניצחונות!",
+    "won": "ניצח!"
+  },
+  "global": {
+    "app_name": "Tic-Tac-No"
+  },
+  "menu": {
+    "ai": "AI",
+    "change_language": "שפה",
+    "coming_soon": "מגיע בקרוב!",
+    "easy": "קל",
+    "hard": "קשה",
+    "how_to_play": "כיצד לשחק",
+    "local_multiplayer": "רב משתתפים מקומי",
+    "local_multiplayer_setup": "הגדרת רב משתתפים מקומי",
+    "medium": "בינוני",
+    "online_multiplayer": "רב משתתפים ברשת",
+    "online_multiplayer_setup": "הגדרת רב משתתפים ברשת",
+    "player_1": "שחקן 1",
+    "player_2": "שחקן 2",
+    "searching_for_game": "מחפש משחק...",
+    "single_player": "משחק יחיד",
+    "single_player_setup": "הגדרת משחק יחיד",
+    "start_game": "התחל משחק",
+    "you": "אתה"
+  },
+  "rules": {
+    "good_luck": "בהצלחה!",
+    "next": "הבא",
+    "one_more_thing": "קל? יש משהו אחד נוסף... התזוזה שלך בלוח הפנימי מגדיר את הלוח הפנימי שהיריב שלך חייב לשחק.",
+    "previous": "הקודם",
+    "rules": "חוקים",
+    "start": "התחל",
+    "there_is_catch": "אבל יש קטע... כל לוח הוא חלק מלוח איקס עיגול גדול יותר!",
+    "tic_must_win": "אתה מתמודד עם לוח איקס עיגול שאתה חייב לנצח.",
+    "win_inner_grid": "אתה חייב לנצח בלוח הפנימי בכדי להשיג את המיקום בלוח הראשי. ברגע שאתה משיג אותו, אף אחד לא יכול להשיג אותו שוב."
+  }
+}
