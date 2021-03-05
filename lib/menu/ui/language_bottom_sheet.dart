@@ -74,11 +74,17 @@ class LanguageBottomSheet extends StatelessWidget {
                       showCheck: Utils.currentLocale(context) == Locale('pl'),
                       locale: SupportedLocale.pl,
                     ),
-                      LanguageListTile(
-                        languageEmoji: '🇮🇱',
-                        languageName: 'Hebrew',
-                        showCheck: Utils.currentLocale(context) == Locale('he'),
-                        locale: SupportedLocale.he,
+                    LanguageListTile(
+                      languageEmoji: '🇮🇱',
+                      languageName: 'Hebrew',
+                      showCheck: Utils.currentLocale(context) == Locale('he'),
+                      locale: SupportedLocale.he,
+                    ),
+                    LanguageListTile(
+                      languageEmoji: '🇹🇼',
+                      languageName: 'Chinese',
+                      showCheck: Utils.currentLocale(context) == Locale('zh'),
+                      locale: SupportedLocale.zh,
                     ),
                   ],
                 ),
