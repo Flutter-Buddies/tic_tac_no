@@ -117,7 +117,7 @@ static const Map<String,dynamic> ar = {
 static const Map<String,dynamic> cs = {
   "game": {
     "all_progress_lost": "Veškerý postup bude ztracen",
-    "nobody_wins": "Nikdo nevyhrál 😲",
+    "nobody_wins": "Remíza 😲",
     "play_again": "HRÁT ZNOVU",
     "are_you_sure_quit": "Opravdu chcete skončit?",
     "won": "vyhrál!",
@@ -153,7 +153,7 @@ static const Map<String,dynamic> cs = {
     "start": "Začít",
     "there_is_catch": "Má to ale jeden háček ... každé herní pole Piškvorek je součástí většího!",
     "tic_must_win": "Budete řešit klasické herní pole Piškvorek.",
-    "win_inner_grid": "Abyste získali pole na herní desce, musíte vyhrát na vnitřním poli. Když takové pole vyhrajete, už vám ho soupeř nemůže vzít! Ten, kdo získá více polí, vyhrává.",
+    "win_inner_grid": "Abyste získali pole na herní desce, musíte vyhrát na vnitřním poli. Když takové pole vyhrajete, už vám ho soupeř nemůže vzít!",
     "rules": "Pravidla",
     "previous": "Předchozí",
     "next": "Další",
