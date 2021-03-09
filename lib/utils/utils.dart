@@ -10,6 +10,7 @@ enum SupportedLocale {
   pl,
   he,
   zh,
+  cs,
 }
 
 class Utils {
@@ -28,6 +29,9 @@ class Utils {
   static bool isLocaleConjugationRequired(BuildContext context) {
     switch (context.locale.languageCode) {
       case 'pl':
+        return true;
+        break;
+      case 'cs':
         return true;
         break;
       default:
@@ -67,6 +71,9 @@ class Utils {
         break;
       case SupportedLocale.zh:
         locale = Locale('zh');
+        break;
+      case SupportedLocale.cs:
+        locale = Locale('cs');
         break;
       default:
         locale = Locale('en');
