@@ -47,7 +47,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
     if (event is SetPlayers) yield* _mapSetPlayersToState(event);
-    if (event is LoadGame) yield* _readyState();
+    if (event is LoadGame) yield _readyState();
     if (event is SquareTapped) {
       if (this.state is! Ready) return;
       yield* _mapSquareTappedToState(event);
@@ -60,11 +60,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     _players = [event.player1, event.player2];
     _updateAI(event.player2);
     _judge.updatePlayers(_players);
-    yield* _readyState();
+    yield _readyState();
   }
 
-  Stream<GameState> _readyState() async* {
-    yield Ready(
+  GameState _readyState() {
+    return Ready(
       grid: this._judge.getGrid(),
       players: this._players,
       currentPlayer: this._judge.getCurrentPlayer(),
@@ -77,7 +77,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     yield JudgeThinking();
     this._judge.updateGame(event.square, _audio);
     if (this._judge.getIsGameOver()) {
-      yield* _readyState();
+      yield _readyState();
       yield GameOver(
         winner: this._judge.getWinner(),
         winningPositions: this._judge.getWinningPositions(),
@@ -89,14 +89,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         _audio.playSound(GameSounds.GameWon);
       }
     } else {
-      yield* _readyState();
+      yield _readyState();
       if (this._judge.getCurrentPlayer().type == PlayerType.ai) {
         _updateAI(_judge.getCurrentPlayer());
         yield AIThinking();
         await Future.delayed(
             Duration(milliseconds: 200 + Random().nextInt(1000)));
         final Square move = this._ai.makeMove(this._judge.getGrid());
-        yield* _readyState();
+        yield _readyState();
         this.add(SquareTapped(square: move));
       }
     }
@@ -108,7 +108,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       grid: this._grid,
       players: this._players,
     );
-    yield* _readyState();
+    yield _readyState();
   }
 
   void _updateAI(Player player) {
