@@ -35,58 +35,71 @@ class LanguageBottomSheet extends StatelessWidget {
                 ],
               ),
               Expanded(
-                child: ListView(
-                  children: [
-                    /// emojis from: https://emojipedia.org/flags/
-                    LanguageListTile(
-                      languageEmoji: '🇬🇧',
-                      languageName: 'English',
-                      showCheck: Utils.currentLocale(context) == Locale('en'),
-                      locale: SupportedLocale.en,
-                    ),
-                    LanguageListTile(
-                      languageEmoji: '🇿🇦',
-                      languageName: 'Afrikaans',
-                      showCheck: Utils.currentLocale(context) == Locale('af'),
-                      locale: SupportedLocale.af,
-                    ),
-                    LanguageListTile(
-                      languageEmoji: '🇸🇦',
-                      languageName: 'العربية',
-                      showCheck: Utils.currentLocale(context) == Locale('ar'),
-                      locale: SupportedLocale.ar,
-                    ),
-                    LanguageListTile(
-                      languageEmoji: '🇭🇷',
-                      languageName: 'Hrvatski',
-                      showCheck: Utils.currentLocale(context) == Locale('hr'),
-                      locale: SupportedLocale.hr,
-                    ),
-                    LanguageListTile(
-                      languageEmoji: '🇪🇸',
-                      languageName: 'Español',
-                      showCheck: Utils.currentLocale(context) == Locale('es'),
-                      locale: SupportedLocale.es,
-                    ),
-                    LanguageListTile(
-                      languageEmoji: '🇵🇱',
-                      languageName: 'Polski',
-                      showCheck: Utils.currentLocale(context) == Locale('pl'),
-                      locale: SupportedLocale.pl,
-                    ),
-                    LanguageListTile(
-                      languageEmoji: '🇮🇱',
-                      languageName: 'Hebrew',
-                      showCheck: Utils.currentLocale(context) == Locale('he'),
-                      locale: SupportedLocale.he,
-                    ),
-                    LanguageListTile(
-                      languageEmoji: '🇹🇼',
-                      languageName: 'Chinese',
-                      showCheck: Utils.currentLocale(context) == Locale('zh'),
-                      locale: SupportedLocale.zh,
-                    ),
-                  ],
+                child: ShaderMask(
+                  shaderCallback: (bounds) {
+                    return LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.white,
+                      ],
+                      stops: [0, 0.18],
+                    ).createShader(bounds);
+                  },
+                  child: ListView(
+                    children: [
+                      /// emojis from: https://emojipedia.org/flags/
+                      LanguageListTile(
+                        languageEmoji: '🇬🇧',
+                        languageName: 'English',
+                        showCheck: Utils.currentLocale(context) == Locale('en'),
+                        locale: SupportedLocale.en,
+                      ),
+                      LanguageListTile(
+                        languageEmoji: '🇿🇦',
+                        languageName: 'Afrikaans',
+                        showCheck: Utils.currentLocale(context) == Locale('af'),
+                        locale: SupportedLocale.af,
+                      ),
+                      LanguageListTile(
+                        languageEmoji: '🇸🇦',
+                        languageName: 'العربية',
+                        showCheck: Utils.currentLocale(context) == Locale('ar'),
+                        locale: SupportedLocale.ar,
+                      ),
+                      LanguageListTile(
+                        languageEmoji: '🇭🇷',
+                        languageName: 'Hrvatski',
+                        showCheck: Utils.currentLocale(context) == Locale('hr'),
+                        locale: SupportedLocale.hr,
+                      ),
+                      LanguageListTile(
+                        languageEmoji: '🇪🇸',
+                        languageName: 'Español',
+                        showCheck: Utils.currentLocale(context) == Locale('es'),
+                        locale: SupportedLocale.es,
+                      ),
+                      LanguageListTile(
+                        languageEmoji: '🇵🇱',
+                        languageName: 'Polski',
+                        showCheck: Utils.currentLocale(context) == Locale('pl'),
+                        locale: SupportedLocale.pl,
+                      ),
+                      LanguageListTile(
+                        languageEmoji: '🇮🇱',
+                        languageName: 'Hebrew',
+                        showCheck: Utils.currentLocale(context) == Locale('he'),
+                        locale: SupportedLocale.he,
+                      ),
+                      LanguageListTile(
+                        languageEmoji: '🇹🇼',
+                        languageName: 'Chinese',
+                        showCheck: Utils.currentLocale(context) == Locale('zh'),
+                        locale: SupportedLocale.zh,
+                      ),
+                    ]..add(SizedBox(height: 40.0)),
+                  ),
                 ),
               ),
             ],
