@@ -1,0 +1,50 @@
+{
+  "game": {
+    "all_progress_lost": "Veškerý postup bude ztracen",
+    "nobody_wins": "Remíza 😲",
+    "play_again": "HRÁT ZNOVU",
+    "are_you_sure_quit": "Opravdu chcete skončit?",
+    "won": "vyhrál!",
+    "wins": "vyhráváš!",
+    "quit_game": "UKONČIT HRU",
+    "player_no_name": "Bez jména",
+    "return_to_game": "VRÁTIT SE DO HRY",
+    "quit_to_menu": "ZPĚT DO MENU",
+    "win": "vyhrává!",
+    "thinking": "Přemýšlí..."
+  },
+  "menu": {
+    "coming_soon": "Již brzy!",
+    "searching_for_game": "Vyhledávání hry...",
+    "you": "TY",
+    "how_to_play": "Nápověda",
+    "hard": "TĚŽKÁ",
+    "medium": "STŘEDNÍ",
+    "online_multiplayer": "HRA PRO VÍCE HRÁČŮ",
+    "local_multiplayer_setup": "NASTAVENÍ LOKÁLNÍ HRY",
+    "local_multiplayer": "LOKÁLNÍ HRA",
+    "easy": "LEHKÁ",
+    "change_language": "Jazyk",
+    "ai": "Počítač",
+    "player_1": "HRÁČ 1",
+    "player_2": "HRÁČ 2",
+    "single_player_setup": "NASTAVENÍ HRY JEDNOHO HRÁČE",
+    "single_player": "JEDEN HRÁČ",
+    "start_game": "ZAČÍT HRU",
+    "online_multiplayer_setup": "NASTAVENÍ HRY VÍCE HRÁČŮ"
+  },
+  "rules": {
+    "start": "Začít",
+    "there_is_catch": "Má to ale jeden háček ... každé herní pole Piškvorek je součástí většího!",
+    "tic_must_win": "Budete řešit klasické herní pole Piškvorek.",
+    "win_inner_grid": "Abyste získali pole na herní desce, musíte vyhrát na vnitřním poli. Když takové pole vyhrajete, už vám ho soupeř nemůže vzít!",
+    "rules": "Pravidla",
+    "previous": "Předchozí",
+    "next": "Další",
+    "good_luck": "Hodně štěstí!",
+    "one_more_thing": "Zní to jednoduše? Je tu ještě jedna věc ... tah na vnitřním poli určuje pozici dalšího herního pole na herní desce pro vašeho soupeře."
+  },
+  "global": {
+    "app_name": "Tic-Tac-No"
+  }
+}
