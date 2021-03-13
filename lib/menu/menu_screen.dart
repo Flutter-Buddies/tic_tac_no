@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/common/widgets/animate_icons.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/menu/menu_enums.dart';
 import 'package:tic_tac_no/menu/ui/language_bottom_sheet.dart';
@@ -18,6 +19,15 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  AnimateIconController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimateIconController();
+  }
+
   @override
   Widget build(BuildContext context) {
     void primaryButtonPress(GameType gameType) {
@@ -177,19 +187,26 @@ class _MenuScreenState extends State<MenuScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                      onTap: () {
+                    AnimateIcons(
+                      startIcon: Icons.volume_up,
+                      endIcon: Icons.volume_off,
+                      controller: controller,
+                      onStartIconPress: () {
                         setState(() {
                           context.read<UIAudio>().switchMute();
                         });
+                        return true;
                       },
-                      child: Icon(
-                        context.read<UIAudio>().isMuted
-                            ? Icons.volume_off
-                            : Icons.volume_up,
-                        size: 24,
-                        color: Colors.white,
-                      ),
+                      onEndIconPress: () {
+                        setState(() {
+                          context.read<UIAudio>().switchMute();
+                        });
+                        return true;
+                      },
+                      duration: const Duration(milliseconds: 500),
+                      startIconColor: Colors.white,
+                      endIconColor: Colors.redAccent,
+                      clockwise: false,
                     ),
                     const SizedBox(height: 15),
                     GestureDetector(
