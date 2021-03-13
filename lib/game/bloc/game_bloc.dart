@@ -45,94 +45,70 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   Map<int, int> get score => _judge.score;
 
   @override
-  Stream<GameState> mapEventToState(
-    GameEvent event,
-  ) async* {
-    if (event is SetPlayers) {
-      yield Loading();
-      _players = [event.player1, event.player2];
-      _updateAI(event.player2);
-      _judge.updatePlayers(_players);
-      yield Ready(
-        grid: this._judge.getGrid(),
-        players: this._players,
-        currentPlayer: this._judge.getCurrentPlayer(),
-        score: _judge.score,
-        winner: this._judge.getWinner(),
-      );
-    }
-    if (event is LoadGame) {
-      yield Ready(
-        grid: this._judge.getGrid(),
-        players: this._players,
-        currentPlayer: this._judge.getCurrentPlayer(),
-        score: _judge.score,
-        winner: this._judge.getWinner(),
-      );
-    }
+  Stream<GameState> mapEventToState(GameEvent event) async* {
+    if (event is SetPlayers) yield* _mapSetPlayersToState(event);
+    if (event is LoadGame) yield _readyState();
     if (event is SquareTapped) {
-      if (this.state is! Ready) {
-        return;
-      }
-      yield JudgeThinking();
-      this._judge.updateGame(event.square, audio);
-      if (this._judge.getIsGameOver()) {
-        yield Ready(
-          grid: this._judge.getGrid(),
-          players: this._players,
-          currentPlayer: this._judge.getCurrentPlayer(),
-          score: _judge.score,
-          winner: this._judge.getWinner(),
-        );
-        yield GameOver(
-          winner: this._judge.getWinner(),
-          winningPositions: this._judge.getWinningPositions(),
-        );
-        if (this._judge.getWinner().type == PlayerType.ai ||
-            this._judge.getWinner().type == PlayerType.onlineFriend) {
-          audio.playSound(GameSounds.GameLost);
-        } else {
-          audio.playSound(GameSounds.GameWon);
-        }
-      } else {
-        yield Ready(
-          grid: this._judge.getGrid(),
-          players: this._players,
-          currentPlayer: this._judge.getCurrentPlayer(),
-          score: _judge.score,
-          winner: this._judge.getWinner(),
-        );
-        if (this._judge.getCurrentPlayer().type == PlayerType.ai) {
-          _updateAI(_judge.getCurrentPlayer());
-          yield AIThinking();
-          await Future.delayed(
-              Duration(milliseconds: 200 + Random().nextInt(1000)));
-          final Square move = this._ai.makeMove(this._judge.getGrid());
-          yield Ready(
-            grid: this._judge.getGrid(),
-            players: this._players,
-            currentPlayer: this._judge.getCurrentPlayer(),
-            score: _judge.score,
-            winner: this._judge.getWinner(),
-          );
-          this.add(SquareTapped(square: move));
-        }
-      }
+      if (this.state is! Ready) return;
+      yield* _mapSquareTappedToState(event);
     }
-    if (event is Reset) {
-      this._grid = Grid();
-      this._judge = Judge(
-        grid: this._grid,
-        players: this._players,
-      );
-      yield Ready(
-        grid: this._judge.getGrid(),
-        players: this._players,
-        currentPlayer: this._judge.getCurrentPlayer(),
-        score: _judge.score,
+    if (event is Reset) yield* _mapResetToState();
+  }
+
+  Stream<GameState> _mapSetPlayersToState(SetPlayers event) async* {
+    yield Loading();
+    _players = [event.player1, event.player2];
+    _updateAI(event.player2);
+    _judge.updatePlayers(_players);
+    yield _readyState();
+  }
+
+  GameState _readyState() {
+    return Ready(
+      grid: this._judge.getGrid(),
+      players: this._players,
+      currentPlayer: this._judge.getCurrentPlayer(),
+      score: _judge.score,
+      winner: this._judge.getWinner(),
+    );
+  }
+
+  Stream<GameState> _mapSquareTappedToState(SquareTapped event) async* {
+    yield JudgeThinking();
+    this._judge.updateGame(event.square, audio);
+    if (this._judge.getIsGameOver()) {
+      yield _readyState();
+      yield GameOver(
         winner: this._judge.getWinner(),
+        winningPositions: this._judge.getWinningPositions(),
       );
+      if (this._judge.getWinner().type == PlayerType.ai ||
+          this._judge.getWinner().type == PlayerType.onlineFriend) {
+        audio.playSound(GameSounds.GameLost);
+      } else {
+        audio.playSound(GameSounds.GameWon);
+      }
+    } else {
+      yield _readyState();
+      if (this._judge.getCurrentPlayer().type == PlayerType.ai) {
+        _updateAI(_judge.getCurrentPlayer());
+        yield AIThinking();
+        await Future.delayed(
+            Duration(milliseconds: 200 + Random().nextInt(1000)));
+        final Square move = this._ai.makeMove(this._judge.getGrid());
+        yield _readyState();
+        this.add(SquareTapped(square: move));
+      }
     }
+  }
+
+  Stream<GameState> _mapResetToState() async* {
+    this._grid = Grid();
+    this._judge = Judge(
+      grid: this._grid,
+      players: this._players,
+    );
+    yield _readyState();
   }
 
   void _updateAI(Player player) {
