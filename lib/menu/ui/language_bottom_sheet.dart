@@ -156,8 +156,10 @@ class LanguageListTile extends StatelessWidget {
               Icons.check,
             )
           : null,
-      onTap: () {
+      onTap: () async {
         Utils.changeLocale(context, locale);
+        await Future.delayed(const Duration(milliseconds: 400));
+        Navigator.of(context).pop();
       },
     );
   }
