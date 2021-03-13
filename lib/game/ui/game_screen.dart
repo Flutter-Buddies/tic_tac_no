@@ -33,6 +33,8 @@ class GameScreenState extends State<GameScreen> {
     this._players = BlocProvider.of<GameBloc>(context).players;
     this._currentPlayer = BlocProvider.of<GameBloc>(context).getCurrentPlayer();
     this._score = BlocProvider.of<GameBloc>(context).score;
+    BlocProvider.of<GameBloc>(context).audio.isMuted =
+        context.read<UIAudio>().isMuted;
     _confettiController = ConfettiController(duration: Duration(seconds: 10));
     super.initState();
   }

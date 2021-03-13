@@ -30,7 +30,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   Judge _judge;
   AI _ai;
 
-  GameAudio _audio = GameAudio()..preloadSounds();
+  GameAudio audio = GameAudio()..preloadSounds();
 
   Grid getGrid() {
     return this._judge.getGrid();
@@ -75,7 +75,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         return;
       }
       yield JudgeThinking();
-      this._judge.updateGame(event.square, _audio);
+      this._judge.updateGame(event.square, audio);
       if (this._judge.getIsGameOver()) {
         yield Ready(
           grid: this._judge.getGrid(),
@@ -90,9 +90,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         );
         if (this._judge.getWinner().type == PlayerType.ai ||
             this._judge.getWinner().type == PlayerType.onlineFriend) {
-          _audio.playSound(GameSounds.GameLost);
+          audio.playSound(GameSounds.GameLost);
         } else {
-          _audio.playSound(GameSounds.GameWon);
+          audio.playSound(GameSounds.GameWon);
         }
       } else {
         yield Ready(

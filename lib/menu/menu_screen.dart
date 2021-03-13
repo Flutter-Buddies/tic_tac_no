@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/menu/menu_enums.dart';
 import 'package:tic_tac_no/menu/ui/language_bottom_sheet.dart';
 import 'package:tic_tac_no/menu/ui/primary_button.dart';
@@ -11,7 +12,12 @@ import 'package:tic_tac_no/utils/audio.dart';
 import 'package:tic_tac_no/utils/utils.dart';
 import 'package:provider/provider.dart';
 
-class MenuScreen extends StatelessWidget {
+class MenuScreen extends StatefulWidget {
+  @override
+  _MenuScreenState createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     void primaryButtonPress(GameType gameType) {
@@ -171,6 +177,21 @@ class MenuScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          context.read<UIAudio>().switchMute();
+                        });
+                      },
+                      child: Icon(
+                        context.read<UIAudio>().isMuted
+                            ? Icons.volume_off
+                            : Icons.volume_up,
+                        size: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
                     GestureDetector(
                       onTap: () => Navigator.of(context).pushNamed('/rules'),
                       child: Row(
