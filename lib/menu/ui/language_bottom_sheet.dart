@@ -44,7 +44,7 @@ class LanguageBottomSheet extends StatelessWidget {
                         Colors.transparent,
                         Colors.white,
                       ],
-                      stops: [0, 0.18],
+                      stops: [0, 0.35],
                     ).createShader(bounds);
                   },
                   child: ListView(
@@ -104,7 +104,7 @@ class LanguageBottomSheet extends StatelessWidget {
                         showCheck: Utils.currentLocale(context) == Locale('cs'),
                         locale: SupportedLocale.cs,
                       ),
-                    ]..add(SizedBox(height: 40.0)),
+                    ]..add(SizedBox(height: 80.0)),
                   ),
                 ),
               ),
