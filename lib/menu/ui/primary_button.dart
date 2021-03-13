@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton(
-      {this.buttonIcon,
-      this.buttonText,
-      this.buttonPress,
-      this.buttonGradient});
+  const PrimaryButton({
+    this.buttonIcon,
+    this.buttonText,
+    this.buttonPress,
+    this.buttonGradient,
+  });
 
   final String buttonText;
   final IconData buttonIcon;
@@ -15,13 +16,15 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      elevation: 10,
+    return ElevatedButton(
       onPressed: buttonPress,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50),
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.all(0),
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
       ),
-      padding: EdgeInsets.all(0),
       child: Ink(
         decoration: BoxDecoration(
           gradient: buttonGradient,
@@ -43,9 +46,10 @@ class PrimaryButton extends StatelessWidget {
                   buttonText,
                   style: GoogleFonts.cairo(
                     textStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
