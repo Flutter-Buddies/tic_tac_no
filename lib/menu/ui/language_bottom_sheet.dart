@@ -86,6 +86,12 @@ class LanguageBottomSheet extends StatelessWidget {
                       showCheck: Utils.currentLocale(context) == Locale('zh'),
                       locale: SupportedLocale.zh,
                     ),
+                    LanguageListTile(
+                      languageEmoji: '🇨🇿',
+                      languageName: 'Čeština',
+                      showCheck: Utils.currentLocale(context) == Locale('cs'),
+                      locale: SupportedLocale.cs,
+                    ),
                   ],
                 ),
               ),

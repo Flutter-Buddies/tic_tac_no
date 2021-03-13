@@ -29,6 +29,7 @@ void main() {
             Locale('pl'),
             Locale('he'),
             Locale('zh'),
+            Locale('cs'),
           ],
           fallbackLocale: Locale('en'),
           child: Provider(
