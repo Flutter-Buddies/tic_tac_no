@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_no/common/consts/keys.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,6 +55,7 @@ class GameOverDialog extends StatelessWidget {
           children: [
             Expanded(
               child: GestureDetector(
+                key: Key(Keys.gameQuitToMenuBtn),
                 onTap: () {
                   context.read<UIAudio>().playSound(UISounds.ButtonClick);
                   context.read<GameBloc>().add(Reset());

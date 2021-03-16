@@ -1,19 +1,25 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/common/consts/keys.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/models.dart';
-import 'package:tic_tac_no/menu/ui/primary_button.dart';
+import 'package:tic_tac_no/menu/menu_enums.dart';
 import 'package:tic_tac_no/menu/ui/colour_circle.dart';
 import 'package:tic_tac_no/menu/ui/piece_shapes.dart';
-import 'package:tic_tac_no/menu/menu_enums.dart';
+import 'package:tic_tac_no/menu/ui/primary_button.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:tic_tac_no/utils/audio.dart';
 
 class GameStartModal extends StatefulWidget {
-  const GameStartModal({this.gameType});
+  const GameStartModal({
+    Key key,
+    this.gameType,
+  }) : super(key: key);
+
   final GameType gameType;
+
   @override
   _GameStartModalState createState() => _GameStartModalState();
 }
@@ -177,6 +183,7 @@ class _GameStartModalState extends State<GameStartModal> {
                           ),
                         ),
                         GestureDetector(
+                          key: Key(Keys.gameSetupPlayer1Piece),
                           onTap: () async {
                             updatePlayer1Piece();
                             context
@@ -199,6 +206,7 @@ class _GameStartModalState extends State<GameStartModal> {
                           children: List<Widget>.generate(p1ColourList.length,
                               (int index) {
                             return ColourCircle(
+                              key: Key('${Keys.gameSetupPlayer1Colour}$index'),
                               isSelected: _p1Value == index,
                               circleColor: p1ColourList[index],
                               selectorFunction: () {
@@ -229,6 +237,7 @@ class _GameStartModalState extends State<GameStartModal> {
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: GestureDetector(
+                            key: Key(Keys.gameSetupPlayer2Piece),
                             onTap: () {
                               updatePlayer2Piece();
                               context
@@ -303,6 +312,8 @@ class _GameStartModalState extends State<GameStartModal> {
                                 children: List<Widget>.generate(
                                     p2ColourList.length, (int index) {
                                   return ColourCircle(
+                                    key: Key(
+                                        '${Keys.gameSetupPlayer2Colour}$index'),
                                     isSelected: _p2Value == index,
                                     circleColor: p2ColourList[index],
                                     selectorFunction: () {
@@ -323,6 +334,7 @@ class _GameStartModalState extends State<GameStartModal> {
                   height: 8.0,
                 ),
                 PrimaryButton(
+                  key: Key(Keys.gameSetupStartBtn),
                   buttonText: LocaleKeys.menu_start_game.tr(),
                   buttonPress: () {
                     BlocProvider.of<GameBloc>(context).add(

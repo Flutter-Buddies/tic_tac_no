@@ -1,17 +1,17 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:tic_tac_no/common/widgets/animate_icons.dart';
-import 'package:tic_tac_no/game/bloc/game_bloc.dart';
+import 'package:tic_tac_no/common/consts/keys.dart';
 import 'package:tic_tac_no/menu/menu_enums.dart';
+import 'package:tic_tac_no/menu/ui/game_start_bottom_sheet.dart';
 import 'package:tic_tac_no/menu/ui/language_bottom_sheet.dart';
 import 'package:tic_tac_no/menu/ui/primary_button.dart';
 import 'package:tic_tac_no/menu/ui/title.dart';
-import 'package:tic_tac_no/menu/ui/game_start_bottom_sheet.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:tic_tac_no/utils/audio.dart';
 import 'package:tic_tac_no/utils/utils.dart';
-import 'package:provider/provider.dart';
 
 class MenuScreen extends StatefulWidget {
   @override
@@ -38,6 +38,7 @@ class _MenuScreenState extends State<MenuScreen> {
         context: context,
         builder: (BuildContext context) {
           return GameStartModal(
+            key: Key(Keys.gameSetupModalSheet),
             gameType: gameType,
           );
         },
@@ -100,6 +101,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               padding:
                                   const EdgeInsets.symmetric(vertical: 16.0),
                               child: PrimaryButton(
+                                key: Key(Keys.menuGameSpBtn),
                                 buttonText: LocaleKeys.menu_single_player.tr(),
                                 buttonIcon: Icons.person,
                                 buttonPress: () =>
@@ -113,6 +115,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               child: PrimaryButton(
+                                key: Key(Keys.menuGameLocalMpBtn),
                                 buttonText:
                                     LocaleKeys.menu_local_multiplayer.tr(),
                                 buttonIcon: Icons.phone_android_outlined,
@@ -130,6 +133,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 clipBehavior: Clip.none,
                                 children: [
                                   PrimaryButton(
+                                    key: Key(Keys.menuGameOnlineMpBtn),
                                     buttonText:
                                         LocaleKeys.menu_online_multiplayer.tr(),
                                     buttonIcon: Icons.people,
@@ -187,29 +191,33 @@ class _MenuScreenState extends State<MenuScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AnimateIcons(
-                      startIcon: Icons.volume_up,
-                      endIcon: Icons.volume_off,
-                      controller: controller,
-                      onStartIconPress: () {
-                        setState(() {
-                          context.read<UIAudio>().switchMute();
-                        });
-                        return true;
-                      },
-                      onEndIconPress: () {
-                        setState(() {
-                          context.read<UIAudio>().switchMute();
-                        });
-                        return true;
-                      },
-                      duration: const Duration(milliseconds: 500),
-                      startIconColor: Colors.white,
-                      endIconColor: Colors.redAccent,
-                      clockwise: false,
+                    Container(
+                      key: Key(Keys.menuSoundBtn),
+                      child: AnimateIcons(
+                        startIcon: Icons.volume_up,
+                        endIcon: Icons.volume_off,
+                        controller: controller,
+                        onStartIconPress: () {
+                          setState(() {
+                            context.read<UIAudio>().switchMute();
+                          });
+                          return true;
+                        },
+                        onEndIconPress: () {
+                          setState(() {
+                            context.read<UIAudio>().switchMute();
+                          });
+                          return true;
+                        },
+                        duration: const Duration(milliseconds: 500),
+                        startIconColor: Colors.white,
+                        endIconColor: Colors.redAccent,
+                        clockwise: false,
+                      ),
                     ),
                     const SizedBox(height: 15),
                     GestureDetector(
+                      key: Key(Keys.menuRulesBtn),
                       onTap: () => Navigator.of(context).pushNamed('/rules'),
                       child: Row(
                         children: [
@@ -236,6 +244,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                     const SizedBox(height: 15),
                     GestureDetector(
+                      key: Key(Keys.menuLanguageBtn),
                       onTap: () => languageButtonPress(context),
                       child: Row(
                         children: [
