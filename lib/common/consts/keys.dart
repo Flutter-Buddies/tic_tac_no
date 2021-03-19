@@ -21,11 +21,13 @@ class Keys {
   static const gameSetupPlayer2Piece = 'gameSetupPlayer2Piece';
   static const gameSetupPlayer1Colour = 'gameSetupPlayer1Colour_';
   static const gameSetupPlayer2Colour = 'gameSetupPlayer2Colour_';
+  static const gameSetupDifficultyR = 'gameSetupDifficultyR';
   static const gameSetupStartBtn = 'gameSetupStartBtn';
   static const gameSetupModalSheet = 'gameSetupModalSheet';
 
   // game
+  static const gameThinkingLabel = 'gameThinkingLabel';
   static const gameSquare = 'gameSquare_';
   static const gameBackBtn = 'gameBackBtn';
-  static const gameQuitToMenuBtn = 'gameQuitToMenuBtn';
+  static const gameQuitToMenuText = 'gameQuitToMenuText';
 }

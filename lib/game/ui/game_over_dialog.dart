@@ -55,7 +55,6 @@ class GameOverDialog extends StatelessWidget {
           children: [
             Expanded(
               child: GestureDetector(
-                key: Key(Keys.gameQuitToMenuBtn),
                 onTap: () {
                   context.read<UIAudio>().playSound(UISounds.ButtonClick);
                   context.read<GameBloc>().add(Reset());
@@ -71,6 +70,7 @@ class GameOverDialog extends StatelessWidget {
                   child: Center(
                     child: Text(
                       '${LocaleKeys.game_quit_to_menu.tr()}',
+                      key: Key(Keys.gameQuitToMenuText),
                       style: TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),

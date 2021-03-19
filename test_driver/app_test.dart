@@ -8,5 +8,5 @@ void main() {
   menu_test.main();
   rules_test.main();
   player_game.main();
-  // ai_game_test.main();
+  ai_game.main();
 }

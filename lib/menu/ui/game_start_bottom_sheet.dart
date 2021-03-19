@@ -303,6 +303,7 @@ class _GameStartModalState extends State<GameStartModal> {
                                         },
                                         child: Icon(
                                           Icons.arrow_right,
+                                          key: Key(Keys.gameSetupDifficultyR),
                                           size: 32,
                                         )),
                                   ],

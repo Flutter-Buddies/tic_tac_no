@@ -28,8 +28,7 @@ void main() {
       // TODO: have a check for text score (0:3) & end game dialog
 
       await wait_3s();
-
-      await driver.tap(gameQuitToMenuBtn);
+      await driver.tap(gameQuitToMenuText);
       await wait_2s();
     });
   });

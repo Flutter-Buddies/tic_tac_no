@@ -28,6 +28,7 @@ final menuGameOnlineMpBtn = find.byValueKey(Keys.menuGameOnlineMpBtn);
 // game mode setup
 final gameSetupPlayer1Piece = find.byValueKey(Keys.gameSetupPlayer1Piece);
 final gameSetupPlayer2Piece = find.byValueKey(Keys.gameSetupPlayer2Piece);
+final gameSetupDifficultyR = find.byValueKey(Keys.gameSetupDifficultyR);
 final gameSetupStartBtn = find.byValueKey(Keys.gameSetupStartBtn);
 final gameSetupModalSheet = find.byValueKey(Keys.gameSetupModalSheet);
 
@@ -42,8 +43,9 @@ SerializableFinder getPlayerColorFinder({
 }
 
 // game
+final gameThinkingLabel = find.byValueKey(Keys.gameThinkingLabel);
 final gameBackBtn = find.byValueKey(Keys.gameBackBtn);
-final gameQuitToMenuBtn = find.byValueKey(Keys.gameQuitToMenuBtn);
+final gameQuitToMenuText = find.byValueKey(Keys.gameQuitToMenuText);
 
 // format: gameSquare_G[row][column]_SQ[row][column]
 // G ... grid, SQ ... small square
