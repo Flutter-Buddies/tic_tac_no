@@ -11,7 +11,8 @@ class Keys {
   static const rulesPreviousBtn = 'rulesPreviousBtn';
   static const rulesStartBtn = 'rulesStartBtn';
 
-  // game menu buttons
+  // game menu
+  static const menuHowToPlayText = 'menuHowToPlayText';
   static const menuGameSpBtn = 'menuGameSpBtn';
   static const menuGameLocalMpBtn = 'menuGameLocalMpBtn';
   static const menuGameOnlineMpBtn = 'menuGameOnlineMpBtn';

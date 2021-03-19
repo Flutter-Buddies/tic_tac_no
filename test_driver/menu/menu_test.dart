@@ -1,8 +1,5 @@
-// import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
-
-// import 'package:tic_tac_no/translations/locale_keys.g.dart';
 
 import '../test_finders.dart';
 import '../test_helpers.dart';
@@ -28,14 +25,17 @@ void main() {
     });
 
     test('show language settings', () async {
+      final unchangedText = await driver.getText(menuHowToPlayText);
+
       await driver.tap(menuLangBtn);
       await wait_1s();
 
-      // TODO: find out how to use localization texts in Flutter driver tests
-      // await driver.waitFor(find.text(LocaleKeys.menu_change_language.tr()));
-
       await driver.tap(languageListTileHr);
       await driver.waitForAbsent(languageListView);
+
+      final changedText = await driver.getText(menuHowToPlayText);
+      print(unchangedText + '\n' + changedText);
+      expect(unchangedText, isNot(equals(changedText)));
 
       await driver.tap(menuLangBtn);
       await wait_custom(milliseconds: 1500);

@@ -3,7 +3,8 @@ import 'package:tic_tac_no/common/consts/keys.dart';
 
 import 'game/square_pos.dart';
 
-// menu settings buttons
+// home page menu
+final menuHowToPlayText = find.byValueKey(Keys.menuHowToPlayText);
 final menuLangBtn = find.byValueKey(Keys.menuLanguageBtn);
 final menuSoundBtn = find.byValueKey(Keys.menuSoundBtn);
 final menuRulesBtn = find.byValueKey(Keys.menuRulesBtn);

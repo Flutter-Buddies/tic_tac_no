@@ -231,6 +231,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                           Text(
                             LocaleKeys.menu_how_to_play.tr(),
+                            key: Key(Keys.menuHowToPlayText),
                             style: GoogleFonts.cairo(
                               textStyle: TextStyle(
                                 fontSize: 14,
