@@ -18,38 +18,38 @@ void main() {
 
     test('open and go back', () async {
       await driver.tap(menuRulesBtn);
-      await wait_1s();
+      await wait_650ms();
 
       await driver.tap(rulesAppBarBackBtn);
-      await wait_1s();
+      await wait_650ms();
     });
 
     test('navigate through all rules', () async {
       await driver.tap(menuRulesBtn);
-      await wait_1s();
+      await wait_650ms();
 
       await driver.tap(rulesNextBtn);
-      await wait_1s();
+      await wait_650ms();
 
       await driver.tap(rulesPreviousBtn);
-      await wait_1s();
+      await wait_650ms();
 
       await () async {
         await driver.tap(rulesNextBtn);
-        await wait_1s();
+        await wait_650ms();
       }.execute3Times();
 
       await driver.tap(rulesPreviousBtn);
-      await wait_1s();
+      await wait_650ms();
 
       await driver.tap(rulesNextBtn);
-      await wait_1s();
+      await wait_650ms();
 
       await driver.tap(rulesNextBtn);
-      await wait_2s();
+      await wait_650ms();
 
       await driver.tap(rulesStartBtn);
-      await wait_2s();
+      await wait_650ms();
     });
   });
 }
