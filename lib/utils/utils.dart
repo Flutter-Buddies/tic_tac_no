@@ -80,6 +80,6 @@ class Utils {
         break;
     }
 
-    EasyLocalization.of(context).locale = locale;
+    EasyLocalization.of(context).setLocale(locale);
   }
 }
