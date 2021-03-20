@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_no/common/consts/keys.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,6 +70,7 @@ class GameOverDialog extends StatelessWidget {
                   child: Center(
                     child: Text(
                       '${LocaleKeys.game_quit_to_menu.tr()}',
+                      key: Key(Keys.gameQuitToMenuText),
                       style: TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),

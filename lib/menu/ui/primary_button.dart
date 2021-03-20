@@ -3,11 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
+    Key key,
     this.buttonIcon,
     this.buttonText,
     this.buttonPress,
     this.buttonGradient,
-  });
+  }) : super(key: key);
 
   final String buttonText;
   final IconData buttonIcon;
