@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/common/consts/keys.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class RulesScreen extends StatefulWidget {
   @override
@@ -73,16 +74,19 @@ class _RulesScreenState extends State<RulesScreen> {
               children: [
                 if (_step > 1)
                   ElevatedButton(
+                    key: Key(Keys.rulesPreviousBtn),
                     onPressed: () => setState(() => _step--),
                     child: Text(LocaleKeys.rules_previous.tr()),
                   ),
                 if (_step < 5)
                   ElevatedButton(
+                    key: Key(Keys.rulesNextBtn),
                     onPressed: () => setState(() => _step++),
                     child: Text(LocaleKeys.rules_next.tr()),
                   ),
                 if (_step == 5)
                   ElevatedButton(
+                    key: Key(Keys.rulesStartBtn),
                     onPressed: () => Navigator.of(context).pop(),
                     child: Text(LocaleKeys.rules_start.tr()),
                   ),

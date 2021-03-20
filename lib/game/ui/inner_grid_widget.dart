@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_no/common/consts/keys.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
 import 'package:tic_tac_no/game/data/models/inner_grid.dart';
 import 'package:tic_tac_no/game/ui/square_widget.dart';
@@ -150,11 +151,12 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
   }
 
   List<SquareWidget> _buildSquareWidgets(int row) {
-    return this
-        .widget
-        .innerGrid
-        .squares[row]
-        .map((square) => SquareWidget(square: square))
-        .toList();
+    return this.widget.innerGrid.squares[row].map((square) {
+      final gridPos = square.parentInnerGrid.position;
+      final pos =
+          'G[${gridPos.y}][${gridPos.x}]_SQ[${square.position.y}][${square.position.x}]';
+      final key = Key(Keys.gameSquare + pos);
+      return SquareWidget(key: key, square: square);
+    }).toList();
   }
 }
