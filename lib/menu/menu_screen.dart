@@ -275,7 +275,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             width: 2,
                           ),
                           Text(
-                            "Contributers",
+                            LocaleKeys.contributors_contributors.tr(),
                             style: GoogleFonts.cairo(
                               textStyle: TextStyle(
                                 fontSize: 14,
