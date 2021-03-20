@@ -85,6 +85,12 @@ class Utils {
   }
 
   static Future<void> launchUrl(String url) async {
-    await url_launcher.launch(url);
+    await url_launcher.launch(
+      url,
+      forceSafariVC: true,
+      forceWebView: true,
+      enableJavaScript: true,
+      webOnlyWindowName: "hello",
+    );
   }
 }
