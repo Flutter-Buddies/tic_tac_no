@@ -46,5 +46,10 @@
   },
   "global": {
     "app_name": "Tic-Tac-No"
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 }

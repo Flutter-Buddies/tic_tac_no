@@ -62,6 +62,11 @@ class CodegenLoader extends AssetLoader{
     "there_is_catch": "Maar die bord is deel van n groter bord",
     "win_inner_grid": "Om enige plek op die groot bord te kry moet jy die klein bord binne daai posisie wen. Dan bly daai posisie joune.",
     "one_more_thing": "Maklik genoeg? Daar is een ander oorweging... Jou eerste skuif bepaal die binne bord wat jou oponent mee gaan begin."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String,dynamic> ar = {
@@ -112,6 +117,11 @@ static const Map<String,dynamic> ar = {
     "there_is_catch": "ولكن هناك مشكلة ... كل لوح هو جزء من لوحة الـtic-tac-toe أكبر!",
     "win_inner_grid": "يجب أن تفوز في لوحة الـtic-tac-toe صغيرة لتحصل على لمكان في اللوحة الكبيرة. بمجرد حصولك عليها لا يمكن أن يأخخذها أحد منك.",
     "one_more_thing": "سهلة؟ باقي شيء واحد... حركتك في لوح داخلي تحدد وين خصمك يلعب."
+  },
+  "contributors": {
+    "contributors": "المساهمون",
+    "contributions": "المساهمات",
+    "no_contributions": "لا يوجد مساهمون 💔"
   }
 };
 static const Map<String,dynamic> cs = {
@@ -162,6 +172,11 @@ static const Map<String,dynamic> cs = {
   },
   "global": {
     "app_name": "Tic-Tac-No"
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String,dynamic> en = {
@@ -212,6 +227,11 @@ static const Map<String,dynamic> en = {
     "there_is_catch": "But there’s a catch... each board is part of a bigger tic-tac-toe board!",
     "win_inner_grid": "You must win the inner-grid to claim the position on the main-grid. Once you claim it, no one can claim it again.",
     "one_more_thing": "Easy? There’s one more thing... your move within the inner-grid determines the inner-grid your opponent must play."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String,dynamic> es = {
@@ -262,6 +282,11 @@ static const Map<String,dynamic> es = {
     "there_is_catch": "Pero hay un truco... ¡cada cuadrícula es parte de una cuadrícula de tic-tac-toe más grande!",
     "win_inner_grid": "Tienes que ganar la cuadrícula interior para reclamar la posición en la cuadrícula principal. Al reclamarlo, nadie más podrá reclamarlo de nuevo.",
     "one_more_thing": "¿Fácil? Hay una cosa más... tu movimiento dentro de la cuadrícula interna determina la cuadrícula interna en la cual tu oponente tiene que jugar."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String,dynamic> he = {
@@ -312,6 +337,11 @@ static const Map<String,dynamic> he = {
     "there_is_catch": "אבל יש קטע... כל לוח הוא חלק מלוח איקס עיגול גדול יותר!",
     "tic_must_win": "אתה מתמודד עם לוח איקס עיגול שאתה חייב לנצח.",
     "win_inner_grid": "אתה חייב לנצח בלוח הפנימי בכדי להשיג את המיקום בלוח הראשי. ברגע שאתה משיג אותו, אף אחד לא יכול להשיג אותו שוב."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String,dynamic> hr = {
@@ -362,6 +392,11 @@ static const Map<String,dynamic> hr = {
     "there_is_catch": "Ali postoji kvaka... svaka ploča je dio velike križić-kružić ploče!",
     "win_inner_grid": "Moraš pobijediti unutarnje ploče da bi osvojio poziciju na glavnoj ploči. Jednom kad ju osvojiš, nitko ti ju ne može oduzeti.",
     "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String,dynamic> pl = {
@@ -412,6 +447,11 @@ static const Map<String,dynamic> pl = {
     "there_is_catch": "Ale jest haczyk... każda plansza jest częścią większej planszy Kółko i Krzyżyk!",
     "tic_must_win": "Trafiasz na planszę Kółko i Krzyżyk którą musisz wygrać!",
     "win_inner_grid": "Musisz wygrać na wewnętrznej planszy aby przejąć ją na głównej planszy. Nikt ci nie odbierze przejętej planszy."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String,dynamic> zh = {
@@ -462,6 +502,11 @@ static const Map<String,dynamic> zh = {
     "there_is_catch": "但請注意…每一小局的結果都將決定更大一局遊戲的勝敗！",
     "win_inner_grid": "你若贏了某一小局，即可在大局中佔領該位置。一旦位置被佔領，則沒人可以拿走該位置",
     "one_more_thing": "簡單嗎？ 對了...你在小局中下的位置將決定該回合對手必須下的相對應大局中小局位置。"
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"af": af, "ar": ar, "cs": cs, "en": en, "es": es, "he": he, "hr": hr, "pl": pl, "zh": zh};

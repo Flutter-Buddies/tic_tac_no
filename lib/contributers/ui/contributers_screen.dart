@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:github/github.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tic_tac_no/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tic_tac_no/utils/utils.dart';
 
 class ContributersScreen extends StatefulWidget {
@@ -52,7 +55,8 @@ class _ContributersScreenState extends State<ContributersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Contributors",
+          LocaleKeys.contributors_contributors.tr(),
+          style: GoogleFonts.cairo(),
         ),
       ),
       body: StreamBuilder<List<Contributor>>(
@@ -72,8 +76,8 @@ class _ContributersScreenState extends State<ContributersScreen> {
           return contributorsList.isEmpty
               ? Center(
                   child: Text(
-                    "No Contributors 💔",
-                    style: TextStyle(
+                    LocaleKeys.contributors_no_contributions.tr(),
+                    style: GoogleFonts.cairo(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
@@ -92,19 +96,20 @@ class _ContributersScreenState extends State<ContributersScreen> {
                       ),
                       title: Text(
                         contributor.login,
-                        style: TextStyle(
+                        style: GoogleFonts.cairo(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
                         contributor.type,
-                        style: TextStyle(
+                        style: GoogleFonts.cairo(
                           color: Color(0xffC3C3C3),
                         ),
                       ),
                       trailing: Text(
-                        'Contributions: ${contributor.contributions}',
+                        '${LocaleKeys.contributors_contributions.tr()}: ${contributor.contributions}',
+                        style: GoogleFonts.cairo(),
                       ),
                       onTap: () async {
                         print(contributor.htmlUrl);
