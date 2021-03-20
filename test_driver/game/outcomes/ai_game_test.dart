@@ -33,53 +33,57 @@ void main() {
     });
 
     test('play game', () async {
-      final playerMoves = <SquarePos>[];
+      bool gameFinished = false;
+      final allPossibleMoves = _getAllPossibleMoves().toList()..shuffle();
 
-      OUTER: while (true) {
+      OUTER:
+      while (true) {
         await driver.clearTimeline();
 
-        // TODO: Improve this: add already done moves by player and AI to a set so we dont wastefully iterate through them again
-        for (var rowG = 0; rowG < 3; rowG++) {
-          for (var columnG = 0; columnG < 3; columnG++) {
-            final randomRowMove = List.generate(3, (i) => i)..shuffle();
-            for (var rowSqIt = 0; rowSqIt < 3; rowSqIt++) {
-              final rowSq = randomRowMove[rowSqIt];
-              final randomColMove = List.generate(3, (i) => i)..shuffle();
-              for (var columnSqIt = 0; columnSqIt < 3; columnSqIt++) {
-                final columnSq = randomColMove[columnSqIt];
-                final playerTap = SquarePos(rowG, columnG, rowSq, columnSq);
+        final allPossibleMovesCopy = List.of(allPossibleMoves);
+        for (final squarePos in allPossibleMovesCopy) {
+          await driver
+              .tap(
+                getGameSquareFinder(squarePos),
+                timeout: Duration(milliseconds: 5000),
+              )
+              .onError((_, __) => gameFinished = true);
 
-                bool gameFinished = false;
-                await driver
-                    .tap(
-                      getGameSquareFinder(playerTap),
-                      timeout: Duration(milliseconds: 5000),
-                    )
-                    .onError((_, __) => gameFinished = true);
-                if (gameFinished) break OUTER;
+          if (gameFinished) break OUTER;
 
-                await driver
-                    .waitFor(gameThinkingLabel)
-                    .timeout(const Duration(milliseconds: 20))
-                    .then(
-                  (_) async {
-                    playerMoves.add(playerTap);
-                    await driver.waitForAbsent(gameThinkingLabel).timeout(
-                          Duration(milliseconds: aiThinkingTime),
-                          onTimeout: () {},
-                        );
-                  },
-                  onError: (_) {},
-                );
-              }
-            }
-          }
+          await driver
+              .waitFor(gameThinkingLabel)
+              .timeout(const Duration(milliseconds: 20))
+              .then(
+            (_) async {
+              // allPossibleMoves.remove(squarePos);
+              await driver.waitForAbsent(gameThinkingLabel).timeout(
+                    Duration(milliseconds: aiThinkingTime),
+                    onTimeout: () {},
+                  );
+            },
+            onError: (_) {},
+          );
         }
       }
-      await driver.tap(gameQuitToMenuText);
-      print(playerMoves.toString());
 
+      await driver.tap(gameQuitToMenuText);
       await wait_2s();
     }, timeout: const Timeout(Duration(minutes: 10)));
   });
+}
+
+Set<SquarePos> _getAllPossibleMoves() {
+  final allPossibleMoves = <SquarePos>{};
+  for (var rowG = 0; rowG < 3; rowG++) {
+    for (var columnG = 0; columnG < 3; columnG++) {
+      for (var rowSq = 0; rowSq < 3; rowSq++) {
+        for (var columnSq = 0; columnSq < 3; columnSq++) {
+          final squarePos = SquarePos(rowG, columnG, rowSq, columnSq);
+          allPossibleMoves.add(squarePos);
+        }
+      }
+    }
+  }
+  return allPossibleMoves;
 }
