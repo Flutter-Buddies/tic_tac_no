@@ -80,7 +80,7 @@ class _ContributersScreenState extends State<ContributersScreen> {
         ) {
           final List<Contributor> contributorsList = snapshot.data;
 
-          if (contributorsList.isEmpty) {
+          if (contributorsList == null || contributorsList.isEmpty) {
             return Center(
               child: CircularProgressIndicator(),
             );
