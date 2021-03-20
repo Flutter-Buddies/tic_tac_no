@@ -40,8 +40,8 @@ void main() {
       while (true) {
         await driver.clearTimeline();
 
-        final allPossibleMovesCopy = List.of(allPossibleMoves);
-        for (final squarePos in allPossibleMovesCopy) {
+        // final allPossibleMovesCopy = List.of(allPossibleMoves);
+        for (final squarePos in allPossibleMoves) {
           await driver
               .tap(
                 getGameSquareFinder(squarePos),
