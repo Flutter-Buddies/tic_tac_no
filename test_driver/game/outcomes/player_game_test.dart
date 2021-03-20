@@ -25,11 +25,9 @@ void main() {
         await wait_custom(milliseconds: 150);
       }
 
-      // TODO: have a check for text score (0:3) & end game dialog
-
-      await wait_3s();
+      await wait_650ms();
+      await driver.waitFor(gameQuitToMenuText);
       await driver.tap(gameQuitToMenuText);
-      await wait_2s();
     });
   });
 }

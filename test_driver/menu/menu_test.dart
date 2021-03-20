@@ -25,6 +25,11 @@ void main() {
     });
 
     test('show language settings', () async {
+      await driver.tap(menuLangBtn);
+      await wait_1s();
+
+      await driver.tap(languageListTileEn);
+      await driver.waitForAbsent(languageListView);
       final unchangedText = await driver.getText(menuHowToPlayText);
 
       await driver.tap(menuLangBtn);
@@ -32,8 +37,8 @@ void main() {
 
       await driver.tap(languageListTileHr);
       await driver.waitForAbsent(languageListView);
-
       final changedText = await driver.getText(menuHowToPlayText);
+
       print(unchangedText + '\n' + changedText);
       expect(unchangedText, isNot(equals(changedText)));
 
