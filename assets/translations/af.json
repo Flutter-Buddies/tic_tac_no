@@ -46,5 +46,10 @@
     "there_is_catch": "Maar die bord is deel van n groter bord",
     "win_inner_grid": "Om enige plek op die groot bord te kry moet jy die klein bord binne daai posisie wen. Dan bly daai posisie joune.",
     "one_more_thing": "Maklik genoeg? Daar is een ander oorweging... Jou eerste skuif bepaal die binne bord wat jou oponent mee gaan begin."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 }

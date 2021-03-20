@@ -270,6 +270,32 @@ class _MenuScreenState extends State<MenuScreen> {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 15),
+                    GestureDetector(
+                      onTap: () =>
+                          Navigator.of(context).pushNamed('/contributors'),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.code,
+                            color: Colors.white,
+                            size: 14,
+                          ),
+                          const SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            LocaleKeys.contributors_contributors.tr(),
+                            style: GoogleFonts.cairo(
+                              textStyle: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

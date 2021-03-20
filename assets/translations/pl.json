@@ -46,5 +46,10 @@
     "there_is_catch": "Ale jest haczyk... każda plansza jest częścią większej planszy Kółko i Krzyżyk!",
     "tic_must_win": "Trafiasz na planszę Kółko i Krzyżyk którą musisz wygrać!",
     "win_inner_grid": "Musisz wygrać na wewnętrznej planszy aby przejąć ją na głównej planszy. Nikt ci nie odbierze przejętej planszy."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 }

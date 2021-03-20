@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 enum SupportedLocale {
   en,
@@ -80,6 +81,16 @@ class Utils {
         break;
     }
 
-    EasyLocalization.of(context).locale = locale;
+    EasyLocalization.of(context).setLocale(locale);
+  }
+
+  static Future<void> launchUrl(String url) async {
+    await url_launcher.launch(
+      url,
+      forceSafariVC: true,
+      forceWebView: true,
+      enableJavaScript: true,
+      webOnlyWindowName: "hello",
+    );
   }
 }
