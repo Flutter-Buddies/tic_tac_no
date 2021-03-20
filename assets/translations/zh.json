@@ -46,5 +46,10 @@
     "there_is_catch": "但請注意…每一小局的結果都將決定更大一局遊戲的勝敗！",
     "win_inner_grid": "你若贏了某一小局，即可在大局中佔領該位置。一旦位置被佔領，則沒人可以拿走該位置",
     "one_more_thing": "簡單嗎？ 對了...你在小局中下的位置將決定該回合對手必須下的相對應大局中小局位置。"
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 }
