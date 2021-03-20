@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:github/github.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
@@ -58,6 +59,18 @@ class _ContributersScreenState extends State<ContributersScreen> {
           LocaleKeys.contributors_contributors.tr(),
           style: GoogleFonts.cairo(),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              FontAwesomeIcons.github,
+            ),
+            onPressed: () async {
+              await Utils.launchUrl(
+                "https://github.com/Flutter-Buddies/tic_tac_no",
+              );
+            },
+          )
+        ],
       ),
       body: StreamBuilder<List<Contributor>>(
         stream: contributorsController.stream,
