@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tic_tac_no/contributers/ui/contributers_screen.dart';
 
 import 'package:tic_tac_no/game/ui/game_screen.dart';
 import 'package:tic_tac_no/menu/menu_screen.dart';
@@ -36,7 +37,8 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => MenuScreen(),
         '/rules': (context) => RulesScreen(),
-        '/game': (context) => GameScreen()
+        '/game': (context) => GameScreen(),
+        '/contributors': (context) => ContributersScreen(),
       },
       builder: (BuildContext context, Widget child) {
         return Directionality(
