@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tic_tac_no/utils/utils.dart';
+import 'package:tic_tac_no/common/consts/keys.dart';
 import 'package:tic_tac_no/translations/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:tic_tac_no/utils/utils.dart';
 
 class LanguageBottomSheet extends StatelessWidget {
   @override
@@ -48,6 +50,7 @@ class LanguageBottomSheet extends StatelessWidget {
                     ).createShader(bounds);
                   },
                   child: ListView(
+                    key: Key(Keys.languageListView),
                     children: [
                       /// emojis from: https://emojipedia.org/flags/
                       LanguageListTile(
@@ -118,12 +121,11 @@ class LanguageBottomSheet extends StatelessWidget {
 
 class LanguageListTile extends StatelessWidget {
   const LanguageListTile({
-    Key key,
     @required this.languageEmoji,
     @required this.languageName,
     @required this.showCheck,
     @required this.locale,
-  }) : super(key: key);
+  });
 
   final String languageEmoji;
   final String languageName;
@@ -133,6 +135,7 @@ class LanguageListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      key: Key('${Keys.languageListTile}${describeEnum(locale)}'),
       leading: Text(
         languageEmoji,
         style: TextStyle(

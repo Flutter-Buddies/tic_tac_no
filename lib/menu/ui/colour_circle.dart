@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ColourCircle extends StatelessWidget {
-  const ColourCircle(
-      {this.circleColor, this.isSelected, this.selectorFunction});
+  const ColourCircle({
+    Key key,
+    this.circleColor,
+    this.isSelected,
+    this.selectorFunction,
+  }) : super(key: key);
 
   final Color circleColor;
   final bool isSelected;

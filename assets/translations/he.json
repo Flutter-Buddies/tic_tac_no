@@ -46,5 +46,10 @@
     "there_is_catch": "אבל יש קטע... כל לוח הוא חלק מלוח איקס עיגול גדול יותר!",
     "tic_must_win": "אתה מתמודד עם לוח איקס עיגול שאתה חייב לנצח.",
     "win_inner_grid": "אתה חייב לנצח בלוח הפנימי בכדי להשיג את המיקום בלוח הראשי. ברגע שאתה משיג אותו, אף אחד לא יכול להשיג אותו שוב."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 }

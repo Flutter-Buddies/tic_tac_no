@@ -9,7 +9,13 @@ import 'package:tic_tac_no/app.dart';
 import 'package:tic_tac_no/translations/codegen_loader.g.dart';
 import 'package:tic_tac_no/utils/audio.dart';
 
-void main() {
+Future<void> main() async {
+  /// make sure widgets are initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
+  /// initialize easy localization
+  await EasyLocalization.ensureInitialized();
+
   Bloc.observer = SimpleBlocObserver();
   runApp(
     BlocProvider(

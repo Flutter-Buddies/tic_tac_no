@@ -46,5 +46,10 @@
     "there_is_catch": "Ali postoji kvaka... svaka ploča je dio velike križić-kružić ploče!",
     "win_inner_grid": "Moraš pobijediti unutarnje ploče da bi osvojio poziciju na glavnoj ploči. Jednom kad ju osvojiš, nitko ti ju ne može oduzeti.",
     "one_more_thing": "Lako? Ima još jedna stvar... tvoj potez u unutarnjoj ploči određuje unutarnju ploču na kojoj protivnik mora igrati."
+  },
+  "contributors": {
+    "contributors": "Contributors",
+    "contributions": "Contributions",
+    "no_contributions": "No Contributors 💔"
   }
 }
