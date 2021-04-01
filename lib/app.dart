@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,

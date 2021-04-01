@@ -26,7 +26,6 @@ class ColourCircle extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(
               color: isSelected ? Colors.white : Colors.transparent,
-              width: 1,
             ),
           ),
         ),

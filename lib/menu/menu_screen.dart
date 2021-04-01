@@ -38,7 +38,7 @@ class _MenuScreenState extends State<MenuScreen> {
         context: context,
         builder: (BuildContext context) {
           return GameStartModal(
-            key: Key(Keys.gameSetupModalSheet),
+            key: const Key(Keys.gameSetupModalSheet),
             gameType: gameType,
           );
         },
@@ -57,7 +57,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
     return Theme(
       data: ThemeData(
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           headline1: TextStyle(
             fontSize: 100,
             color: Colors.white,
@@ -73,12 +73,13 @@ class _MenuScreenState extends State<MenuScreen> {
           body: Stack(
             children: [
               Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xff1E3C72), Color(0xff2A5298)],
-                )),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xff1E3C72), Color(0xff2A5298)],
+                  ),
+                ),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
@@ -101,30 +102,34 @@ class _MenuScreenState extends State<MenuScreen> {
                               padding:
                                   const EdgeInsets.symmetric(vertical: 16.0),
                               child: PrimaryButton(
-                                key: Key(Keys.menuGameSpBtn),
+                                key: const Key(Keys.menuGameSpBtn),
                                 buttonText: LocaleKeys.menu_single_player.tr(),
                                 buttonIcon: Icons.person,
                                 buttonPress: () =>
                                     primaryButtonPress(GameType.SinglePlayer),
-                                buttonGradient: LinearGradient(colors: [
-                                  Color(0xffFF5F6D),
-                                  Color(0xffFFC371)
-                                ]),
+                                buttonGradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xffFF5F6D),
+                                    Color(0xffFFC371)
+                                  ],
+                                ),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               child: PrimaryButton(
-                                key: Key(Keys.menuGameLocalMpBtn),
+                                key: const Key(Keys.menuGameLocalMpBtn),
                                 buttonText:
                                     LocaleKeys.menu_local_multiplayer.tr(),
                                 buttonIcon: Icons.phone_android_outlined,
                                 buttonPress: () => primaryButtonPress(
                                     GameType.LocalMultiplayer),
-                                buttonGradient: LinearGradient(colors: [
-                                  Color(0xffE33E49),
-                                  Color(0xff9B00B5)
-                                ]),
+                                buttonGradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xffE33E49),
+                                    Color(0xff9B00B5)
+                                  ],
+                                ),
                               ),
                             ),
                             Padding(
@@ -133,17 +138,19 @@ class _MenuScreenState extends State<MenuScreen> {
                                 clipBehavior: Clip.none,
                                 children: [
                                   PrimaryButton(
-                                    key: Key(Keys.menuGameOnlineMpBtn),
+                                    key: const Key(Keys.menuGameOnlineMpBtn),
                                     buttonText:
                                         LocaleKeys.menu_online_multiplayer.tr(),
                                     buttonIcon: Icons.people,
                                     buttonPress: () {
                                       // Do nothing
                                     },
-                                    buttonGradient: LinearGradient(colors: [
-                                      Color(0xff9534E1),
-                                      Color(0xff009E95)
-                                    ]),
+                                    buttonGradient: const LinearGradient(
+                                      colors: [
+                                        Color(0xff9534E1),
+                                        Color(0xff009E95)
+                                      ],
+                                    ),
                                   ),
                                   Positioned(
                                     top: -7,
@@ -155,7 +162,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(5),
                                             color: Colors.white,
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 color: Colors.grey,
                                                 blurRadius: 3.0,
@@ -165,8 +172,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 12.0,
-                                                vertical: 0.0),
+                                                horizontal: 12.0),
                                             child: Text(
                                               LocaleKeys.menu_coming_soon.tr(),
                                               style: GoogleFonts.cairo(),
@@ -192,7 +198,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      key: Key(Keys.menuSoundBtn),
+                      key: const Key(Keys.menuSoundBtn),
                       child: AnimateIcons(
                         startIcon: Icons.volume_up,
                         endIcon: Icons.volume_off,
@@ -217,11 +223,11 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                     const SizedBox(height: 15),
                     GestureDetector(
-                      key: Key(Keys.menuRulesBtn),
+                      key: const Key(Keys.menuRulesBtn),
                       onTap: () => Navigator.of(context).pushNamed('/rules'),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.info_outline,
                             color: Colors.white,
                             size: 14,
@@ -231,9 +237,9 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                           Text(
                             LocaleKeys.menu_how_to_play.tr(),
-                            key: Key(Keys.menuHowToPlayText),
+                            key: const Key(Keys.menuHowToPlayText),
                             style: GoogleFonts.cairo(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.white,
                                 // decoration: TextDecoration.underline,
@@ -245,11 +251,11 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                     const SizedBox(height: 15),
                     GestureDetector(
-                      key: Key(Keys.menuLanguageBtn),
+                      key: const Key(Keys.menuLanguageBtn),
                       onTap: () => languageButtonPress(context),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.language,
                             color: Colors.white,
                             size: 14,
@@ -260,7 +266,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           Text(
                             LocaleKeys.menu_change_language.tr(),
                             style: GoogleFonts.cairo(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.white,
                                 // decoration: TextDecoration.underline,
@@ -276,7 +282,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           Navigator.of(context).pushNamed('/contributors'),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.code,
                             color: Colors.white,
                             size: 14,
@@ -287,7 +293,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           Text(
                             LocaleKeys.contributors_contributors.tr(),
                             style: GoogleFonts.cairo(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.white,
                               ),

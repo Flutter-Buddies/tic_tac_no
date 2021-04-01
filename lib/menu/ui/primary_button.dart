@@ -12,7 +12,7 @@ class PrimaryButton extends StatelessWidget {
 
   final String buttonText;
   final IconData buttonIcon;
-  final Function buttonPress;
+  final VoidCallback buttonPress;
   final LinearGradient buttonGradient;
 
   @override
@@ -20,7 +20,7 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: buttonPress,
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
@@ -32,7 +32,7 @@ class PrimaryButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         child: Container(
-          constraints: BoxConstraints(minWidth: 88, minHeight: 36),
+          constraints: const BoxConstraints(minWidth: 88, minHeight: 36),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
             child: Row(
@@ -46,7 +46,7 @@ class PrimaryButton extends StatelessWidget {
                 Text(
                   buttonText,
                   style: GoogleFonts.cairo(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -63,7 +63,7 @@ class PrimaryButton extends StatelessWidget {
 
   Icon getButtonIcon() {
     if (buttonIcon == null) {
-      return Icon(
+      return const Icon(
         Icons.add,
         size: 0,
         color: Colors.transparent,

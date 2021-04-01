@@ -84,9 +84,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       );
       if (this._judge.getWinner().type == PlayerType.ai ||
           this._judge.getWinner().type == PlayerType.onlineFriend) {
-        audio.playSound(GameSounds.GameLost);
+        await audio.playSound(GameSounds.GameLost);
       } else {
-        audio.playSound(GameSounds.GameWon);
+        await audio.playSound(GameSounds.GameWon);
       }
     } else {
       yield _readyState();
@@ -95,7 +95,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         yield AIThinking();
         await Future.delayed(
             Duration(milliseconds: 200 + Random().nextInt(1000)));
-        final Square move = this._ai.makeMove(this._judge.getGrid());
+        final move = this._ai.makeMove(this._judge.getGrid());
         yield _readyState();
         this.add(SquareTapped(square: move));
       }
