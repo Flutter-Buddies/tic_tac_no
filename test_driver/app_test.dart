@@ -5,8 +5,8 @@ import 'menu/rules_test.dart' as rules_test;
 
 // for faster testing some segments can be commented out
 void main() {
-  // menu_test.main();
-  // rules_test.main();
-  // player_game.main();
+  menu_test.main();
+  rules_test.main();
+  player_game.main();
   ai_game.main();
 }
