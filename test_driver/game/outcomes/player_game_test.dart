@@ -1,3 +1,4 @@
+@Timeout(Duration(minutes: 2))
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
@@ -28,7 +29,7 @@ void main() {
       await wait_650ms();
       await driver.waitFor(gameQuitToMenuText);
       await driver.tap(gameQuitToMenuText);
-    });
+    }, timeout: const Timeout(const Duration(minutes: 15)));
   });
 }
 
