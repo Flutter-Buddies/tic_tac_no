@@ -4,16 +4,11 @@ import 'package:tic_tac_no/game/data/models/position.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
 
 class InnerGrid {
-  final Position position;
-  List<List<Square>> squares;
-  bool isPlayable = true;
-  Player winner;
-
   InnerGrid({@required this.position}) {
     this.squares = [];
-    for (int i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
       this.squares.add([]);
-      for (int j = 0; j < 3; j++) {
+      for (var j = 0; j < 3; j++) {
         this.squares[i].add(Square(
               parentInnerGrid: this,
               position: Position(i, j),
@@ -22,9 +17,14 @@ class InnerGrid {
     }
   }
 
+  final Position position;
+  List<List<Square>> squares;
+  bool isPlayable = true;
+  Player winner;
+
   bool hasRoom() {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
         if (this.squares[i][j].player == null) {
           return true;
         }
@@ -35,13 +35,13 @@ class InnerGrid {
 
   @override
   String toString() {
-    String result = '';
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        result += this.squares[i][j].toString();
+    final strBuffer = StringBuffer();
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        strBuffer.write(this.squares[i][j].toString());
       }
-      result += "\n";
+      strBuffer.write('\n');
     }
-    return result;
+    return strBuffer.toString();
   }
 }

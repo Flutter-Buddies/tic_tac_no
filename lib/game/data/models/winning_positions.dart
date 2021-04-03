@@ -1,10 +1,11 @@
+// ignore: constant_identifier_names
 enum LineType { Veritical, Horizontal, DiagonalBack, DiagonalForward }
 
 class WinningPositions {
+  const WinningPositions({this.lineType, this.thirdPosition});
+
   final LineType lineType;
   final int thirdPosition;
-
-  const WinningPositions({this.lineType, this.thirdPosition});
 
   @override
   String toString() =>

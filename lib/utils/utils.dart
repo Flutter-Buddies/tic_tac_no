@@ -50,34 +50,34 @@ class Utils {
 
     switch (supportedLocale) {
       case SupportedLocale.en:
-        locale = Locale('en');
+        locale = const Locale('en');
         break;
       case SupportedLocale.af:
-        locale = Locale('af');
+        locale = const Locale('af');
         break;
       case SupportedLocale.ar:
-        locale = Locale('ar');
+        locale = const Locale('ar');
         break;
       case SupportedLocale.hr:
-        locale = Locale('hr');
+        locale = const Locale('hr');
         break;
       case SupportedLocale.es:
-        locale = Locale('es');
+        locale = const Locale('es');
         break;
       case SupportedLocale.pl:
-        locale = Locale('pl');
+        locale = const Locale('pl');
         break;
       case SupportedLocale.he:
-        locale = Locale('he');
+        locale = const Locale('he');
         break;
       case SupportedLocale.zh:
-        locale = Locale('zh');
+        locale = const Locale('zh');
         break;
       case SupportedLocale.cs:
-        locale = Locale('cs');
+        locale = const Locale('cs');
         break;
       default:
-        locale = Locale('en');
+        locale = const Locale('en');
         break;
     }
 
@@ -90,7 +90,7 @@ class Utils {
       forceSafariVC: true,
       forceWebView: true,
       enableJavaScript: true,
-      webOnlyWindowName: "hello",
+      webOnlyWindowName: 'hello',
     );
   }
 }

@@ -22,11 +22,11 @@ Future<void> main() async {
       create: (context) => GameBloc(),
       child: EasyLocalization(
           path: 'assets/translations',
-          assetLoader: CodegenLoader(),
+          assetLoader: const CodegenLoader(),
 
           /// don't make country specific so it works in any country
           /// if language matches
-          supportedLocales: [
+          supportedLocales: const [
             Locale('en'),
             Locale('af'),
             Locale('ar'),
@@ -37,7 +37,7 @@ Future<void> main() async {
             Locale('zh'),
             Locale('cs'),
           ],
-          fallbackLocale: Locale('en'),
+          fallbackLocale: const Locale('en'),
           child: Provider(
             create: (context) => UIAudio()..preloadSounds(),
             lazy: false,

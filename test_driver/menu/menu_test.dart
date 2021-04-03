@@ -39,7 +39,7 @@ void main() {
       await driver.waitForAbsent(languageListView);
       final changedText = await driver.getText(menuHowToPlayText);
 
-      print(unchangedText + '\n' + changedText);
+      print('$unchangedText\n$changedText');
       expect(unchangedText, isNot(equals(changedText)));
 
       await driver.tap(menuLangBtn);

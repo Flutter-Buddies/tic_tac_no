@@ -2,6 +2,7 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
+// ignore_for_file: constant_identifier_names
 enum GameSounds { PlacingPiece, InnerGridWin, GameWon, GameLost }
 enum UISounds { ButtonClick }
 
@@ -30,7 +31,7 @@ class GameAudio extends BaseAudio {
     ]);
   }
 
-  void playSound(GameSounds soundEvent) async {
+  Future<void> playSound(GameSounds soundEvent) async {
     if (kIsWeb) return;
     switch (soundEvent) {
       case GameSounds.PlacingPiece:
@@ -76,7 +77,7 @@ class UIAudio extends BaseAudio {
     player.loadAll(['button_click.mp3']);
   }
 
-  void playSound(UISounds uiSound) async {
+  Future<void> playSound(UISounds uiSound) async {
     if (kIsWeb) return;
     switch (uiSound) {
       case UISounds.ButtonClick:

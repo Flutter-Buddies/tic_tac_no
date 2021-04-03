@@ -20,15 +20,14 @@ class _ContributersScreenState extends State<ContributersScreen> {
       StreamController<List<Contributor>>();
 
   void getContributersStream() {
-    Stream<Contributor> contributorStream =
-        _gitHub.repositories.listContributors(
+    final contributorStream = _gitHub.repositories.listContributors(
       RepositorySlug(
         'Flutter-Buddies',
         'tic_tac_no',
       ),
     );
 
-    List<Contributor> contributorsList = <Contributor>[];
+    final contributorsList = <Contributor>[];
 
     contributorStream.listen((Contributor contributor) {
       setState(() {
@@ -61,12 +60,12 @@ class _ContributersScreenState extends State<ContributersScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               FontAwesomeIcons.github,
             ),
             onPressed: () async {
               await Utils.launchUrl(
-                "https://github.com/Flutter-Buddies/tic_tac_no",
+                'https://github.com/Flutter-Buddies/tic_tac_no',
               );
             },
           )
@@ -78,10 +77,10 @@ class _ContributersScreenState extends State<ContributersScreen> {
           BuildContext context,
           AsyncSnapshot<List<Contributor>> snapshot,
         ) {
-          final List<Contributor> contributorsList = snapshot.data;
+          final contributorsList = snapshot.data;
 
           if (contributorsList == null || contributorsList.isEmpty) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -99,7 +98,7 @@ class _ContributersScreenState extends State<ContributersScreen> {
               : ListView.builder(
                   itemCount: contributorsList.length ?? 0,
                   itemBuilder: (BuildContext context, int index) {
-                    final Contributor contributor = contributorsList[index];
+                    final contributor = contributorsList[index];
 
                     return ListTile(
                       leading: CircleAvatar(
@@ -117,7 +116,7 @@ class _ContributersScreenState extends State<ContributersScreen> {
                       subtitle: Text(
                         contributor.type,
                         style: GoogleFonts.cairo(
-                          color: Color(0xffC3C3C3),
+                          color: const Color(0xffC3C3C3),
                         ),
                       ),
                       trailing: Text(

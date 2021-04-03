@@ -13,13 +13,12 @@ class LanguageBottomSheet extends StatelessWidget {
       children: [
         Container(
           height: MediaQuery.of(context).size.height * 0.6,
-          padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color(0xff012E44),
+            color: const Color(0xff012E44),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +26,7 @@ class LanguageBottomSheet extends StatelessWidget {
                   Text(
                     LocaleKeys.menu_change_language.tr(),
                     style: GoogleFonts.cairo(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -39,7 +38,7 @@ class LanguageBottomSheet extends StatelessWidget {
               Expanded(
                 child: ShaderMask(
                   shaderCallback: (bounds) {
-                    return LinearGradient(
+                    return const LinearGradient(
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
                       colors: [
@@ -50,64 +49,74 @@ class LanguageBottomSheet extends StatelessWidget {
                     ).createShader(bounds);
                   },
                   child: ListView(
-                    key: Key(Keys.languageListView),
+                    key: const Key(Keys.languageListView),
                     children: [
                       /// emojis from: https://emojipedia.org/flags/
                       LanguageListTile(
                         languageEmoji: '🇬🇧',
                         languageName: 'English',
-                        showCheck: Utils.currentLocale(context) == Locale('en'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('en'),
                         locale: SupportedLocale.en,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇿🇦',
                         languageName: 'Afrikaans',
-                        showCheck: Utils.currentLocale(context) == Locale('af'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('af'),
                         locale: SupportedLocale.af,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇸🇦',
                         languageName: 'العربية',
-                        showCheck: Utils.currentLocale(context) == Locale('ar'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('ar'),
                         locale: SupportedLocale.ar,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇭🇷',
                         languageName: 'Hrvatski',
-                        showCheck: Utils.currentLocale(context) == Locale('hr'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('hr'),
                         locale: SupportedLocale.hr,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇪🇸',
                         languageName: 'Español',
-                        showCheck: Utils.currentLocale(context) == Locale('es'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('es'),
                         locale: SupportedLocale.es,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇵🇱',
                         languageName: 'Polski',
-                        showCheck: Utils.currentLocale(context) == Locale('pl'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('pl'),
                         locale: SupportedLocale.pl,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇮🇱',
                         languageName: 'Hebrew',
-                        showCheck: Utils.currentLocale(context) == Locale('he'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('he'),
                         locale: SupportedLocale.he,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇹🇼',
                         languageName: 'Chinese',
-                        showCheck: Utils.currentLocale(context) == Locale('zh'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('zh'),
                         locale: SupportedLocale.zh,
                       ),
                       LanguageListTile(
                         languageEmoji: '🇨🇿',
                         languageName: 'Čeština',
-                        showCheck: Utils.currentLocale(context) == Locale('cs'),
+                        showCheck:
+                            Utils.currentLocale(context) == const Locale('cs'),
                         locale: SupportedLocale.cs,
                       ),
-                    ]..add(SizedBox(height: 80.0)),
+                      // ignore: prefer_inlined_adds
+                    ]..add(const SizedBox(height: 80.0)),
                   ),
                 ),
               ),
@@ -138,7 +147,7 @@ class LanguageListTile extends StatelessWidget {
       key: Key('${Keys.languageListTile}${describeEnum(locale)}'),
       leading: Text(
         languageEmoji,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold,
@@ -147,7 +156,7 @@ class LanguageListTile extends StatelessWidget {
       title: Text(
         languageName,
         style: GoogleFonts.cairo(
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             color: Colors.white,
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -155,7 +164,7 @@ class LanguageListTile extends StatelessWidget {
         ),
       ),
       trailing: showCheck
-          ? Icon(
+          ? const Icon(
               Icons.check,
             )
           : null,

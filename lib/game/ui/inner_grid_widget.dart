@@ -18,31 +18,33 @@ class InnerGridWidget extends StatefulWidget {
 
 class _InnerGridWidgetState extends State<InnerGridWidget>
     with TickerProviderStateMixin {
-  Animation _animationPadding;
+  Animation<double> _animationPadding;
   AnimationController _animationControllerPadding;
-  Animation _animationOpacity;
+  Animation<double> _animationOpacity;
   AnimationController _animationControllerOpacity;
   bool _didAnimateWinner = false;
 
   @override
   void initState() {
     super.initState();
-    _animationControllerPadding =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 700));
+    _animationControllerPadding = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
     _animationPadding = Tween<double>(begin: 70, end: 20).animate(
         CurvedAnimation(
             parent: _animationControllerPadding, curve: Curves.easeIn));
     _animationControllerOpacity = AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 700),
-        reverseDuration: Duration(milliseconds: 300));
+        duration: const Duration(milliseconds: 700),
+        reverseDuration: const Duration(milliseconds: 300));
     _animationOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: _animationControllerOpacity, curve: Curves.easeIn));
     _animationControllerOpacity.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
-        await Future.delayed(Duration(milliseconds: 1000));
-        _animationControllerOpacity.reverse();
+        await Future.delayed(const Duration(milliseconds: 1000));
+        await _animationControllerOpacity.reverse();
       }
     });
   }
@@ -65,7 +67,7 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
     return Stack(
       children: [
         AnimatedContainer(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
             color: _decideBackgroundColor(),
           ),
@@ -102,7 +104,6 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
         ),
         IgnorePointer(
           // IgnorePointer to stop the numbers which are currently invisible from blocking presses
-          ignoring: true,
           child: AnimatedBuilder(
             animation: _animationControllerOpacity,
             builder: (context, child) {
@@ -115,7 +116,7 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
                         child: Container(
                           padding:
                               EdgeInsets.only(top: _animationPadding.value),
-                          child: Text(
+                          child: const Text(
                             '+1',
                             style: TextStyle(fontSize: 40),
                           ),

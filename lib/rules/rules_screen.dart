@@ -12,7 +12,7 @@ class RulesScreen extends StatefulWidget {
 class _RulesScreenState extends State<RulesScreen> {
   int _step = 1;
 
-  static const List<AssetImage> images = const <AssetImage>[
+  static const List<AssetImage> images = <AssetImage>[
     AssetImage('assets/images/Step-1.png'),
     AssetImage('assets/images/Step-2.png'),
     AssetImage('assets/images/Step-3.png'),
@@ -22,38 +22,35 @@ class _RulesScreenState extends State<RulesScreen> {
 
   final List<Text> rules = <Text>[
     Text(LocaleKeys.rules_tic_must_win.tr(),
-        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_there_is_catch.tr(),
-        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_win_inner_grid.tr(),
-        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_one_more_thing.tr(),
-        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 20))),
+        style: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 20))),
     Text(LocaleKeys.rules_good_luck.tr(),
-        style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 35))),
+        style: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 35))),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2A5298),
+      backgroundColor: const Color(0xff2A5298),
       appBar: AppBar(
         title: Text(LocaleKeys.rules_rules.tr(),
             style: GoogleFonts.cairo(
-                textStyle: TextStyle(fontWeight: FontWeight.bold))),
-        backgroundColor: Color(0xff1E3C72),
+                textStyle: const TextStyle(fontWeight: FontWeight.bold))),
+        backgroundColor: const Color(0xff1E3C72),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: Center(
-                  child: rules[_step - 1],
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: Center(
+                child: rules[_step - 1],
               ),
             ),
             Expanded(
@@ -74,19 +71,19 @@ class _RulesScreenState extends State<RulesScreen> {
               children: [
                 if (_step > 1)
                   ElevatedButton(
-                    key: Key(Keys.rulesPreviousBtn),
+                    key: const Key(Keys.rulesPreviousBtn),
                     onPressed: () => setState(() => _step--),
                     child: Text(LocaleKeys.rules_previous.tr()),
                   ),
                 if (_step < 5)
                   ElevatedButton(
-                    key: Key(Keys.rulesNextBtn),
+                    key: const Key(Keys.rulesNextBtn),
                     onPressed: () => setState(() => _step++),
                     child: Text(LocaleKeys.rules_next.tr()),
                   ),
                 if (_step == 5)
                   ElevatedButton(
-                    key: Key(Keys.rulesStartBtn),
+                    key: const Key(Keys.rulesStartBtn),
                     onPressed: () => Navigator.of(context).pop(),
                     child: Text(LocaleKeys.rules_start.tr()),
                   ),

@@ -23,7 +23,7 @@ void main() {
       await driver.tap(menuGameSpBtn);
       await wait_650ms();
 
-      () async {
+      await () async {
         await driver.tap(gameSetupDifficultyR);
       }.executeNTimes(2);
       await wait_1s();
@@ -33,7 +33,7 @@ void main() {
     });
 
     test('play game', () async {
-      bool gameFinished = false;
+      var gameFinished = false;
       final allPossibleMoves = _getAllPossibleMoves().toList()..shuffle();
 
       OUTER:
@@ -45,7 +45,7 @@ void main() {
           await driver
               .tap(
                 getGameSquareFinder(squarePos),
-                timeout: Duration(milliseconds: 5000),
+                timeout: const Duration(milliseconds: 5000),
               )
               .onError((_, __) => gameFinished = true);
 

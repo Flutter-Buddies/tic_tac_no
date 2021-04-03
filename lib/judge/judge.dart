@@ -10,7 +10,7 @@ import 'package:tic_tac_no/utils/audio.dart';
 class Judge {
   Judge({
     this.players,
-    @required grid,
+    @required Grid grid,
   }) {
     this._currentPlayer = this.players != null ? this.players[0] : null;
     this._grid = grid;
@@ -40,27 +40,25 @@ class Judge {
   void updatePlayers(List<Player> players) {
     this.players = players;
     this._currentPlayer = this.players != null ? this.players[0] : null;
-    if (_score == null) {
-      _score = {
+    _score ??= {
         players[0].id: 0,
         players[1].id: 0,
       };
-    }
     _updateGrid();
   }
 
   void _updateGrid() {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
         if (this._grid.innerGrids[i][j].winner != null) {
-          final Player winner = this._grid.innerGrids[i][j].winner;
+          final winner = this._grid.innerGrids[i][j].winner;
           this._grid.innerGrids[i][j].winner =
               this.players.firstWhere((player) => player.id == winner.id);
         }
-        for (int k = 0; k < 3; k++) {
-          for (int l = 0; l < 3; l++) {
+        for (var k = 0; k < 3; k++) {
+          for (var l = 0; l < 3; l++) {
             if (this._grid.innerGrids[i][j].squares[k][l].player != null) {
-              final Player oldPlayer =
+              final oldPlayer =
                   this._grid.innerGrids[i][j].squares[k][l].player;
               this._grid.innerGrids[i][j].squares[k][l].player = this
                   .players
@@ -83,7 +81,7 @@ class Judge {
 
     audio.playSound(GameSounds.PlacingPiece);
 
-    final Position innerGridPosition = tappedSquare.parentInnerGrid.position;
+    final innerGridPosition = tappedSquare.parentInnerGrid.position;
     // update square's player (occupant)
     _grid
         .innerGrids[innerGridPosition.x][innerGridPosition.y]
@@ -91,8 +89,8 @@ class Judge {
         .player = this._currentPlayer;
 
     // mark all inner grids unplayable
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
         this._grid.innerGrids[i][j].isPlayable = false;
       }
     }
@@ -119,8 +117,7 @@ class Judge {
           .isPlayable = true;
     } else {
       // choose random
-      final Position position =
-          this._grid.getRandomInnerGridPositionThatHasRoom();
+      final position = this._grid.getRandomInnerGridPositionThatHasRoom();
       if (position.x != -1) {
         _grid.innerGrids[position.x][position.y].isPlayable = true;
       } else {
@@ -146,7 +143,7 @@ class Judge {
     ///    xxx         ___          ___
     ///    ___    OR   xxx    OR    ___
     ///    ___         ___          xxx
-    for (int i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
       if (innerGrid.squares[i][0].player == this._currentPlayer &&
           innerGrid.squares[i][1].player == this._currentPlayer &&
           innerGrid.squares[i][2].player == this._currentPlayer) {
@@ -157,7 +154,7 @@ class Judge {
     ///    x__         _x_          __x
     ///    x__    OR   _x_    OR    __x
     ///    x__         _x_          __x
-    for (int i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
       if (innerGrid.squares[0][i].player == this._currentPlayer &&
           innerGrid.squares[1][i].player == this._currentPlayer &&
           innerGrid.squares[2][i].player == this._currentPlayer) {
@@ -190,7 +187,7 @@ class Judge {
     ///    xxx         ___          ___
     ///    ___    OR   xxx    OR    ___
     ///    ___         ___          xxx
-    for (int i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
       if (this._grid.innerGrids[i][0].winner == this._currentPlayer &&
           this._grid.innerGrids[i][1].winner == this._currentPlayer &&
           this._grid.innerGrids[i][2].winner == this._currentPlayer) {
@@ -203,7 +200,7 @@ class Judge {
     ///    x__         _x_          __x
     ///    x__    OR   _x_    OR    __x
     ///    x__         _x_          __x
-    for (int i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
       if (this._grid.innerGrids[0][i].winner == this._currentPlayer &&
           this._grid.innerGrids[1][i].winner == this._currentPlayer &&
           this._grid.innerGrids[2][i].winner == this._currentPlayer) {
@@ -219,8 +216,8 @@ class Judge {
     if (this._grid.innerGrids[0][0].winner == this._currentPlayer &&
         this._grid.innerGrids[1][1].winner == this._currentPlayer &&
         this._grid.innerGrids[2][2].winner == this._currentPlayer) {
-      this._winningPositions =
-          WinningPositions(lineType: LineType.DiagonalBack, thirdPosition: 0);
+      this._winningPositions = const WinningPositions(
+          lineType: LineType.DiagonalBack, thirdPosition: 0);
       return true;
     }
 
@@ -230,7 +227,7 @@ class Judge {
     if (this._grid.innerGrids[0][2].winner == this._currentPlayer &&
         this._grid.innerGrids[1][1].winner == this._currentPlayer &&
         this._grid.innerGrids[2][0].winner == this._currentPlayer) {
-      this._winningPositions = WinningPositions(
+      this._winningPositions = const WinningPositions(
           lineType: LineType.DiagonalForward, thirdPosition: 0);
       return true;
     }

@@ -6,7 +6,7 @@ enum PlayerType { me, ai, friend, onlineFriend }
 class Player extends Equatable {
   const Player({
     this.id,
-    this.name: 'No name',
+    this.name = 'No name',
     @required this.color,
     @required this.symbol,
     @required this.type,

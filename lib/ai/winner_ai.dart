@@ -8,18 +8,19 @@ class WinnerAI extends AI {
     this.player = player;
   }
 
+  @override
   Square makeMove(Grid grid) {
-    InnerGrid playableInnerGrid = this.getPlayableInnerGrid(grid);
+    final playableInnerGrid = this.getPlayableInnerGrid(grid);
 
-    List<Square> playableSquares = this.getPlayableSquares(playableInnerGrid);
+    final playableSquares = this.getPlayableSquares(playableInnerGrid);
 
-    Square winningSquare = this.winningSquare(
+    final winningSquare = this.winningSquare(
       playableInnerGrid,
       playableSquares,
       this.player,
     );
     if (winningSquare == null) {
-      final int random = Random().nextInt(playableSquares.length);
+      final random = Random().nextInt(playableSquares.length);
       return playableSquares[random];
     }
 

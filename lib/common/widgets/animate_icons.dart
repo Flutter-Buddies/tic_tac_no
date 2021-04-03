@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 
 class AnimateIcons extends StatefulWidget {
   const AnimateIcons({
@@ -64,11 +65,9 @@ class _AnimateIconsState extends State<AnimateIcons>
 
   @override
   void initState() {
-    this._controller = new AnimationController(
+    this._controller = AnimationController(
       vsync: this,
-      duration: widget.duration ?? Duration(seconds: 1),
-      lowerBound: 0.0,
-      upperBound: 1.0,
+      duration: widget.duration ?? const Duration(seconds: 1),
     );
     this._controller.addListener(() {
       if (mounted) {
@@ -85,7 +84,7 @@ class _AnimateIconsState extends State<AnimateIcons>
     super.dispose();
   }
 
-  initControllerFunctions() {
+  bool initControllerFunctions() {
     if (widget.controller != null) {
       widget.controller.animateToEnd = () {
         if (mounted) {
@@ -106,22 +105,23 @@ class _AnimateIconsState extends State<AnimateIcons>
       widget.controller.isStart = () => _controller.value == 0.0;
       widget.controller.isEnd = () => _controller.value == 1.0;
     }
+    return false;
   }
 
-  _onStartIconPress() {
+  void _onStartIconPress() {
     if (widget.onStartIconPress() && mounted) _controller.forward();
   }
 
-  _onEndIconPress() {
+  void _onEndIconPress() {
     if (widget.onEndIconPress() && mounted) _controller.reverse();
   }
 
   @override
   Widget build(BuildContext context) {
-    double x = _controller.value ?? 0.0;
-    double y = 1.0 - _controller.value ?? 0.0;
-    double angleX = math.pi / 180 * (180 * x);
-    double angleY = math.pi / 180 * (180 * y);
+    final x = _controller.value ?? 0.0;
+    final y = 1.0 - _controller.value ?? 0.0;
+    final angleX = math.pi / 180 * (180 * x);
+    final angleY = math.pi / 180 * (180 * y);
 
     Widget first() {
       final icon = Icon(widget.startIcon, size: widget.size);
@@ -171,8 +171,8 @@ class _AnimateIconsState extends State<AnimateIcons>
     return Stack(
       alignment: Alignment.center,
       children: [
-        x == 1 && y == 0 ? second() : first(),
-        x == 0 && y == 1 ? first() : second(),
+        if (x == 1 && y == 0) second() else first(),
+        if (x == 0 && y == 1) first() else second(),
       ],
     );
   }
