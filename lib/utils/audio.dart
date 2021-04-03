@@ -1,18 +1,20 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 
 // ignore_for_file: constant_identifier_names
 enum GameSounds { PlacingPiece, InnerGridWin, GameWon, GameLost }
 enum UISounds { ButtonClick }
 
 abstract class BaseAudio {
-  final AudioCache player = AudioCache(prefix: 'assets/audio/');
+  final AudioCache player = kIsWeb ? null : AudioCache(prefix: 'assets/audio/');
 
   void preloadSounds();
 
-  bool isMuted = false;
+  bool isMuted = kIsWeb ? true : false;
 
   void switchMute() {
+    if (kIsWeb) return;
     isMuted = !isMuted;
   }
 }
@@ -20,6 +22,7 @@ abstract class BaseAudio {
 class GameAudio extends BaseAudio {
   @override
   void preloadSounds() {
+    if (kIsWeb) return;
     player.loadAll([
       'piece_placement.mp3',
       'success.mp3',
@@ -29,6 +32,7 @@ class GameAudio extends BaseAudio {
   }
 
   Future<void> playSound(GameSounds soundEvent) async {
+    if (kIsWeb) return;
     switch (soundEvent) {
       case GameSounds.PlacingPiece:
         await player.play(
@@ -54,7 +58,7 @@ class GameAudio extends BaseAudio {
         );
         break;
       case GameSounds.GameLost:
-        // Ned to wait for innter grid win the finish playing
+        // Ned to wait for inner grid win the finish playing
         await Future.delayed(const Duration(milliseconds: 500));
         await player.play(
           'game_over.mp3',
@@ -69,10 +73,12 @@ class GameAudio extends BaseAudio {
 class UIAudio extends BaseAudio {
   @override
   void preloadSounds() {
+    if (kIsWeb) return;
     player.loadAll(['button_click.mp3']);
   }
 
   Future<void> playSound(UISounds uiSound) async {
+    if (kIsWeb) return;
     switch (uiSound) {
       case UISounds.ButtonClick:
         await player.play(
