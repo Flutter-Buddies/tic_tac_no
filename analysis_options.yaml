@@ -1,0 +1,69 @@
+include: package:lint/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - lib/**.g.dart
+
+linter:
+  rules:
+    require_trailing_comma: true
+    prefer_null_aware_method_calls: true
+
+    sort_pub_dependencies: false
+    non_constant_identifier_names: false
+    unnecessary_this: false
+    avoid_print: false
+    avoid_function_literals_in_foreach_calls: false
+    prefer_if_elements_to_conditional_expressions: false
+
+    sort_constructors_first: true
+    prefer_single_quotes: true
+    always_declare_return_types: true
+
+    annotate_overrides: true
+    avoid_init_to_null: true
+    avoid_null_checks_in_equality_operators: true
+    avoid_relative_lib_imports: true
+    avoid_return_types_on_setters: false
+    avoid_shadowing_type_parameters: true
+    avoid_single_cascade_in_expression_statements: true
+    avoid_types_as_parameter_names: true
+    await_only_futures: true
+    camel_case_extensions: true
+    curly_braces_in_flow_control_structures: true
+    empty_catches: true
+    empty_constructor_bodies: true
+    library_names: true
+    library_prefixes: true
+    no_duplicate_case_values: true
+    null_closures: true
+    omit_local_variable_types: true
+    prefer_adjacent_string_concatenation: true
+    prefer_collection_literals: true
+    prefer_conditional_assignment: true
+    prefer_contains: true
+    prefer_equal_for_default_values: true
+    prefer_final_fields: true
+    prefer_for_elements_to_map_fromIterable: true
+    prefer_generic_function_type_aliases: true
+    prefer_if_null_operators: true
+    prefer_inlined_adds: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_iterable_whereType: true
+    prefer_spread_collections: true
+    recursive_getters: true
+    slash_for_doc_comments: true
+    sort_child_properties_last: true
+    type_init_formals: true
+    unawaited_futures: true
+    unnecessary_brace_in_string_interps: true
+    unnecessary_const: true
+    unnecessary_getters_setters: true
+    unnecessary_new: true
+    unnecessary_null_in_if_null_operators: true
+    unrelated_type_equality_checks: true
+    unsafe_html: true
+    use_full_hex_values_for_flutter_colors: true
+    use_function_type_syntax_for_parameters: true
+    valid_regexps: true

@@ -1,12 +1,4 @@
 class SquarePos {
-  final int gX;
-  final int gY;
-
-  final int sqX;
-  final int sqY;
-
-  final int playerId;
-
   const SquarePos(
     this.gX,
     this.gY,
@@ -15,10 +7,17 @@ class SquarePos {
     this.playerId = 1,
   });
 
+  final int gX;
+  final int gY;
+
+  final int sqX;
+  final int sqY;
+
+  final int playerId;
+
   @override
-  String toString() {
-    return 'SquarePos{gX: $gX, gY: $gY, sqX: $sqX, sqY: $sqY, playerId: $playerId}';
-  }
+  String toString() =>
+      'SquarePos{gX: $gX, gY: $gY, sqX: $sqX, sqY: $sqY, playerId: $playerId}';
 
   @override
   bool operator ==(Object other) =>

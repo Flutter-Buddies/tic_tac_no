@@ -6,13 +6,13 @@ class CrossPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // paint is the brush
-    var paint = Paint()
+    final paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.25 * size.width;
 
     // path is the drawing
-    var path = Path()
+    final path = Path()
       ..lineTo(size.width, size.height)
       ..moveTo(0, size.height)
       ..lineTo(size.width, 0);
@@ -37,13 +37,13 @@ class TrianglePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
+    final paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.25 * size.width
       ..strokeJoin = StrokeJoin.round;
 
-    var path = Path()
+    final path = Path()
       ..moveTo(size.width / 2, 0)
       ..lineTo(size.width, size.height)
       ..lineTo(0, size.height)
@@ -66,12 +66,12 @@ class CirclePainter extends CustomPainter {
   final Color drawingColor;
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
+    final paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.25 * size.width;
 
-    var path1 = Path()
+    final path1 = Path()
       ..addOval(Rect.fromCircle(
           center: Offset(size.width / 2, size.height / 2),
           radius: 0.5 * size.width));
@@ -93,12 +93,12 @@ class SquirclePainter extends CustomPainter {
   final Color drawingColor;
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
+    final paint = Paint()
       ..color = drawingColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.25 * size.width;
 
-    var path1 = Path()
+    final path1 = Path()
       ..addRRect(
         RRect.fromLTRBR(
           0,

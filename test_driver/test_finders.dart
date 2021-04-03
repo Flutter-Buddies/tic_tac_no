@@ -11,9 +11,9 @@ final menuRulesBtn = find.byValueKey(Keys.menuRulesBtn);
 
 // menu language settings
 final languageListView = find.byValueKey(Keys.languageListView);
-final languageListTileEn = find.byValueKey(Keys.languageListTile + 'en');
-final languageListTileHr = find.byValueKey(Keys.languageListTile + 'hr');
-final languageListTileCs = find.byValueKey(Keys.languageListTile + 'cs');
+final languageListTileEn = find.byValueKey('${Keys.languageListTile}en');
+final languageListTileHr = find.byValueKey('${Keys.languageListTile}hr');
+final languageListTileCs = find.byValueKey('${Keys.languageListTile}cs');
 
 // menu rules
 final rulesAppBarBackBtn = find.byType('BackButton');

@@ -29,20 +29,19 @@ class SquareWidget extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             border: Border.all(
-              color: Color(0xff7A9AD1),
-              width: 1,
+              color: const Color(0xff7A9AD1),
             ),
           ),
           child: Center(
             child: this.square.player != null
-                ? Container(
+                ? SizedBox(
                     width: 26,
                     height: 26,
                     child: CustomPaint(
                       painter: this.square.player.symbol,
                     ),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ),
         ),
       ),

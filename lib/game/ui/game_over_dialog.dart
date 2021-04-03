@@ -24,13 +24,13 @@ class GameOverDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      contentPadding: EdgeInsets.all(24.0),
-      titlePadding: EdgeInsets.only(top: 24.0),
-      backgroundColor: Color(0xff012E44),
+      contentPadding: const EdgeInsets.all(24.0),
+      titlePadding: const EdgeInsets.only(top: 24.0),
+      backgroundColor: const Color(0xff012E44),
       title: Center(
         child: winner != null
             ? Text(_getWinnerString(context))
-            : Text('${LocaleKeys.game_nobody_wins.tr()}'.toUpperCase()),
+            : Text(LocaleKeys.game_nobody_wins.tr().toUpperCase()),
       ),
       children: [
         FractionallySizedBox(
@@ -62,16 +62,16 @@ class GameOverDialog extends StatelessWidget {
                       .popUntil((route) => route.settings.name == '/');
                 },
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30.0),
-                    color: Color(0xffFF5F6D),
+                    color: const Color(0xffFF5F6D),
                   ),
                   child: Center(
                     child: Text(
-                      '${LocaleKeys.game_quit_to_menu.tr()}',
-                      key: Key(Keys.gameQuitToMenuText),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      LocaleKeys.game_quit_to_menu.tr(),
+                      key: const Key(Keys.gameQuitToMenuText),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -92,15 +92,15 @@ class GameOverDialog extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: Color(0xff009E95),
+                    color: const Color(0xff009E95),
                   ),
                   child: Center(
                     child: Text(
-                      '${LocaleKeys.game_play_again.tr()}',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      LocaleKeys.game_play_again.tr(),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ),

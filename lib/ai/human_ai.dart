@@ -11,12 +11,13 @@ class HumanAI extends AI {
 
   Player _opponent;
 
+  @override
   Square makeMove(Grid grid) {
-    InnerGrid playableInnerGrid = this.getPlayableInnerGrid(grid);
+    final playableInnerGrid = this.getPlayableInnerGrid(grid);
 
-    List<Square> playableSquares = this.getPlayableSquares(playableInnerGrid);
+    final playableSquares = this.getPlayableSquares(playableInnerGrid);
 
-    Square winningSquare = this.winningSquare(
+    final winningSquare = this.winningSquare(
       playableInnerGrid,
       playableSquares,
       this.player,
@@ -26,7 +27,7 @@ class HumanAI extends AI {
     }
 
     // check if opponent can be blocked
-    Square opponentWinningSquare = this.winningSquare(
+    final opponentWinningSquare = this.winningSquare(
       playableInnerGrid,
       playableSquares,
       this._opponent,
@@ -36,28 +37,28 @@ class HumanAI extends AI {
     }
 
     // first check if opponent can be sent to the already won inner grid
-    List<Square> alreadyWonSquares = [];
+    final alreadyWonSquares = <Square>[];
     playableSquares.forEach((square) {
       if (grid.innerGrids[square.position.x][square.position.y].winner !=
           null) {
         alreadyWonSquares.add(square);
       }
     });
-    if (alreadyWonSquares.length > 0) {
-      final int random = Random().nextInt(alreadyWonSquares.length);
+    if (alreadyWonSquares.isNotEmpty) {
+      final random = Random().nextInt(alreadyWonSquares.length);
       return alreadyWonSquares[random];
     }
 
     // for each playable square, check if opponnent has winning
     // move in inner grid with this position
     // then definitely not move there
-    List<Square> opponentNotWinningSquares = [];
+    final opponentNotWinningSquares = <Square>[];
     playableSquares.forEach((square) {
-      final InnerGrid opponentPlayableInnerGrid =
+      final opponentPlayableInnerGrid =
           grid.innerGrids[square.position.x][square.position.y];
-      final List<Square> opponentPlayableSquares =
+      final opponentPlayableSquares =
           this.getPlayableSquares(opponentPlayableInnerGrid);
-      final Square opponentWinningSquare = this.winningSquare(
+      final opponentWinningSquare = this.winningSquare(
           opponentPlayableInnerGrid, opponentPlayableSquares, this._opponent);
       if (opponentWinningSquare == null) {
         opponentNotWinningSquares.add(square);
@@ -66,21 +67,21 @@ class HumanAI extends AI {
 
     // else, if there is no option
     // certainly, avoid picking "sidings"
-    List<Square> nonSidingSquares = [];
+    final nonSidingSquares = <Square>[];
     playableSquares.forEach((square) {
-      if (square.position != Position(0, 1) &&
-          square.position != Position(1, 0) &&
-          square.position != Position(1, 2) &&
-          square.position != Position(2, 1)) {
+      if (square.position != const Position(0, 1) &&
+          square.position != const Position(1, 0) &&
+          square.position != const Position(1, 2) &&
+          square.position != const Position(2, 1)) {
         nonSidingSquares.add(square);
       }
     });
 
     // if there is a square in both of these lists, take it
     // if not, prefer opponentNotWinningMoves
-    List<Square> bestMoveSquares = [];
-    for (int i = 0; i < opponentNotWinningSquares.length; i++) {
-      for (int j = 0; j < nonSidingSquares.length; j++) {
+    final bestMoveSquares = <Square>[];
+    for (var i = 0; i < opponentNotWinningSquares.length; i++) {
+      for (var j = 0; j < nonSidingSquares.length; j++) {
         if (opponentNotWinningSquares[i].position ==
             nonSidingSquares[j].position) {
           bestMoveSquares.add(opponentNotWinningSquares[i]);
@@ -88,17 +89,17 @@ class HumanAI extends AI {
       }
     }
 
-    if (bestMoveSquares.length > 0) {
-      final int random = Random().nextInt(bestMoveSquares.length);
+    if (bestMoveSquares.isNotEmpty) {
+      final random = Random().nextInt(bestMoveSquares.length);
       return bestMoveSquares[random];
     }
 
-    if (opponentNotWinningSquares.length > 0) {
-      final int random = Random().nextInt(opponentNotWinningSquares.length);
+    if (opponentNotWinningSquares.isNotEmpty) {
+      final random = Random().nextInt(opponentNotWinningSquares.length);
       return opponentNotWinningSquares[random];
     }
 
-    final int random = Random().nextInt(playableSquares.length);
+    final random = Random().nextInt(playableSquares.length);
     return playableSquares[random];
   }
 }

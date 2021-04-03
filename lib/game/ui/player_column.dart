@@ -25,20 +25,17 @@ class PlayerColumn extends StatelessWidget {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Spacer(
-                flex: 1,
-              ),
+              const Spacer(),
               // Player name with set height due to font size
               Text(
                 player.name.toUpperCase(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               // Expanded so the shape is the thing that scales in size
               Flexible(
                 flex: 3,
                 // flex: constraints.maxHeight > 160 ? 2 : 3,
                 child: Align(
-                  alignment: Alignment.center,
                   // Aspect ratio of 1 because the shape has to be on a square canvas
                   child: AspectRatio(
                     aspectRatio: 1,
@@ -60,17 +57,17 @@ class PlayerColumn extends StatelessWidget {
                 child: BlocBuilder<GameBloc, GameState>(
                   builder: (context, state) {
                     if (state is AIThinking) {
-                      return Container(
+                      return SizedBox(
                         height: 16,
                         child: Text(
                           LocaleKeys.game_thinking.tr(),
-                          key: Key(Keys.gameThinkingLabel),
+                          key: const Key(Keys.gameThinkingLabel),
                           textAlign: TextAlign.center,
                         ),
                       );
                     } else {
                       return Padding(
-                        padding: EdgeInsets.only(bottom: 6.0),
+                        padding: const EdgeInsets.only(bottom: 6.0),
                         child: FractionallySizedBox(
                           widthFactor: 0.65,
                           child: Container(
@@ -84,7 +81,7 @@ class PlayerColumn extends StatelessWidget {
                   },
                 ),
               ),
-              Spacer(),
+              const Spacer(),
             ],
           );
         },

@@ -18,7 +18,7 @@ class _GameOverDrawLineState extends State<GameOverDrawLine>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
 
     animation = Tween(begin: 0.0, end: 1.0).animate(
@@ -49,33 +49,29 @@ class _GameOverDrawLineState extends State<GameOverDrawLine>
       child: BlocBuilder<GameBloc, GameState>(
         builder: (context, state) {
           if (state is GameOver && state.winningPositions != null) {
-            return Container(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return Center(
-                    // Line goes all the way to the edge for the calculations to work so
-                    // ClipRect added so the lines don't look like they go to the edge
-                    child: ClipRect(
-                      child: Container(
-                        child: Align(
-                          widthFactor: 0.9,
-                          heightFactor: 0.9,
-                          child: Container(
-                            width: constraints.maxWidth,
-                            height: constraints.maxHeight,
-                            child: CustomPaint(
-                              painter: WinningLine(
-                                animation.value,
-                                state.winningPositions,
-                              ),
-                            ),
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                return Center(
+                  // Line goes all the way to the edge for the calculations to work so
+                  // ClipRect added so the lines don't look like they go to the edge
+                  child: ClipRect(
+                    child: Align(
+                      widthFactor: 0.9,
+                      heightFactor: 0.9,
+                      child: SizedBox(
+                        width: constraints.maxWidth,
+                        height: constraints.maxHeight,
+                        child: CustomPaint(
+                          painter: WinningLine(
+                            animation.value,
+                            state.winningPositions,
                           ),
                         ),
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             );
           } else {
             return Container();
@@ -87,17 +83,17 @@ class _GameOverDrawLineState extends State<GameOverDrawLine>
 }
 
 class WinningLine extends CustomPainter {
-  final double animationValue;
-  final WinningPositions winningPositions;
-
   WinningLine(
     this.animationValue,
     this.winningPositions,
   );
 
+  final double animationValue;
+  final WinningPositions winningPositions;
+
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
+    final paint = Paint()
       ..color = Colors.white
       ..strokeWidth = size.width * 0.02;
 
@@ -132,7 +128,7 @@ class WinningLine extends CustomPainter {
       case LineType.Veritical:
         startingPoint = translation(
             lineType: LineType.Veritical,
-            offset: Offset(0, 0),
+            offset: const Offset(0, 0),
             thirdPosition: winningPositions.thirdPosition);
         endingPoint = translation(
             lineType: LineType.Veritical,
@@ -142,7 +138,7 @@ class WinningLine extends CustomPainter {
       case LineType.Horizontal:
         startingPoint = translation(
             lineType: LineType.Horizontal,
-            offset: Offset(0, 0),
+            offset: const Offset(0, 0),
             thirdPosition: winningPositions.thirdPosition);
         endingPoint = translation(
             lineType: LineType.Horizontal,
@@ -155,7 +151,7 @@ class WinningLine extends CustomPainter {
             size.width * animationValue, (1 - animationValue) * size.height);
         break;
       case LineType.DiagonalBack:
-        startingPoint = Offset(0, 0);
+        startingPoint = const Offset(0, 0);
         endingPoint =
             Offset(size.width * animationValue, size.height * animationValue);
         break;

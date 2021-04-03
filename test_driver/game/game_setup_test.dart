@@ -37,7 +37,7 @@ void main() {
       await driver.tap(getPlayerColorFinder(playerId: 2, colorPos: 1));
       await wait_250ms();
 
-      await driver.tap(getPlayerColorFinder(playerId: 2, colorPos: 0));
+      await driver.tap(getPlayerColorFinder(playerId: 2));
       await wait_250ms();
 
       await () async {

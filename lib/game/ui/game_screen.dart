@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_no/game/bloc/game_bloc.dart';
@@ -35,7 +33,8 @@ class GameScreenState extends State<GameScreen> {
     this._score = BlocProvider.of<GameBloc>(context).score;
     BlocProvider.of<GameBloc>(context).audio.isMuted =
         context.read<UIAudio>().isMuted;
-    _confettiController = ConfettiController(duration: Duration(seconds: 10));
+    _confettiController =
+        ConfettiController(duration: const Duration(seconds: 10));
     super.initState();
   }
 
@@ -45,21 +44,21 @@ class GameScreenState extends State<GameScreen> {
     super.dispose();
   }
 
-  Future<void> _backFunction() async {
-    showModalBottomSheet(
+  Future<bool> _backFunction() async {
+    return showModalBottomSheet(
       context: context,
       builder: (context) => Container(
-        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Color(0xff012E44),
+          color: const Color(0xff012E44),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               LocaleKeys.game_are_you_sure_quit.tr(),
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 4,
@@ -81,12 +80,12 @@ class GameScreenState extends State<GameScreen> {
                     width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.0),
-                      color: Color(0xffFF5F6D),
+                      color: const Color(0xffFF5F6D),
                     ),
                     child: Center(
                       child: Text(
                         LocaleKeys.game_quit_game.tr(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -101,12 +100,12 @@ class GameScreenState extends State<GameScreen> {
                     width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Color(0xff2A5298),
+                      color: const Color(0xff2A5298),
                     ),
                     child: Center(
                       child: Text(
                         LocaleKeys.game_return_to_game.tr(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -122,7 +121,7 @@ class GameScreenState extends State<GameScreen> {
   Future<void> _showGameOver(Player winner) async {
     // Delay used to give the user a little time to process they won and
     // to give time for animation of line going through 3 winning squares (todo: create this animation 😅)
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     await showDialog(
       context: context,
       barrierColor: Colors.black26,
@@ -170,8 +169,8 @@ class GameScreenState extends State<GameScreen> {
                 //* Background
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.only(top: 12, bottom: 16),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.only(top: 12, bottom: 16),
+                  decoration: const BoxDecoration(
                       gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -190,13 +189,14 @@ class GameScreenState extends State<GameScreen> {
                       Expanded(
                         child: Row(
                           // We want the content to be aligned in the center vertically
+                          // ignore: avoid_redundant_argument_values
                           crossAxisAlignment: CrossAxisAlignment.center,
                           // The score text will remain a constant size so will not be wrapped in Expanded
                           // The player name, piece and turn info will be the thing that scales
                           children: [
                             // Wrapped in expanded to scale
                             // Currently taking the max width it can
-                            Spacer(),
+                            const Spacer(),
                             Expanded(
                               flex: 6,
                               child: PlayerColumn(
@@ -204,45 +204,45 @@ class GameScreenState extends State<GameScreen> {
                                 isPlayerTurn: _players[0] == _currentPlayer,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             // Score info remains constant size
                             AnimatedSwitcher(
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               transitionBuilder: (child, animation) {
                                 return ScaleTransition(
-                                  child: child,
                                   scale: animation,
+                                  child: child,
                                 );
                               },
                               child: Text(
                                 '${_score[_players[0].id]}',
                                 key: ValueKey<int>(_score[_players[0].id]),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 40, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Text(
+                            const Text(
                               ' : ',
                               style: TextStyle(
                                   fontSize: 40, fontWeight: FontWeight.bold),
                             ),
                             AnimatedSwitcher(
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               transitionBuilder: (child, animation) {
                                 return ScaleTransition(
-                                  child: child,
                                   scale: animation,
+                                  child: child,
                                 );
                               },
                               child: Text(
                                 '${_score[_players[1].id]}',
                                 key: ValueKey<int>(_score[_players[1].id]),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 40, fontWeight: FontWeight.bold),
                               ),
                             ),
                             // Wrapped in expanded to scale
-                            Spacer(),
+                            const Spacer(),
                             Expanded(
                               flex: 6,
                               child: PlayerColumn(
@@ -250,7 +250,7 @@ class GameScreenState extends State<GameScreen> {
                                 isPlayerTurn: _players[1] == _currentPlayer,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                           ],
                         ),
                       ),
@@ -279,7 +279,7 @@ class GameScreenState extends State<GameScreen> {
                                 .playSound(UISounds.ButtonClick);
                             _backFunction();
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_back,
                             size: 30,
                           ),
@@ -303,51 +303,46 @@ class GameScreenState extends State<GameScreen> {
                 //* Confetti right
                 Align(
                   alignment: Alignment.topRight,
-                  child: Container(
-                    child: ConfettiWidget(
-                      confettiController: _confettiController,
-                      blastDirection: pi,
-                      maxBlastForce: 7,
-                      minBlastForce: 2,
-                      emissionFrequency: 0.2,
-                      numberOfParticles: 3,
-                      gravity: 0.3,
-                      colors: [
-                        Color(0xff1E3C72),
-                        Colors.white,
-                        Color(0xffFF5F6D),
-                        Color(0xffFFC371),
-                        Color(0xffE33E49),
-                        Color(0xff9B00B5),
-                        Color(0xff9534E1),
-                        Color(0xff009E95),
-                      ],
-                    ),
+                  child: ConfettiWidget(
+                    confettiController: _confettiController,
+                    maxBlastForce: 7,
+                    minBlastForce: 2,
+                    emissionFrequency: 0.2,
+                    numberOfParticles: 3,
+                    gravity: 0.3,
+                    colors: const [
+                      Color(0xff1E3C72),
+                      Colors.white,
+                      Color(0xffFF5F6D),
+                      Color(0xffFFC371),
+                      Color(0xffE33E49),
+                      Color(0xff9B00B5),
+                      Color(0xff9534E1),
+                      Color(0xff009E95),
+                    ],
                   ),
                 ),
                 //* Confetti left
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Container(
-                    child: ConfettiWidget(
-                      confettiController: _confettiController,
-                      blastDirection: 0,
-                      maxBlastForce: 7,
-                      minBlastForce: 2,
-                      emissionFrequency: 0.2,
-                      numberOfParticles: 3,
-                      gravity: 0.3,
-                      colors: [
-                        Color(0xff1E3C72),
-                        Colors.white,
-                        Color(0xffFF5F6D),
-                        Color(0xffFFC371),
-                        Color(0xffE33E49),
-                        Color(0xff9B00B5),
-                        Color(0xff9534E1),
-                        Color(0xff009E95),
-                      ],
-                    ),
+                  child: ConfettiWidget(
+                    confettiController: _confettiController,
+                    blastDirection: 0,
+                    maxBlastForce: 7,
+                    minBlastForce: 2,
+                    emissionFrequency: 0.2,
+                    numberOfParticles: 3,
+                    gravity: 0.3,
+                    colors: const [
+                      Color(0xff1E3C72),
+                      Colors.white,
+                      Color(0xffFF5F6D),
+                      Color(0xffFFC371),
+                      Color(0xffE33E49),
+                      Color(0xff9B00B5),
+                      Color(0xff9534E1),
+                      Color(0xff009E95),
+                    ],
                   ),
                 ),
               ],

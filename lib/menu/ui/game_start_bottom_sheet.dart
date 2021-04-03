@@ -122,19 +122,19 @@ class _GameStartModalState extends State<GameStartModal> {
         children: [
           Container(
             width: double.infinity,
-            padding: EdgeInsets.fromLTRB(24, 24, 24, 48),
+            padding: const EdgeInsets.fromLTRB(24, 24, 24, 48),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Color(0xff012E44),
+              color: const Color(0xff012E44),
             ),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: const SizedBox(
-                    child: CircularProgressIndicator(),
+                const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: SizedBox(
                     width: 70,
                     height: 70,
+                    child: CircularProgressIndicator(),
                   ),
                 ),
                 Text(LocaleKeys.menu_searching_for_game.tr()),
@@ -147,17 +147,17 @@ class _GameStartModalState extends State<GameStartModal> {
       return Wrap(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Color(0xff012E44),
+              color: const Color(0xff012E44),
             ),
             child: Column(
               children: [
                 Text(
                   getModalTitle(),
                   style: GoogleFonts.cairo(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
@@ -178,13 +178,13 @@ class _GameStartModalState extends State<GameStartModal> {
                               ? LocaleKeys.menu_you.tr()
                               : LocaleKeys.menu_player_1.tr(),
                           style: GoogleFonts.cairo(
-                            textStyle:
-                                TextStyle(color: Colors.white, fontSize: 18),
+                            textStyle: const TextStyle(
+                                color: Colors.white, fontSize: 18),
                           ),
                         ),
                         GestureDetector(
-                          key: Key(Keys.gameSetupPlayer1Piece),
-                          onTap: () async {
+                          key: const Key(Keys.gameSetupPlayer1Piece),
+                          onTap: () {
                             updatePlayer1Piece();
                             context
                                 .read<UIAudio>()
@@ -193,7 +193,7 @@ class _GameStartModalState extends State<GameStartModal> {
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Container(
-                              margin: EdgeInsets.all(8),
+                              margin: const EdgeInsets.all(8),
                               height: 100,
                               width: 100,
                               child: CustomPaint(
@@ -223,21 +223,20 @@ class _GameStartModalState extends State<GameStartModal> {
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
                           widget.gameType == GameType.SinglePlayer
                               ? LocaleKeys.menu_ai.tr()
                               : LocaleKeys.menu_player_2.tr(),
                           style: GoogleFonts.cairo(
-                            textStyle:
-                                TextStyle(color: Colors.white, fontSize: 18),
+                            textStyle: const TextStyle(
+                                color: Colors.white, fontSize: 18),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: GestureDetector(
-                            key: Key(Keys.gameSetupPlayer2Piece),
+                            key: const Key(Keys.gameSetupPlayer2Piece),
                             onTap: () {
                               updatePlayer2Piece();
                               context
@@ -245,7 +244,7 @@ class _GameStartModalState extends State<GameStartModal> {
                                   .playSound(UISounds.ButtonClick);
                             },
                             child: Container(
-                              margin: EdgeInsets.all(8),
+                              margin: const EdgeInsets.all(8),
                               height: 100,
                               width: 100,
                               child: CustomPaint(
@@ -257,9 +256,8 @@ class _GameStartModalState extends State<GameStartModal> {
                         ),
                         widget.gameType == GameType.SinglePlayer
                             ? Padding(
-                                padding: EdgeInsets.only(top: 7),
+                                padding: const EdgeInsets.only(top: 7),
                                 child: Row(
-                                  mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -276,14 +274,14 @@ class _GameStartModalState extends State<GameStartModal> {
                                               .read<UIAudio>()
                                               .playSound(UISounds.ButtonClick);
                                         },
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.arrow_left,
                                           size: 32,
                                         )),
                                     Text(
                                       listOfAI[_aiValue],
                                       style: GoogleFonts.cairo(
-                                        textStyle: TextStyle(
+                                        textStyle: const TextStyle(
                                             color: Colors.white, fontSize: 20),
                                       ),
                                     ),
@@ -301,7 +299,7 @@ class _GameStartModalState extends State<GameStartModal> {
                                               .read<UIAudio>()
                                               .playSound(UISounds.ButtonClick);
                                         },
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.arrow_right,
                                           key: Key(Keys.gameSetupDifficultyR),
                                           size: 32,
@@ -335,7 +333,7 @@ class _GameStartModalState extends State<GameStartModal> {
                   height: 8.0,
                 ),
                 PrimaryButton(
-                  key: Key(Keys.gameSetupStartBtn),
+                  key: const Key(Keys.gameSetupStartBtn),
                   buttonText: LocaleKeys.menu_start_game.tr(),
                   buttonPress: () {
                     BlocProvider.of<GameBloc>(context).add(
@@ -366,8 +364,12 @@ class _GameStartModalState extends State<GameStartModal> {
                     context.read<UIAudio>().playSound(UISounds.ButtonClick);
                     Navigator.of(context).pushNamed('/game');
                   },
-                  buttonGradient: LinearGradient(
-                      colors: [Color(0xffFF5F6D), Color(0xffFFC371)]),
+                  buttonGradient: const LinearGradient(
+                    colors: [
+                      Color(0xffFF5F6D),
+                      Color(0xffFFC371),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -393,7 +395,7 @@ class AiSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: const [
         Icon(Icons.arrow_left),
         Text(''),
         Icon(Icons.arrow_right),
