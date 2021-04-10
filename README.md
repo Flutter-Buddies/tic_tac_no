@@ -5,6 +5,10 @@
 
 Complex variants of tic-tac-toe game.
 
+## Live Coding
+
+You can join us on [Discord](https://discord.gg/HBePsn7244) every Friday at 17:30 UTC to watch the live coding of this app, give your feedback and make suggestions.
+
 ## Give it a try?
 
 For now we have the game on the Google Play Store and working on having it published to the Apple App Store
