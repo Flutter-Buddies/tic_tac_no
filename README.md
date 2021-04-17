@@ -7,7 +7,7 @@ Complex variants of tic-tac-toe game.
 
 ## Live Coding
 
-You can join us on [Discord](https://discord.gg/HBePsn7244) every Friday at 17:30 UTC to watch the live coding of this app, give your feedback and make suggestions.
+You can join us on [Discord](https://discord.gg/HBePsn7244) every Saturday at 17:30 UTC to watch the live coding of this app, give your feedback and make suggestions.
 
 ## Give it a try?
 
