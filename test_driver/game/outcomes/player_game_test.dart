@@ -29,7 +29,7 @@ void main() {
       await wait_650ms();
       await driver.waitFor(gameQuitToMenuText);
       await driver.tap(gameQuitToMenuText);
-    }, timeout: const Timeout(const Duration(minutes: 15)));
+    }, timeout: const Timeout(Duration(minutes: 15)));
   });
 }
 

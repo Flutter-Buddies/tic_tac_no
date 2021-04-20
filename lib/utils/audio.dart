@@ -11,7 +11,7 @@ abstract class BaseAudio {
 
   void preloadSounds();
 
-  bool isMuted = kIsWeb ? true : false;
+  bool isMuted = kIsWeb;
 
   void switchMute() {
     if (kIsWeb) return;
