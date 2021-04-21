@@ -7,14 +7,15 @@ enum GameSounds { PlacingPiece, InnerGridWin, GameWon, GameLost }
 enum UISounds { ButtonClick }
 
 abstract class BaseAudio {
-  final AudioCache player = kIsWeb ? null : AudioCache(prefix: 'assets/audio/');
+  final AudioCache? player =
+      kIsWeb ? null : AudioCache(prefix: 'assets/audio/');
 
   void preloadSounds();
 
   bool isMuted = kIsWeb;
 
   void switchMute() {
-    if (kIsWeb) return;
+    if (player == null) return;
     isMuted = !isMuted;
   }
 }
@@ -23,7 +24,7 @@ class GameAudio extends BaseAudio {
   @override
   void preloadSounds() {
     if (kIsWeb) return;
-    player.loadAll([
+    player!.loadAll([
       'piece_placement.mp3',
       'success.mp3',
       'player_win.mp3',
@@ -32,7 +33,9 @@ class GameAudio extends BaseAudio {
   }
 
   Future<void> playSound(GameSounds soundEvent) async {
-    if (kIsWeb) return;
+    final player = this.player;
+    if (player == null) return;
+
     switch (soundEvent) {
       case GameSounds.PlacingPiece:
         await player.play(
@@ -73,15 +76,15 @@ class GameAudio extends BaseAudio {
 class UIAudio extends BaseAudio {
   @override
   void preloadSounds() {
-    if (kIsWeb) return;
-    player.loadAll(['button_click.mp3']);
+    if (player == null) return;
+    player!.loadAll(['button_click.mp3']);
   }
 
   Future<void> playSound(UISounds uiSound) async {
-    if (kIsWeb) return;
+    if (player == null) return;
     switch (uiSound) {
       case UISounds.ButtonClick:
-        await player.play(
+        await player!.play(
           'button_click.mp3',
           mode: PlayerMode.LOW_LATENCY,
           volume: 1 * (super.isMuted ? 0.0 : 1.0),

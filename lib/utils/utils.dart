@@ -19,7 +19,6 @@ class Utils {
     switch (context.locale.languageCode) {
       case 'ar':
         return true;
-        break;
       case 'he':
         return true;
       default:
@@ -31,10 +30,8 @@ class Utils {
     switch (context.locale.languageCode) {
       case 'pl':
         return true;
-        break;
       case 'cs':
         return true;
-        break;
       default:
         return false;
     }
@@ -45,7 +42,9 @@ class Utils {
   }
 
   static void changeLocale(
-      BuildContext context, SupportedLocale supportedLocale) {
+    BuildContext context,
+    SupportedLocale supportedLocale,
+  ) {
     Locale locale;
 
     switch (supportedLocale) {
@@ -81,7 +80,7 @@ class Utils {
         break;
     }
 
-    EasyLocalization.of(context).setLocale(locale);
+    EasyLocalization.of(context)?.setLocale(locale);
   }
 
   static Future<void> launchUrl(String url) async {
