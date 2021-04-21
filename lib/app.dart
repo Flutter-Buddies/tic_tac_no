@@ -35,17 +35,17 @@ class App extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       routes: {
-        '/': (context) => MenuScreen(),
-        '/rules': (context) => RulesScreen(),
-        '/game': (context) => GameScreen(),
-        '/contributors': (context) => ContributersScreen(),
+        '/': (_) => MenuScreen(),
+        '/rules': (_) => RulesScreen(),
+        '/game': (_) => GameScreen(),
+        '/contributors': (_) => ContributersScreen(),
       },
-      builder: (BuildContext context, Widget child) {
+      builder: (context, child) {
         return Directionality(
           textDirection: Utils.isCurrentLocaleRTL(context)
               ? TextDirection.rtl
               : TextDirection.ltr,
-          child: child,
+          child: child ?? const SizedBox(),
         );
       },
     );
