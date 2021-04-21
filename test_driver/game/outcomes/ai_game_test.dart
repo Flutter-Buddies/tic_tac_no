@@ -1,3 +1,5 @@
+// @dart = 2.10
+
 @Timeout(Duration(minutes: 2))
 import 'dart:async';
 

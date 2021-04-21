@@ -1,3 +1,5 @@
+// @dart = 2.10
+
 import '../game_setup_test.dart' as game_setup_test;
 import 'player_game_test.dart' as player_game_test;
 
