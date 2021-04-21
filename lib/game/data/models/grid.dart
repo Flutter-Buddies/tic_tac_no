@@ -12,8 +12,7 @@ class Grid {
     }
   }
 
-  List<List<InnerGrid>> innerGrids;
-  InnerGrid playableGrid;
+  late List<List<InnerGrid>> innerGrids;
 
   Position getRandomInnerGridPositionThatHasRoom() {
     for (var i = 0; i < 3; i++) {

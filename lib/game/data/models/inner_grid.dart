@@ -1,10 +1,11 @@
-import 'package:meta/meta.dart';
 import 'package:tic_tac_no/game/data/models/player.dart';
 import 'package:tic_tac_no/game/data/models/position.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
 
 class InnerGrid {
-  InnerGrid({@required this.position}) {
+  InnerGrid({
+    required this.position,
+  }) {
     this.squares = [];
     for (var i = 0; i < 3; i++) {
       this.squares.add([]);
@@ -18,9 +19,9 @@ class InnerGrid {
   }
 
   final Position position;
-  List<List<Square>> squares;
+  late List<List<Square>> squares;
   bool isPlayable = true;
-  Player winner;
+  Player? winner;
 
   bool hasRoom() {
     for (var i = 0; i < 3; i++) {
