@@ -3,17 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
-    Key key,
+    Key? key,
     this.buttonIcon,
-    this.buttonText,
+    required this.buttonText,
     this.buttonPress,
     this.buttonGradient,
   }) : super(key: key);
 
   final String buttonText;
-  final IconData buttonIcon;
-  final VoidCallback buttonPress;
-  final LinearGradient buttonGradient;
+  final IconData? buttonIcon;
+  final VoidCallback? buttonPress;
+  final LinearGradient? buttonGradient;
 
   @override
   Widget build(BuildContext context) {
