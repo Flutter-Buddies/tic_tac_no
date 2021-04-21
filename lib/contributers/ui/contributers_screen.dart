@@ -40,8 +40,8 @@ class _ContributersScreenState extends State<ContributersScreen> {
 
   @override
   void initState() {
-    getContributersStream();
     super.initState();
+    getContributersStream();
   }
 
   @override
@@ -96,25 +96,25 @@ class _ContributersScreenState extends State<ContributersScreen> {
                   ),
                 )
               : ListView.builder(
-                  itemCount: contributorsList.length ?? 0,
+                  itemCount: contributorsList.length,
                   itemBuilder: (BuildContext context, int index) {
                     final contributor = contributorsList[index];
 
                     return ListTile(
                       leading: CircleAvatar(
                         backgroundImage: NetworkImage(
-                          contributor.avatarUrl,
+                          contributor.avatarUrl ?? '',
                         ),
                       ),
                       title: Text(
-                        contributor.login,
+                        contributor.login ?? '',
                         style: GoogleFonts.cairo(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
-                        contributor.type,
+                        contributor.type ?? 'all',
                         style: GoogleFonts.cairo(
                           color: const Color(0xffC3C3C3),
                         ),
@@ -124,8 +124,11 @@ class _ContributersScreenState extends State<ContributersScreen> {
                         style: GoogleFonts.cairo(),
                       ),
                       onTap: () async {
-                        print(contributor.htmlUrl);
-                        await Utils.launchUrl(contributor.htmlUrl);
+                        final profileUrl = contributor.htmlUrl;
+                        print(profileUrl);
+                        if (profileUrl != null) {
+                          await Utils.launchUrl(profileUrl);
+                        }
                       },
                     );
                   },
