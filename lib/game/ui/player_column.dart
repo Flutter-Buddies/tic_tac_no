@@ -7,7 +7,10 @@ import 'package:tic_tac_no/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class PlayerColumn extends StatelessWidget {
-  const PlayerColumn({this.player, this.isPlayerTurn});
+  const PlayerColumn({
+    required this.player,
+    required this.isPlayerTurn,
+  });
 
   final Player player;
   final bool isPlayerTurn;

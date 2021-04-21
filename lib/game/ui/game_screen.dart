@@ -17,16 +17,17 @@ class GameScreen extends StatefulWidget {
 }
 
 class GameScreenState extends State<GameScreen> {
-  Grid _grid;
-  List<Player> _players;
-  Player _currentPlayer;
-  Map<int, int> _score;
+  late Grid _grid;
+  List<Player>? _players;
+  Player? _currentPlayer;
+  Map<int, int>? _score;
 
   // Confetti
-  ConfettiController _confettiController;
+  late ConfettiController _confettiController;
 
   @override
   void initState() {
+    super.initState();
     this._grid = BlocProvider.of<GameBloc>(context).getGrid();
     this._players = BlocProvider.of<GameBloc>(context).players;
     this._currentPlayer = BlocProvider.of<GameBloc>(context).getCurrentPlayer();
@@ -35,7 +36,6 @@ class GameScreenState extends State<GameScreen> {
         context.read<UIAudio>().isMuted;
     _confettiController =
         ConfettiController(duration: const Duration(seconds: 10));
-    super.initState();
   }
 
   @override
@@ -44,8 +44,8 @@ class GameScreenState extends State<GameScreen> {
     super.dispose();
   }
 
-  Future<bool> _backFunction() async {
-    return showModalBottomSheet(
+  Future<bool?> _backFunction() async {
+    return showModalBottomSheet<bool?>(
       context: context,
       builder: (context) => Container(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
@@ -118,7 +118,7 @@ class GameScreenState extends State<GameScreen> {
     );
   }
 
-  Future<void> _showGameOver(Player winner) async {
+  Future<void> _showGameOver(Player? winner) async {
     // Delay used to give the user a little time to process they won and
     // to give time for animation of line going through 3 winning squares (todo: create this animation 😅)
     await Future.delayed(const Duration(seconds: 3));
@@ -147,20 +147,27 @@ class GameScreenState extends State<GameScreen> {
         }
 
         if (state is GameOver) {
-          if (state.winner != null) {
+          final winner = state.winner;
+          if (winner != null) {
             _confettiController.play();
             // If game was won by ai play game lost sound else play game won sound
-            if (state.winner.aiStrength != null) {
+            if (winner.aiStrength != null) {
               // context.read<GameAudio>().playSound(SoundEvents.GameLost);
             } else {
               // context.read<GameAudio>().playSound(SoundEvents.GameWon);
             }
           }
-          _showGameOver(state.winner);
+          _showGameOver(winner);
         }
       },
       child: WillPopScope(
-        onWillPop: () => _backFunction(),
+        onWillPop: () async {
+          final shouldPop = await _backFunction();
+          if (shouldPop != null && shouldPop) {
+            return true;
+          }
+          return false;
+        },
         child: SafeArea(
           top: false,
           child: Scaffold(
@@ -186,74 +193,79 @@ class GameScreenState extends State<GameScreen> {
                       const SizedBox(
                         height: 8.0,
                       ),
-                      Expanded(
-                        child: Row(
-                          // We want the content to be aligned in the center vertically
-                          // ignore: avoid_redundant_argument_values
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          // The score text will remain a constant size so will not be wrapped in Expanded
-                          // The player name, piece and turn info will be the thing that scales
-                          children: [
-                            // Wrapped in expanded to scale
-                            // Currently taking the max width it can
-                            const Spacer(),
-                            Expanded(
-                              flex: 6,
-                              child: PlayerColumn(
-                                player: _players[0],
-                                isPlayerTurn: _players[0] == _currentPlayer,
+                      if (_score != null &&
+                          _players != null &&
+                          _players!.length >= 2)
+                        Expanded(
+                          child: Row(
+                            // We want the content to be aligned in the center vertically
+                            // ignore: avoid_redundant_argument_values
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // The score text will remain a constant size so will not be wrapped in Expanded
+                            // The player name, piece and turn info will be the thing that scales
+                            children: [
+                              // Wrapped in expanded to scale
+                              // Currently taking the max width it can
+                              const Spacer(),
+                              Expanded(
+                                flex: 6,
+                                child: PlayerColumn(
+                                  player: _players![0],
+                                  isPlayerTurn: _players![0] == _currentPlayer,
+                                ),
                               ),
-                            ),
-                            const Spacer(),
-                            // Score info remains constant size
-                            AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 500),
-                              transitionBuilder: (child, animation) {
-                                return ScaleTransition(
-                                  scale: animation,
-                                  child: child,
-                                );
-                              },
-                              child: Text(
-                                '${_score[_players[0].id]}',
-                                key: ValueKey<int>(_score[_players[0].id]),
-                                style: const TextStyle(
+                              const Spacer(),
+                              // Score info remains constant size
+                              AnimatedSwitcher(
+                                duration: const Duration(milliseconds: 500),
+                                transitionBuilder: (child, animation) {
+                                  return ScaleTransition(
+                                    scale: animation,
+                                    child: child,
+                                  );
+                                },
+                                child: Text(
+                                  '${_score![_players![0].id]}',
+                                  key: ValueKey<int>(_score![_players![0].id]!),
+                                  style: const TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              const Text(
+                                ' : ',
+                                style: TextStyle(
                                     fontSize: 40, fontWeight: FontWeight.bold),
                               ),
-                            ),
-                            const Text(
-                              ' : ',
-                              style: TextStyle(
-                                  fontSize: 40, fontWeight: FontWeight.bold),
-                            ),
-                            AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 500),
-                              transitionBuilder: (child, animation) {
-                                return ScaleTransition(
-                                  scale: animation,
-                                  child: child,
-                                );
-                              },
-                              child: Text(
-                                '${_score[_players[1].id]}',
-                                key: ValueKey<int>(_score[_players[1].id]),
-                                style: const TextStyle(
-                                    fontSize: 40, fontWeight: FontWeight.bold),
+                              AnimatedSwitcher(
+                                duration: const Duration(milliseconds: 500),
+                                transitionBuilder: (child, animation) {
+                                  return ScaleTransition(
+                                    scale: animation,
+                                    child: child,
+                                  );
+                                },
+                                child: Text(
+                                  '${_score![_players![1].id]}',
+                                  key: ValueKey<int>(_score![_players![1].id]!),
+                                  style: const TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            ),
-                            // Wrapped in expanded to scale
-                            const Spacer(),
-                            Expanded(
-                              flex: 6,
-                              child: PlayerColumn(
-                                player: _players[1],
-                                isPlayerTurn: _players[1] == _currentPlayer,
+                              // Wrapped in expanded to scale
+                              const Spacer(),
+                              Expanded(
+                                flex: 6,
+                                child: PlayerColumn(
+                                  player: _players![1],
+                                  isPlayerTurn: _players![1] == _currentPlayer,
+                                ),
                               ),
-                            ),
-                            const Spacer(),
-                          ],
+                              const Spacer(),
+                            ],
+                          ),
                         ),
-                      ),
                       //* Grid
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),

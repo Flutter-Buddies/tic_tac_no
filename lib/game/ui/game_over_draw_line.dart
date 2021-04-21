@@ -10,8 +10,8 @@ class GameOverDrawLine extends StatefulWidget {
 
 class _GameOverDrawLineState extends State<GameOverDrawLine>
     with SingleTickerProviderStateMixin {
-  Animation<double> animation;
-  AnimationController animationController;
+  late Animation<double> animation;
+  late AnimationController animationController;
 
   @override
   void initState() {
@@ -31,8 +31,8 @@ class _GameOverDrawLineState extends State<GameOverDrawLine>
 
   @override
   void dispose() {
-    super.dispose();
     animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -64,7 +64,7 @@ class _GameOverDrawLineState extends State<GameOverDrawLine>
                         child: CustomPaint(
                           painter: WinningLine(
                             animation.value,
-                            state.winningPositions,
+                            state.winningPositions!,
                           ),
                         ),
                       ),
@@ -102,7 +102,11 @@ class WinningLine extends CustomPainter {
     Offset endingPoint;
 
     // Helper function to move the line depending on what row or column won
-    Offset translation({int thirdPosition, Offset offset, LineType lineType}) {
+    Offset translation({
+      required int thirdPosition,
+      required Offset offset,
+      required LineType lineType,
+    }) {
       if (thirdPosition == 1 && lineType == LineType.Veritical) {
         return offset.translate(size.width / 6, 0);
       }

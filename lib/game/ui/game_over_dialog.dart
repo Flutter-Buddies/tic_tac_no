@@ -9,11 +9,14 @@ import 'package:tic_tac_no/utils/audio.dart';
 import 'package:tic_tac_no/utils/utils.dart';
 
 class GameOverDialog extends StatelessWidget {
-  const GameOverDialog({@required this.winner});
+  const GameOverDialog({
+    this.winner,
+  });
 
-  final Player winner;
+  final Player? winner;
 
   String _getWinnerString(BuildContext context) {
+    final winner = this.winner!;
     if (Utils.isLocaleConjugationRequired(context) &&
         winner.type == PlayerType.me) {
       return '${winner.name} ${LocaleKeys.game_win.tr()}'.toUpperCase();
@@ -39,10 +42,8 @@ class GameOverDialog extends StatelessWidget {
             aspectRatio: 1.0,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: winner.symbol != null
-                  ? CustomPaint(
-                      painter: winner.symbol,
-                    )
+              child: winner?.symbol != null
+                  ? CustomPaint(painter: winner!.symbol)
                   : Container(),
             ),
           ),

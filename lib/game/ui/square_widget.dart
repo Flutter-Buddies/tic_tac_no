@@ -6,8 +6,8 @@ import 'package:tic_tac_no/game/data/models/square.dart';
 // TODO override operator==
 class SquareWidget extends StatelessWidget {
   const SquareWidget({
-    Key key,
-    this.square,
+    Key? key,
+    required this.square,
   }) : super(key: key);
 
   final Square square;
@@ -38,7 +38,7 @@ class SquareWidget extends StatelessWidget {
                     width: 26,
                     height: 26,
                     child: CustomPaint(
-                      painter: this.square.player.symbol,
+                      painter: this.square.player!.symbol,
                     ),
                   )
                 : const SizedBox.shrink(),
