@@ -17,7 +17,7 @@ class WinnerAI extends AI {
     final winningSquare = this.winningSquare(
       playableInnerGrid,
       playableSquares,
-      this.player,
+      this.player!,
     );
     if (winningSquare == null) {
       final random = Random().nextInt(playableSquares.length);
