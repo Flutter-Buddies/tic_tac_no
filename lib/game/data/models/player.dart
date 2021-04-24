@@ -5,11 +5,11 @@ enum PlayerType { me, ai, friend, onlineFriend }
 
 class Player extends Equatable {
   const Player({
-    this.id,
+    required this.id,
     this.name = 'No name',
-    @required this.color,
-    @required this.symbol,
-    @required this.type,
+    required this.color,
+    required this.symbol,
+    required this.type,
     this.aiStrength,
   });
 
@@ -18,10 +18,10 @@ class Player extends Equatable {
   final Color color;
   final CustomPainter symbol;
   final PlayerType type;
-  final int aiStrength;
+  final int? aiStrength;
 
   @override
-  List<Object> get props => [id, name, color, symbol, type, aiStrength];
+  List<Object?> get props => [id, name, color, symbol, type, aiStrength];
 
   @override
   String toString() {

@@ -2,7 +2,10 @@
 enum LineType { Veritical, Horizontal, DiagonalBack, DiagonalForward }
 
 class WinningPositions {
-  const WinningPositions({this.lineType, this.thirdPosition});
+  const WinningPositions({
+    required this.lineType,
+    required this.thirdPosition,
+  });
 
   final LineType lineType;
   final int thirdPosition;

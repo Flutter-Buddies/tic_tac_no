@@ -2,12 +2,12 @@ import 'package:tic_tac_no/game/data/models/models.dart';
 import 'package:tic_tac_no/game/data/models/square.dart';
 
 abstract class AI {
-  Player player;
+  Player? player;
 
   Square makeMove(Grid grid);
 
-  InnerGrid getPlayableInnerGrid(Grid grid) {
-    InnerGrid playableInnerGrid;
+  InnerGrid? getPlayableInnerGrid(Grid grid) {
+    InnerGrid? playableInnerGrid;
     grid.innerGrids.forEach((innerGrids) {
       innerGrids.forEach((innerGrid) {
         if (innerGrid.isPlayable) {
@@ -18,9 +18,9 @@ abstract class AI {
     return playableInnerGrid;
   }
 
-  List<Square> getPlayableSquares(InnerGrid innerGrid) {
+  List<Square> getPlayableSquares(InnerGrid? innerGrid) {
     final playableSquares = <Square>[];
-    innerGrid.squares.forEach((squares) {
+    innerGrid?.squares.forEach((squares) {
       squares.forEach((square) {
         if (square.player == null) {
           playableSquares.add(square);
@@ -30,7 +30,7 @@ abstract class AI {
     return playableSquares;
   }
 
-  Square findSquareByPosition(List<Square> squares, Position position) {
+  Square? findSquareByPosition(List<Square> squares, Position position) {
     for (var i = 0; i < squares.length; i++) {
       if (squares[i].position.x == position.x &&
           squares[i].position.y == position.y) {
@@ -40,12 +40,12 @@ abstract class AI {
     return null;
   }
 
-  Square winningSquare(
-    InnerGrid playableInnerGrid,
+  Square? winningSquare(
+    InnerGrid? playableInnerGrid,
     List<Square> playableSquares,
     Player player,
   ) {
-    if (playableInnerGrid.winner != null) {
+    if (playableInnerGrid == null || playableInnerGrid.winner != null) {
       return null;
     }
 

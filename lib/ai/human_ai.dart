@@ -9,7 +9,7 @@ class HumanAI extends AI {
     this._opponent = opponent;
   }
 
-  Player _opponent;
+  late Player _opponent;
 
   @override
   Square makeMove(Grid grid) {
@@ -20,7 +20,7 @@ class HumanAI extends AI {
     final winningSquare = this.winningSquare(
       playableInnerGrid,
       playableSquares,
-      this.player,
+      this.player!,
     );
     if (winningSquare != null) {
       return winningSquare;
@@ -49,7 +49,7 @@ class HumanAI extends AI {
       return alreadyWonSquares[random];
     }
 
-    // for each playable square, check if opponnent has winning
+    // for each playable square, check if opponent has winning
     // move in inner grid with this position
     // then definitely not move there
     final opponentNotWinningSquares = <Square>[];

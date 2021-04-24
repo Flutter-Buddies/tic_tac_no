@@ -5,25 +5,25 @@ import 'package:flutter/material.dart';
 class AnimateIcons extends StatefulWidget {
   const AnimateIcons({
     /// The IconData that will be visible before animation Starts
-    @required this.startIcon,
+    required this.startIcon,
 
     /// The IconData that will be visible after animation ends
-    @required this.endIcon,
+    required this.endIcon,
 
     /// The callback on startIcon Press
     /// It should return a bool
     /// If true is returned it'll animate to the end icon
     /// if false is returned it'll not animate to the end icons
-    @required this.onStartIconPress,
+    required this.onStartIconPress,
 
     /// The callback on endIcon Press
     /// It should return a bool
     /// If true is returned it'll animate to the end icon
     /// if false is returned it'll not animate to the end icons
-    @required this.onEndIconPress,
+    required this.onEndIconPress,
 
     /// The size of the icon that are to be shown.
-    this.size,
+    this.size = 24.0,
 
     /// AnimateIcons controller
     this.controller,
@@ -35,10 +35,10 @@ class AnimateIcons extends StatefulWidget {
     this.endIconColor,
 
     /// The duration for which the animation runs
-    this.duration,
+    this.duration = const Duration(seconds: 1),
 
     /// If the animation runs in the clockwise or anticlockwise direction
-    this.clockwise,
+    this.clockwise = false,
 
     /// This is the tooltip that will be used for the [startIcon]
     this.startTooltip,
@@ -47,13 +47,13 @@ class AnimateIcons extends StatefulWidget {
     this.endTooltip,
   });
   final IconData startIcon, endIcon;
-  final bool Function() onStartIconPress, onEndIconPress;
+  final bool Function()? onStartIconPress, onEndIconPress;
   final Duration duration;
   final bool clockwise;
   final double size;
-  final Color startIconColor, endIconColor;
-  final AnimateIconController controller;
-  final String startTooltip, endTooltip;
+  final Color? startIconColor, endIconColor;
+  final AnimateIconController? controller;
+  final String? startTooltip, endTooltip;
 
   @override
   _AnimateIconsState createState() => _AnimateIconsState();
@@ -61,13 +61,14 @@ class AnimateIcons extends StatefulWidget {
 
 class _AnimateIconsState extends State<AnimateIcons>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
+    super.initState();
     this._controller = AnimationController(
       vsync: this,
-      duration: widget.duration ?? const Duration(seconds: 1),
+      duration: widget.duration,
     );
     this._controller.addListener(() {
       if (mounted) {
@@ -75,7 +76,6 @@ class _AnimateIconsState extends State<AnimateIcons>
       }
     });
     initControllerFunctions();
-    super.initState();
   }
 
   @override
@@ -85,8 +85,9 @@ class _AnimateIconsState extends State<AnimateIcons>
   }
 
   bool initControllerFunctions() {
-    if (widget.controller != null) {
-      widget.controller.animateToEnd = () {
+    final animIconController = widget.controller;
+    if (animIconController != null) {
+      animIconController.animateToEnd = () {
         if (mounted) {
           _controller.forward();
           return true;
@@ -94,7 +95,7 @@ class _AnimateIconsState extends State<AnimateIcons>
           return false;
         }
       };
-      widget.controller.animateToStart = () {
+      animIconController.animateToStart = () {
         if (mounted) {
           _controller.reverse();
           return true;
@@ -102,41 +103,41 @@ class _AnimateIconsState extends State<AnimateIcons>
           return false;
         }
       };
-      widget.controller.isStart = () => _controller.value == 0.0;
-      widget.controller.isEnd = () => _controller.value == 1.0;
+      animIconController.isStart = () => _controller.value == 0.0;
+      animIconController.isEnd = () => _controller.value == 1.0;
     }
     return false;
   }
 
   void _onStartIconPress() {
-    if (widget.onStartIconPress() && mounted) _controller.forward();
+    if (widget.onStartIconPress!() && mounted) _controller.forward();
   }
 
   void _onEndIconPress() {
-    if (widget.onEndIconPress() && mounted) _controller.reverse();
+    if (widget.onEndIconPress!() && mounted) _controller.reverse();
   }
 
   @override
   Widget build(BuildContext context) {
-    final x = _controller.value ?? 0.0;
-    final y = 1.0 - _controller.value ?? 0.0;
+    final x = _controller.value;
+    final y = 1.0 - _controller.value;
     final angleX = math.pi / 180 * (180 * x);
     final angleY = math.pi / 180 * (180 * y);
 
     Widget first() {
       final icon = Icon(widget.startIcon, size: widget.size);
       return Transform.rotate(
-        angle: widget.clockwise ?? false ? angleX : -angleX,
+        angle: widget.clockwise ? angleX : -angleX,
         child: Opacity(
           opacity: y,
           child: IconButton(
-            iconSize: widget.size ?? 24.0,
+            iconSize: widget.size,
             color: widget.startIconColor ?? Theme.of(context).primaryColor,
             disabledColor: Colors.grey.shade500,
             icon: widget.startTooltip == null
                 ? icon
                 : Tooltip(
-                    message: widget.startTooltip,
+                    message: widget.startTooltip!,
                     child: icon,
                   ),
             onPressed:
@@ -149,17 +150,17 @@ class _AnimateIconsState extends State<AnimateIcons>
     Widget second() {
       final icon = Icon(widget.endIcon);
       return Transform.rotate(
-        angle: widget.clockwise ?? false ? -angleY : angleY,
+        angle: widget.clockwise ? -angleY : angleY,
         child: Opacity(
-          opacity: x ?? 0.0,
+          opacity: x,
           child: IconButton(
-            iconSize: widget.size ?? 24.0,
+            iconSize: widget.size,
             color: widget.endIconColor ?? Theme.of(context).primaryColor,
             disabledColor: Colors.grey.shade500,
             icon: widget.endTooltip == null
                 ? icon
                 : Tooltip(
-                    message: widget.endTooltip,
+                    message: widget.endTooltip!,
                     child: icon,
                   ),
             onPressed: widget.onEndIconPress != null ? _onEndIconPress : null,
@@ -179,6 +180,6 @@ class _AnimateIconsState extends State<AnimateIcons>
 }
 
 class AnimateIconController {
-  bool Function() animateToStart, animateToEnd;
-  bool Function() isStart, isEnd;
+  bool Function()? animateToStart, animateToEnd;
+  bool Function()? isStart, isEnd;
 }

@@ -1,3 +1,5 @@
+// @dart = 2.10
+
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:tic_tac_no/common/consts/keys.dart';
 

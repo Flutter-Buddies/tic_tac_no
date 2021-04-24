@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InnerGridWidget extends StatefulWidget {
   const InnerGridWidget({
-    @required this.innerGrid,
+    required this.innerGrid,
   });
 
   final InnerGrid innerGrid;
@@ -18,10 +18,10 @@ class InnerGridWidget extends StatefulWidget {
 
 class _InnerGridWidgetState extends State<InnerGridWidget>
     with TickerProviderStateMixin {
-  Animation<double> _animationPadding;
-  AnimationController _animationControllerPadding;
-  Animation<double> _animationOpacity;
-  AnimationController _animationControllerOpacity;
+  late AnimationController _animationControllerPadding;
+  late Animation<double> _animationPadding;
+  late AnimationController _animationControllerOpacity;
+  late Animation<double> _animationOpacity;
   bool _didAnimateWinner = false;
 
   @override
@@ -32,15 +32,22 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
       duration: const Duration(milliseconds: 700),
     );
     _animationPadding = Tween<double>(begin: 70, end: 20).animate(
-        CurvedAnimation(
-            parent: _animationControllerPadding, curve: Curves.easeIn));
+      CurvedAnimation(
+        parent: _animationControllerPadding,
+        curve: Curves.easeIn,
+      ),
+    );
     _animationControllerOpacity = AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 700),
-        reverseDuration: const Duration(milliseconds: 300));
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+      reverseDuration: const Duration(milliseconds: 300),
+    );
     _animationOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-            parent: _animationControllerOpacity, curve: Curves.easeIn));
+      CurvedAnimation(
+        parent: _animationControllerOpacity,
+        curve: Curves.easeIn,
+      ),
+    );
     _animationControllerOpacity.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         await Future.delayed(const Duration(milliseconds: 1000));
@@ -51,9 +58,9 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
 
   @override
   void dispose() {
-    super.dispose();
     _animationControllerOpacity.dispose();
     _animationControllerPadding.dispose();
+    super.dispose();
   }
 
   @override
@@ -136,7 +143,7 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
     if (this.widget.innerGrid.winner == null) {
       return Colors.white.withOpacity(0.1);
     }
-    return this.widget.innerGrid.winner.color.withOpacity(0.5);
+    return this.widget.innerGrid.winner!.color.withOpacity(0.5);
   }
 
   // Borderside details
@@ -145,7 +152,8 @@ class _InnerGridWidgetState extends State<InnerGridWidget>
   BorderSide _buildBorderSide(BuildContext context) {
     return BorderSide(
       color: this.widget.innerGrid.isPlayable
-          ? context.watch<GameBloc>().getCurrentPlayer().color
+          ? context.watch<GameBloc>().getCurrentPlayer()?.color ??
+              _isNotPlayableColor
           : _isNotPlayableColor,
       width: this.widget.innerGrid.isPlayable ? 4.0 : 1.0,
     );

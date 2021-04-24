@@ -24,25 +24,21 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     );
   }
 
-  List<Player> _players;
-  Grid _grid;
+  List<Player>? _players;
+  late Grid _grid;
 
-  Judge _judge;
-  AI _ai;
+  late Judge _judge;
+  AI? _ai;
 
   GameAudio audio = GameAudio()..preloadSounds();
 
-  Grid getGrid() {
-    return this._judge.getGrid();
-  }
+  Grid getGrid() => this._judge.getGrid();
 
-  Player getCurrentPlayer() {
-    return this._judge.getCurrentPlayer();
-  }
+  Player? getCurrentPlayer() => this._judge.getCurrentPlayer();
 
-  List<Player> get players => _players;
+  List<Player>? get players => _players;
 
-  Map<int, int> get score => _judge.score;
+  Map<int, int>? get score => _judge.score;
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
@@ -59,7 +55,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     yield Loading();
     _players = [event.player1, event.player2];
     _updateAI(event.player2);
-    _judge.updatePlayers(_players);
+    _judge.updatePlayers(_players!);
     yield _readyState();
   }
 
@@ -82,20 +78,20 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         winner: this._judge.getWinner(),
         winningPositions: this._judge.getWinningPositions(),
       );
-      if (this._judge.getWinner().type == PlayerType.ai ||
-          this._judge.getWinner().type == PlayerType.onlineFriend) {
+      if (this._judge.getWinner()?.type == PlayerType.ai ||
+          this._judge.getWinner()?.type == PlayerType.onlineFriend) {
         await audio.playSound(GameSounds.GameLost);
       } else {
         await audio.playSound(GameSounds.GameWon);
       }
     } else {
       yield _readyState();
-      if (this._judge.getCurrentPlayer().type == PlayerType.ai) {
-        _updateAI(_judge.getCurrentPlayer());
+      if (this._judge.getCurrentPlayer()?.type == PlayerType.ai) {
+        _updateAI(_judge.getCurrentPlayer()!);
         yield AIThinking();
         await Future.delayed(
             Duration(milliseconds: 200 + Random().nextInt(1000)));
-        final move = this._ai.makeMove(this._judge.getGrid());
+        final move = this._ai!.makeMove(this._judge.getGrid());
         yield _readyState();
         this.add(SquareTapped(square: move));
       }
@@ -124,7 +120,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         _ai = WinnerAI(player);
         break;
       case 2:
-        _ai = HumanAI(player, _players[0]);
+        if (_players != null && _players!.isNotEmpty) {
+          _ai = HumanAI(player, _players![0]);
+        } else {
+          _ai = RandomAI();
+        }
         break;
       default:
         _ai = RandomAI();

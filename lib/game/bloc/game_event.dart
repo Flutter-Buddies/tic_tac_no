@@ -5,8 +5,8 @@ abstract class GameEvent {}
 
 class SetPlayers extends GameEvent {
   SetPlayers({
-    @required this.player1,
-    @required this.player2,
+    required this.player1,
+    required this.player2,
   });
 
   final Player player1;
@@ -16,7 +16,9 @@ class SetPlayers extends GameEvent {
 class LoadGame extends GameEvent {}
 
 class SquareTapped extends GameEvent {
-  SquareTapped({this.square});
+  SquareTapped({
+    required this.square,
+  });
 
   final Square square;
 }

@@ -53,7 +53,6 @@ class _MenuSettingsState extends State<MenuSettings> {
             duration: const Duration(milliseconds: 500),
             startIconColor: Colors.white,
             endIconColor: Colors.redAccent,
-            clockwise: false,
           ),
         ),
         const SizedBox(height: 15),

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CrossPainter extends CustomPainter {
-  const CrossPainter({this.drawingColor});
+  const CrossPainter({
+    required this.drawingColor,
+  });
+
   final Color drawingColor;
+
   @override
   void paint(Canvas canvas, Size size) {
     // paint is the brush
@@ -32,7 +36,10 @@ class CrossPainter extends CustomPainter {
 }
 
 class TrianglePainter extends CustomPainter {
-  TrianglePainter({this.drawingColor});
+  TrianglePainter({
+    required this.drawingColor,
+  });
+
   final Color drawingColor;
 
   @override
@@ -62,8 +69,12 @@ class TrianglePainter extends CustomPainter {
 }
 
 class CirclePainter extends CustomPainter {
-  CirclePainter({this.drawingColor});
+  CirclePainter({
+    required this.drawingColor,
+  });
+
   final Color drawingColor;
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
@@ -72,9 +83,12 @@ class CirclePainter extends CustomPainter {
       ..strokeWidth = 0.25 * size.width;
 
     final path1 = Path()
-      ..addOval(Rect.fromCircle(
+      ..addOval(
+        Rect.fromCircle(
           center: Offset(size.width / 2, size.height / 2),
-          radius: 0.5 * size.width));
+          radius: 0.5 * size.width,
+        ),
+      );
 
     canvas.drawPath(path1, paint);
   }
@@ -89,8 +103,12 @@ class CirclePainter extends CustomPainter {
 }
 
 class SquirclePainter extends CustomPainter {
-  SquirclePainter({this.drawingColor});
+  SquirclePainter({
+    required this.drawingColor,
+  });
+
   final Color drawingColor;
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()

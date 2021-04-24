@@ -1,3 +1,5 @@
+// @dart = 2.10
+
 import 'game/outcomes/ai_game.dart' as ai_game;
 import 'game/outcomes/player_game.dart' as player_game;
 import 'menu/menu_test.dart' as menu_test;

@@ -130,10 +130,10 @@ class LanguageBottomSheet extends StatelessWidget {
 
 class LanguageListTile extends StatelessWidget {
   const LanguageListTile({
-    @required this.languageEmoji,
-    @required this.languageName,
-    @required this.showCheck,
-    @required this.locale,
+    required this.languageEmoji,
+    required this.languageName,
+    required this.showCheck,
+    required this.locale,
   });
 
   final String languageEmoji;

@@ -14,8 +14,8 @@ import 'package:tic_tac_no/utils/audio.dart';
 
 class GameStartModal extends StatefulWidget {
   const GameStartModal({
-    Key key,
-    this.gameType,
+    Key? key,
+    required this.gameType,
   }) : super(key: key);
 
   final GameType gameType;
@@ -25,8 +25,8 @@ class GameStartModal extends StatefulWidget {
 }
 
 class _GameStartModalState extends State<GameStartModal> {
-  CustomPainter p1SelectedPiece;
-  CustomPainter p2SelectedPiece;
+  late CustomPainter p1SelectedPiece;
+  late CustomPainter p2SelectedPiece;
 
   // List of colours for each player
   List<Color> p1ColourList = [
@@ -53,10 +53,10 @@ class _GameStartModalState extends State<GameStartModal> {
 
   @override
   void initState() {
+    super.initState();
     // Initialise the pieces
     p1SelectedPiece = CrossPainter(drawingColor: p1ColourList[_p1Value]);
     p2SelectedPiece = CirclePainter(drawingColor: p2ColourList[_p2Value]);
-    super.initState();
   }
 
   void updatePlayer1Colour(int value) {
