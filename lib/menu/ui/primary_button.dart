@@ -43,13 +43,18 @@ class PrimaryButton extends StatelessWidget {
                   // If there is no icon we don't want any spacing so the text is properly centered
                   width: buttonIcon == null ? 0 : 5,
                 ),
-                Text(
-                  buttonText,
-                  style: GoogleFonts.cairo(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    buttonText,
+                    overflow: TextOverflow.fade,
+                    maxLines: 1,
+                    softWrap: false,
+                    style: GoogleFonts.cairo(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
